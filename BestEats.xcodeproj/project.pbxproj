@@ -8,13 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		E1BAB8ED2C46653100873CA6 /* BestEatsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB8EC2C46653100873CA6 /* BestEatsApp.swift */; };
-		E1BAB8EF2C46653100873CA6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB8EE2C46653100873CA6 /* ContentView.swift */; };
+		E1BAB8EF2C46653100873CA6 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB8EE2C46653100873CA6 /* TabBarView.swift */; };
 		E1BAB8F12C46653100873CA6 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB8F02C46653100873CA6 /* Item.swift */; };
 		E1BAB8F32C46653300873CA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1BAB8F22C46653300873CA6 /* Assets.xcassets */; };
 		E1BAB8F62C46653300873CA6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1BAB8F52C46653300873CA6 /* Preview Assets.xcassets */; };
 		E1BAB9002C46653300873CA6 /* BestEatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB8FF2C46653300873CA6 /* BestEatsTests.swift */; };
 		E1BAB90A2C46653300873CA6 /* BestEatsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB9092C46653300873CA6 /* BestEatsUITests.swift */; };
 		E1BAB90C2C46653300873CA6 /* BestEatsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB90B2C46653300873CA6 /* BestEatsUITestsLaunchTests.swift */; };
+		E1BAB9192C4669B300873CA6 /* SwiftDataTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB9182C4669B300873CA6 /* SwiftDataTutorialView.swift */; };
+		E1BAB91F2C466E1200873CA6 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB91E2C466E1200873CA6 /* HomeView.swift */; };
+		E1BAB9212C466E1B00873CA6 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB9202C466E1B00873CA6 /* SettingsView.swift */; };
+		E1BAB9232C466E2100873CA6 /* RecommendationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB9222C466E2100873CA6 /* RecommendationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +41,7 @@
 /* Begin PBXFileReference section */
 		E1BAB8E92C46653100873CA6 /* BestEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BestEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1BAB8EC2C46653100873CA6 /* BestEatsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestEatsApp.swift; sourceTree = "<group>"; };
-		E1BAB8EE2C46653100873CA6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E1BAB8EE2C46653100873CA6 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		E1BAB8F02C46653100873CA6 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		E1BAB8F22C46653300873CA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1BAB8F52C46653300873CA6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -46,6 +50,10 @@
 		E1BAB9052C46653300873CA6 /* BestEatsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BestEatsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1BAB9092C46653300873CA6 /* BestEatsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestEatsUITests.swift; sourceTree = "<group>"; };
 		E1BAB90B2C46653300873CA6 /* BestEatsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestEatsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E1BAB9182C4669B300873CA6 /* SwiftDataTutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataTutorialView.swift; sourceTree = "<group>"; };
+		E1BAB91E2C466E1200873CA6 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		E1BAB9202C466E1B00873CA6 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		E1BAB9222C466E2100873CA6 /* RecommendationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,8 +104,10 @@
 		E1BAB8EB2C46653100873CA6 /* BestEats */ = {
 			isa = PBXGroup;
 			children = (
+				E1BAB91D2C466DFB00873CA6 /* Presentation */,
 				E1BAB8EC2C46653100873CA6 /* BestEatsApp.swift */,
-				E1BAB8EE2C46653100873CA6 /* ContentView.swift */,
+				E1BAB8EE2C46653100873CA6 /* TabBarView.swift */,
+				E1BAB9182C4669B300873CA6 /* SwiftDataTutorialView.swift */,
 				E1BAB8F02C46653100873CA6 /* Item.swift */,
 				E1BAB8F22C46653300873CA6 /* Assets.xcassets */,
 				E1BAB8F42C46653300873CA6 /* Preview Content */,
@@ -128,6 +138,40 @@
 				E1BAB90B2C46653300873CA6 /* BestEatsUITestsLaunchTests.swift */,
 			);
 			path = BestEatsUITests;
+			sourceTree = "<group>";
+		};
+		E1BAB91A2C466DBC00873CA6 /* Recommendation */ = {
+			isa = PBXGroup;
+			children = (
+				E1BAB9222C466E2100873CA6 /* RecommendationView.swift */,
+			);
+			path = Recommendation;
+			sourceTree = "<group>";
+		};
+		E1BAB91B2C466DEC00873CA6 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E1BAB9202C466E1B00873CA6 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		E1BAB91C2C466DF400873CA6 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				E1BAB91E2C466E1200873CA6 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		E1BAB91D2C466DFB00873CA6 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				E1BAB91C2C466DF400873CA6 /* Home */,
+				E1BAB91B2C466DEC00873CA6 /* Settings */,
+				E1BAB91A2C466DBC00873CA6 /* Recommendation */,
+			);
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,8 +304,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1BAB8EF2C46653100873CA6 /* ContentView.swift in Sources */,
+				E1BAB9192C4669B300873CA6 /* SwiftDataTutorialView.swift in Sources */,
+				E1BAB9232C466E2100873CA6 /* RecommendationView.swift in Sources */,
+				E1BAB8EF2C46653100873CA6 /* TabBarView.swift in Sources */,
 				E1BAB8F12C46653100873CA6 /* Item.swift in Sources */,
+				E1BAB9212C466E1B00873CA6 /* SettingsView.swift in Sources */,
+				E1BAB91F2C466E1200873CA6 /* HomeView.swift in Sources */,
 				E1BAB8ED2C46653100873CA6 /* BestEatsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
