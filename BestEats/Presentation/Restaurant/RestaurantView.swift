@@ -11,15 +11,18 @@ struct RestaurantView: View {
     @State private var searchText = ""
     
     var body: some View {
-        NavigationStack {
+        NavigationView {
             ScrollView {
                 RestaurantCardView()
                     .padding(.horizontal, 24)
                     .shadow(radius: 4, x: 8, y: 8)
+                    .padding(.bottom, 16)
+                
+                AddRestaurantCardView()
             }
             .background(.gray.opacity(0.1))
+            .searchable(text: $searchText, prompt: "맛집을 검색해주세요")
         }
-        .searchable(text: $searchText, prompt: "맛집을 검색해주세요")
     }
 }
 
@@ -36,13 +39,13 @@ struct RestaurantCardView: View {
             VStack(alignment: .leading, spacing: 8) {
                 HStack {
                     Text("Restaurant")
-                        .font(.system(size: 20, weight: .bold)) // TODO: [] 폰트스타일 적용
+                        .font(.system(size: 24, weight: .bold)) // TODO: [] 폰트스타일 적용
                         .foregroundStyle(.orange)
                     
                     Spacer()
                     
                     Button(action: {
-                        // TODO: [] Alert
+                        // TODO: [] Alert(BottomSheet)
                     }, label: {
                         Image(systemName: "ellipsis")
                             .foregroundStyle(.black)
@@ -52,7 +55,7 @@ struct RestaurantCardView: View {
                 Spacer()
                 
                 Text("Menu")
-                    .font(.system(size: 16, weight: .bold))
+                    .font(.system(size: 18, weight: .bold))
                     .foregroundStyle(.green)
                 
                 Spacer()
@@ -79,5 +82,33 @@ struct RestaurantCardView: View {
         .padding()
         .background(.background)
         .clipShape(RoundedRectangle(cornerRadius: 16.0))
+    }
+}
+
+struct AddRestaurantCardView: View {
+    var body: some View {
+        ZStack {
+            NavigationLink {
+                RestaurantDetailView()
+            } label: {
+                HStack {
+                    Image(systemName: "plus")
+                    Text("맛집 추가")
+                }
+                .font(.system(size: 18, weight: .bold))
+                .foregroundStyle(.gray)
+                .padding(.vertical, 12)
+                .padding(.horizontal, 40)
+                .overlay(RoundedRectangle(cornerRadius: 24)
+                    .stroke(.gray.opacity(0.5), lineWidth: 2)
+                )
+            }
+            .padding(.vertical, 40)
+        }
+        .frame(maxWidth: .infinity)
+        .background(.background)
+        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .padding(.horizontal, 24)
+        .shadow(radius: 4, x: 8, y: 8)
     }
 }

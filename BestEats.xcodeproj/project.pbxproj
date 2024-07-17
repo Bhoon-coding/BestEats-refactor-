@@ -19,6 +19,7 @@
 		E1BAB91F2C466E1200873CA6 /* RestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB91E2C466E1200873CA6 /* RestaurantView.swift */; };
 		E1BAB9212C466E1B00873CA6 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB9202C466E1B00873CA6 /* SettingsView.swift */; };
 		E1BAB9232C466E2100873CA6 /* RecommendationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB9222C466E2100873CA6 /* RecommendationView.swift */; };
+		E1BAB9262C47AFB400873CA6 /* RestaurantDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB9252C47AFB400873CA6 /* RestaurantDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		E1BAB91E2C466E1200873CA6 /* RestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantView.swift; sourceTree = "<group>"; };
 		E1BAB9202C466E1B00873CA6 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E1BAB9222C466E2100873CA6 /* RecommendationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationView.swift; sourceTree = "<group>"; };
+		E1BAB9252C47AFB400873CA6 /* RestaurantDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 		E1BAB91C2C466DF400873CA6 /* Restaurant */ = {
 			isa = PBXGroup;
 			children = (
+				E1BAB9242C47AF9800873CA6 /* Details */,
 				E1BAB91E2C466E1200873CA6 /* RestaurantView.swift */,
 			);
 			path = Restaurant;
@@ -172,6 +175,14 @@
 				E1BAB91A2C466DBC00873CA6 /* Recommendation */,
 			);
 			path = Presentation;
+			sourceTree = "<group>";
+		};
+		E1BAB9242C47AF9800873CA6 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				E1BAB9252C47AFB400873CA6 /* RestaurantDetailView.swift */,
+			);
+			path = Details;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,6 +319,7 @@
 				E1BAB9232C466E2100873CA6 /* RecommendationView.swift in Sources */,
 				E1BAB8EF2C46653100873CA6 /* TabBarView.swift in Sources */,
 				E1BAB8F12C46653100873CA6 /* Item.swift in Sources */,
+				E1BAB9262C47AFB400873CA6 /* RestaurantDetailView.swift in Sources */,
 				E1BAB9212C466E1B00873CA6 /* SettingsView.swift in Sources */,
 				E1BAB91F2C466E1200873CA6 /* RestaurantView.swift in Sources */,
 				E1BAB8ED2C46653100873CA6 /* BestEatsApp.swift in Sources */,
@@ -480,8 +492,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -509,8 +521,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
