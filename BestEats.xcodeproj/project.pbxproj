@@ -16,7 +16,7 @@
 		E1BAB90A2C46653300873CA6 /* BestEatsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB9092C46653300873CA6 /* BestEatsUITests.swift */; };
 		E1BAB90C2C46653300873CA6 /* BestEatsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB90B2C46653300873CA6 /* BestEatsUITestsLaunchTests.swift */; };
 		E1BAB9192C4669B300873CA6 /* SwiftDataTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB9182C4669B300873CA6 /* SwiftDataTutorialView.swift */; };
-		E1BAB91F2C466E1200873CA6 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB91E2C466E1200873CA6 /* HomeView.swift */; };
+		E1BAB91F2C466E1200873CA6 /* RestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB91E2C466E1200873CA6 /* RestaurantView.swift */; };
 		E1BAB9212C466E1B00873CA6 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB9202C466E1B00873CA6 /* SettingsView.swift */; };
 		E1BAB9232C466E2100873CA6 /* RecommendationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB9222C466E2100873CA6 /* RecommendationView.swift */; };
 /* End PBXBuildFile section */
@@ -51,7 +51,7 @@
 		E1BAB9092C46653300873CA6 /* BestEatsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestEatsUITests.swift; sourceTree = "<group>"; };
 		E1BAB90B2C46653300873CA6 /* BestEatsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestEatsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E1BAB9182C4669B300873CA6 /* SwiftDataTutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataTutorialView.swift; sourceTree = "<group>"; };
-		E1BAB91E2C466E1200873CA6 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		E1BAB91E2C466E1200873CA6 /* RestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantView.swift; sourceTree = "<group>"; };
 		E1BAB9202C466E1B00873CA6 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E1BAB9222C466E2100873CA6 /* RecommendationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,18 +156,18 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		E1BAB91C2C466DF400873CA6 /* Home */ = {
+		E1BAB91C2C466DF400873CA6 /* Restaurant */ = {
 			isa = PBXGroup;
 			children = (
-				E1BAB91E2C466E1200873CA6 /* HomeView.swift */,
+				E1BAB91E2C466E1200873CA6 /* RestaurantView.swift */,
 			);
-			path = Home;
+			path = Restaurant;
 			sourceTree = "<group>";
 		};
 		E1BAB91D2C466DFB00873CA6 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				E1BAB91C2C466DF400873CA6 /* Home */,
+				E1BAB91C2C466DF400873CA6 /* Restaurant */,
 				E1BAB91B2C466DEC00873CA6 /* Settings */,
 				E1BAB91A2C466DBC00873CA6 /* Recommendation */,
 			);
@@ -309,7 +309,7 @@
 				E1BAB8EF2C46653100873CA6 /* TabBarView.swift in Sources */,
 				E1BAB8F12C46653100873CA6 /* Item.swift in Sources */,
 				E1BAB9212C466E1B00873CA6 /* SettingsView.swift in Sources */,
-				E1BAB91F2C466E1200873CA6 /* HomeView.swift in Sources */,
+				E1BAB91F2C466E1200873CA6 /* RestaurantView.swift in Sources */,
 				E1BAB8ED2C46653100873CA6 /* BestEatsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

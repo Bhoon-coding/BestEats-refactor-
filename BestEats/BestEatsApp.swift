@@ -26,6 +26,7 @@ struct BestEatsApp: App {
     var body: some Scene {
         WindowGroup {
             TabBarView()
+//                .background(.gray.opacity(0.1))
         }
         .modelContainer(sharedModelContainer)
     }
