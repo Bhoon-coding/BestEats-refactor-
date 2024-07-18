@@ -21,6 +21,7 @@ struct RestaurantView: View {
                 AddRestaurantCardView()
             }
             .background(.gray.opacity(0.1))
+            .navigationBarBackButtonHidden(true)
             .searchable(text: $searchText, prompt: "맛집을 검색해주세요")
         }
     }
@@ -86,10 +87,12 @@ struct RestaurantCardView: View {
 }
 
 struct AddRestaurantCardView: View {
+    @State private var isPresented = false
+    
     var body: some View {
         ZStack {
-            NavigationLink {
-                RestaurantDetailView()
+            Button {
+                self.isPresented.toggle()
             } label: {
                 HStack {
                     Image(systemName: "plus")
@@ -99,11 +102,16 @@ struct AddRestaurantCardView: View {
                 .foregroundStyle(.gray)
                 .padding(.vertical, 12)
                 .padding(.horizontal, 40)
-                .overlay(RoundedRectangle(cornerRadius: 24)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 24)
                     .stroke(.gray.opacity(0.5), lineWidth: 2)
                 )
             }
             .padding(.vertical, 40)
+            .sheet(
+                isPresented: $isPresented,
+                content: { RestaurantDetailView() }
+            )
         }
         .frame(maxWidth: .infinity)
         .background(.background)
