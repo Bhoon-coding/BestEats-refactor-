@@ -41,6 +41,7 @@
 		E1DEE8DB2C490ECF0035B56F /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E1DEE8CA2C490ECE0035B56F /* Pretendard-Bold.otf */; };
 		E1DEE8DC2C490ECF0035B56F /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E1DEE8CB2C490ECF0035B56F /* Pretendard-Medium.otf */; };
 		E1DEE8DD2C490ECF0035B56F /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E1DEE8CB2C490ECF0035B56F /* Pretendard-Medium.otf */; };
+		E1E1A2702C49349E00DDABF8 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1A26F2C49349E00DDABF8 /* CloseButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		E1DEE8C92C490ECE0035B56F /* Pretendard-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraLight.otf"; sourceTree = "<group>"; };
 		E1DEE8CA2C490ECE0035B56F /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		E1DEE8CB2C490ECF0035B56F /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
+		E1E1A26F2C49349E00DDABF8 /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,9 +141,10 @@
 		E1BAB8EB2C46653100873CA6 /* BestEats */ = {
 			isa = PBXGroup;
 			children = (
+				E1E1A26E2C49346700DDABF8 /* Components */,
+				E1BAB91D2C466DFB00873CA6 /* Views */,
 				E1DEE8C02C490E900035B56F /* Resource */,
 				E1DEE8B82C490B890035B56F /* Util */,
-				E1BAB91D2C466DFB00873CA6 /* Views */,
 				E1BAB8EC2C46653100873CA6 /* BestEatsApp.swift */,
 				E1BAB9182C4669B300873CA6 /* SwiftDataTutorialView.swift */,
 				E1BAB8F02C46653100873CA6 /* Item.swift */,
@@ -260,6 +263,14 @@
 				E1DEE8C32C490ECE0035B56F /* Pretendard-Thin.otf */,
 			);
 			path = Pretendard;
+			sourceTree = "<group>";
+		};
+		E1E1A26E2C49346700DDABF8 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				E1E1A26F2C49349E00DDABF8 /* CloseButton.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -416,6 +427,7 @@
 				E1BAB8F12C46653100873CA6 /* Item.swift in Sources */,
 				E1BAB9262C47AFB400873CA6 /* RestaurantDetailView.swift in Sources */,
 				E1DEE8BA2C490BB30035B56F /* FontEx.swift in Sources */,
+				E1E1A2702C49349E00DDABF8 /* CloseButton.swift in Sources */,
 				E1DEE8BD2C490BCB0035B56F /* ColorEx.swift in Sources */,
 				E1BAB9212C466E1B00873CA6 /* SettingsView.swift in Sources */,
 				E1BAB91F2C466E1200873CA6 /* RestaurantView.swift in Sources */,

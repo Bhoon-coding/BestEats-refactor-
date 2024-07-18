@@ -40,7 +40,7 @@ struct RestaurantCardView: View {
             VStack(alignment: .leading, spacing: 8) {
                 HStack {
                     Text("Restaurant")
-                        .font(.system(size: 24, weight: .bold)) // TODO: [] 폰트스타일 적용
+                        .font(.pretendardBold24)
                         .foregroundStyle(.orange)
                     
                     Spacer()
@@ -56,7 +56,7 @@ struct RestaurantCardView: View {
                 Spacer()
                 
                 Text("Menu")
-                    .font(.system(size: 18, weight: .bold))
+                    .font(.pretendardBold18)
                     .foregroundStyle(.green)
                 
                 Spacer()
@@ -98,7 +98,7 @@ struct AddRestaurantCardView: View {
                     Image(systemName: "plus")
                     Text("맛집 추가")
                 }
-                .font(.system(size: 18, weight: .bold))
+                .font(.pretendardBold18)
                 .foregroundStyle(.gray)
                 .padding(.vertical, 12)
                 .padding(.horizontal, 40)
