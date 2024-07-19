@@ -42,6 +42,12 @@
 		E1DEE8DC2C490ECF0035B56F /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E1DEE8CB2C490ECF0035B56F /* Pretendard-Medium.otf */; };
 		E1DEE8DD2C490ECF0035B56F /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E1DEE8CB2C490ECF0035B56F /* Pretendard-Medium.otf */; };
 		E1E1A2702C49349E00DDABF8 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1A26F2C49349E00DDABF8 /* CloseButton.swift */; };
+		E1E1A2742C49391D00DDABF8 /* RestaurantList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E1E1A2722C49391D00DDABF8 /* RestaurantList.xcdatamodeld */; };
+		E1E1A27E2C493D2000DDABF8 /* StoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1A27D2C493D2000DDABF8 /* StoreDataManager.swift */; };
+		E1E1A28B2C4A2D5E00DDABF8 /* Menu+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1A2872C4A2D5E00DDABF8 /* Menu+CoreDataClass.swift */; };
+		E1E1A28C2C4A2D5E00DDABF8 /* Menu+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1A2882C4A2D5E00DDABF8 /* Menu+CoreDataProperties.swift */; };
+		E1E1A28D2C4A2D5E00DDABF8 /* Restaurant+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1A2892C4A2D5E00DDABF8 /* Restaurant+CoreDataClass.swift */; };
+		E1E1A28E2C4A2D5E00DDABF8 /* Restaurant+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1A28A2C4A2D5E00DDABF8 /* Restaurant+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +97,12 @@
 		E1DEE8CA2C490ECE0035B56F /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		E1DEE8CB2C490ECF0035B56F /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		E1E1A26F2C49349E00DDABF8 /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
+		E1E1A2732C49391D00DDABF8 /* RestaurantList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RestaurantList.xcdatamodel; sourceTree = "<group>"; };
+		E1E1A27D2C493D2000DDABF8 /* StoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDataManager.swift; sourceTree = "<group>"; };
+		E1E1A2872C4A2D5E00DDABF8 /* Menu+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Menu+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E1E1A2882C4A2D5E00DDABF8 /* Menu+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Menu+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E1E1A2892C4A2D5E00DDABF8 /* Restaurant+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Restaurant+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E1E1A28A2C4A2D5E00DDABF8 /* Restaurant+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Restaurant+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,11 +153,13 @@
 		E1BAB8EB2C46653100873CA6 /* BestEats */ = {
 			isa = PBXGroup;
 			children = (
+				E1E1A2712C49383300DDABF8 /* Managers */,
 				E1E1A26E2C49346700DDABF8 /* Components */,
 				E1BAB91D2C466DFB00873CA6 /* Views */,
 				E1DEE8C02C490E900035B56F /* Resource */,
 				E1DEE8B82C490B890035B56F /* Util */,
 				E1BAB8EC2C46653100873CA6 /* BestEatsApp.swift */,
+				E1E1A2722C49391D00DDABF8 /* RestaurantList.xcdatamodeld */,
 				E1BAB9182C4669B300873CA6 /* SwiftDataTutorialView.swift */,
 				E1BAB8F02C46653100873CA6 /* Item.swift */,
 				E1BAB8F22C46653300873CA6 /* Assets.xcassets */,
@@ -271,6 +285,26 @@
 				E1E1A26F2C49349E00DDABF8 /* CloseButton.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		E1E1A2712C49383300DDABF8 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				E1E1A2902C4A30FC00DDABF8 /* CoreData */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		E1E1A2902C4A30FC00DDABF8 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				E1E1A2872C4A2D5E00DDABF8 /* Menu+CoreDataClass.swift */,
+				E1E1A2882C4A2D5E00DDABF8 /* Menu+CoreDataProperties.swift */,
+				E1E1A2892C4A2D5E00DDABF8 /* Restaurant+CoreDataClass.swift */,
+				E1E1A28A2C4A2D5E00DDABF8 /* Restaurant+CoreDataProperties.swift */,
+				E1E1A27D2C493D2000DDABF8 /* StoreDataManager.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -421,17 +455,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1E1A28B2C4A2D5E00DDABF8 /* Menu+CoreDataClass.swift in Sources */,
 				E1BAB9192C4669B300873CA6 /* SwiftDataTutorialView.swift in Sources */,
 				E1BAB9232C466E2100873CA6 /* RecommendationView.swift in Sources */,
 				E1BAB8EF2C46653100873CA6 /* TabBarView.swift in Sources */,
 				E1BAB8F12C46653100873CA6 /* Item.swift in Sources */,
 				E1BAB9262C47AFB400873CA6 /* RestaurantDetailView.swift in Sources */,
+				E1E1A28E2C4A2D5E00DDABF8 /* Restaurant+CoreDataProperties.swift in Sources */,
 				E1DEE8BA2C490BB30035B56F /* FontEx.swift in Sources */,
 				E1E1A2702C49349E00DDABF8 /* CloseButton.swift in Sources */,
+				E1E1A28C2C4A2D5E00DDABF8 /* Menu+CoreDataProperties.swift in Sources */,
 				E1DEE8BD2C490BCB0035B56F /* ColorEx.swift in Sources */,
 				E1BAB9212C466E1B00873CA6 /* SettingsView.swift in Sources */,
 				E1BAB91F2C466E1200873CA6 /* RestaurantView.swift in Sources */,
 				E1DEE8BF2C490BD00035B56F /* ImageEx.swift in Sources */,
+				E1E1A28D2C4A2D5E00DDABF8 /* Restaurant+CoreDataClass.swift in Sources */,
+				E1E1A2742C49391D00DDABF8 /* RestaurantList.xcdatamodeld in Sources */,
+				E1E1A27E2C493D2000DDABF8 /* StoreDataManager.swift in Sources */,
 				E1BAB8ED2C46653100873CA6 /* BestEatsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -764,6 +804,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E1E1A2722C49391D00DDABF8 /* RestaurantList.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E1E1A2732C49391D00DDABF8 /* RestaurantList.xcdatamodel */,
+			);
+			currentVersion = E1E1A2732C49391D00DDABF8 /* RestaurantList.xcdatamodel */;
+			path = RestaurantList.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E1BAB8E12C46653100873CA6 /* Project object */;
 }

@@ -7,15 +7,18 @@
 
 import SwiftUI
 
-enum Rate {
-    case like
-    case curious
-    case warning
+enum Rate: String, CaseIterable, Identifiable {
+    case like = "like"
+    case curious = "curious"
+    case warning = "warning"
+    
+    var id: String { self.rawValue }
 }
 
 struct RestaurantDetailView: View {
     
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.managedObjectContext) var viewContext
     
     @State var restaurantName: String = ""
     @State var menuName: String = ""
@@ -50,36 +53,18 @@ struct RestaurantDetailView: View {
                 .font(.pretendardMedium16)
                 Text("내평가")
                 HStack {
-                    Button(action: {
-                        $rateType.wrappedValue = .like
-                    }, label: {
-                        Image($rateType.wrappedValue == .like ? "likeFill" : "like")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 32, height: 32)
-                    })
-                    
-                    Spacer()
-                    
-                    Button(action: {
-                        $rateType.wrappedValue = .curious
-                    }, label: {
-                        Image($rateType.wrappedValue == .curious ? "curiousFill" : "curious")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 32, height: 32)
-                    })
-                    
-                    Spacer()
-                    
-                    Button(action: {
-                        $rateType.wrappedValue = .warning
-                    }, label: {
-                        Image($rateType.wrappedValue == .warning ? "warningFill" : "warning")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 32, height: 32)
-                    })
+                    ForEach(Rate.allCases) { rate in
+                        Button(action: {
+                            rateType = rate
+                        }, label: {
+                            Spacer()
+                            Image(rateType?.rawValue == rate.rawValue ? "\(rate.rawValue)Fill" : rate.rawValue)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 32, height: 32)
+                            Spacer()
+                        })
+                    }
                 }
                 .frame(maxWidth: .infinity, maxHeight: 40)
                 .padding()
@@ -95,7 +80,7 @@ struct RestaurantDetailView: View {
             Spacer()
             
             Button(action: {
-                // 데이터 추가
+                addRestaurant()
                 dismiss()
             }, label: {
                 Text("추가하기")
@@ -109,6 +94,22 @@ struct RestaurantDetailView: View {
         }
         .padding(.horizontal, 24)
         .padding(.top, 24)
+    }
+    
+    private func addRestaurant() {
+        let newRestaurant = Restaurant(context: viewContext)
+        let newMenu = Menu(context: viewContext)
+        
+        newRestaurant.id = UUID()
+        newRestaurant.name = restaurantName
+        
+        newMenu.id = UUID()
+        newMenu.name = menuName
+        newMenu.oneLiner = oneLiner
+        newMenu.rate = rateType?.rawValue
+        newMenu.restaurant = newRestaurant
+        
+        StoreDataManager.shared.saveContext()
     }
 }
 

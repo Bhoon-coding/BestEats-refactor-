@@ -8,15 +8,19 @@
 import SwiftUI
 
 struct RestaurantView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    @FetchRequest(sortDescriptors: []) var restaurantList: FetchedResults<Restaurant>
     @State private var searchText = ""
     
     var body: some View {
         NavigationView {
             ScrollView {
-                RestaurantCardView()
-                    .padding(.horizontal, 24)
-                    .shadow(radius: 4, x: 8, y: 8)
-                    .padding(.bottom, 16)
+                ForEach(restaurantList) { item in
+                    RestaurantCardView(restaurant: item)
+                        .padding(.horizontal, 24)
+                        .shadow(radius: 4, x: 8, y: 8)
+                        .padding(.bottom, 16)
+                }
                 
                 AddRestaurantCardView()
             }
@@ -24,6 +28,7 @@ struct RestaurantView: View {
             .navigationBarBackButtonHidden(true)
             .searchable(text: $searchText, prompt: "맛집을 검색해주세요")
         }
+        let _ = print("restaurantList: \(restaurantList.count)")
     }
 }
 
@@ -33,13 +38,14 @@ struct RestaurantView: View {
 
 struct RestaurantCardView: View {
     let columns = [GridItem(.flexible())]
+    var restaurant: Restaurant
     
     var body: some View {
         LazyVGrid(columns: columns) {
             // TODO: [] 데이터가 없을 경우의 맛집추가 유도 카드 필요
             VStack(alignment: .leading, spacing: 8) {
                 HStack {
-                    Text("Restaurant")
+                    Text(restaurant.name ?? "unknowned restaurant")
                         .font(.pretendardBold24)
                         .foregroundStyle(.orange)
                     
@@ -54,8 +60,7 @@ struct RestaurantCardView: View {
                 }
                 
                 Spacer()
-                
-                Text("Menu")
+                Text(restaurant.MenuList.first?.wrappedName ?? "메뉴가 없음")
                     .font(.pretendardBold18)
                     .foregroundStyle(.green)
                 
