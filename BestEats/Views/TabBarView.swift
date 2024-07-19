@@ -11,7 +11,7 @@ struct TabBarView: View {
     
     var body: some View {
         TabView {
-            HomeView()
+            RestaurantView()
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("홈")
