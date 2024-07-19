@@ -9,13 +9,11 @@
 /* Begin PBXBuildFile section */
 		E1BAB8ED2C46653100873CA6 /* BestEatsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB8EC2C46653100873CA6 /* BestEatsApp.swift */; };
 		E1BAB8EF2C46653100873CA6 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB8EE2C46653100873CA6 /* TabBarView.swift */; };
-		E1BAB8F12C46653100873CA6 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB8F02C46653100873CA6 /* Item.swift */; };
 		E1BAB8F32C46653300873CA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1BAB8F22C46653300873CA6 /* Assets.xcassets */; };
 		E1BAB8F62C46653300873CA6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1BAB8F52C46653300873CA6 /* Preview Assets.xcassets */; };
 		E1BAB9002C46653300873CA6 /* BestEatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB8FF2C46653300873CA6 /* BestEatsTests.swift */; };
 		E1BAB90A2C46653300873CA6 /* BestEatsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB9092C46653300873CA6 /* BestEatsUITests.swift */; };
 		E1BAB90C2C46653300873CA6 /* BestEatsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB90B2C46653300873CA6 /* BestEatsUITestsLaunchTests.swift */; };
-		E1BAB9192C4669B300873CA6 /* SwiftDataTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB9182C4669B300873CA6 /* SwiftDataTutorialView.swift */; };
 		E1BAB91F2C466E1200873CA6 /* RestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB91E2C466E1200873CA6 /* RestaurantView.swift */; };
 		E1BAB9212C466E1B00873CA6 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB9202C466E1B00873CA6 /* SettingsView.swift */; };
 		E1BAB9232C466E2100873CA6 /* RecommendationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB9222C466E2100873CA6 /* RecommendationView.swift */; };
@@ -73,7 +71,6 @@
 		E1BAB8E92C46653100873CA6 /* BestEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BestEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1BAB8EC2C46653100873CA6 /* BestEatsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestEatsApp.swift; sourceTree = "<group>"; };
 		E1BAB8EE2C46653100873CA6 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
-		E1BAB8F02C46653100873CA6 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		E1BAB8F22C46653300873CA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1BAB8F52C46653300873CA6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E1BAB8FB2C46653300873CA6 /* BestEatsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BestEatsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,7 +78,6 @@
 		E1BAB9052C46653300873CA6 /* BestEatsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BestEatsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1BAB9092C46653300873CA6 /* BestEatsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestEatsUITests.swift; sourceTree = "<group>"; };
 		E1BAB90B2C46653300873CA6 /* BestEatsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestEatsUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		E1BAB9182C4669B300873CA6 /* SwiftDataTutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataTutorialView.swift; sourceTree = "<group>"; };
 		E1BAB91E2C466E1200873CA6 /* RestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantView.swift; sourceTree = "<group>"; };
 		E1BAB9202C466E1B00873CA6 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E1BAB9222C466E2100873CA6 /* RecommendationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationView.swift; sourceTree = "<group>"; };
@@ -164,8 +160,6 @@
 				E1DEE8B82C490B890035B56F /* Util */,
 				E1BAB8EC2C46653100873CA6 /* BestEatsApp.swift */,
 				E1E1A2722C49391D00DDABF8 /* RestaurantList.xcdatamodeld */,
-				E1BAB9182C4669B300873CA6 /* SwiftDataTutorialView.swift */,
-				E1BAB8F02C46653100873CA6 /* Item.swift */,
 				E1BAB8F22C46653300873CA6 /* Assets.xcassets */,
 				E1BAB8F42C46653300873CA6 /* Preview Content */,
 			);
@@ -454,10 +448,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1E1A28B2C4A2D5E00DDABF8 /* Menu+CoreDataClass.swift in Sources */,
-				E1BAB9192C4669B300873CA6 /* SwiftDataTutorialView.swift in Sources */,
 				E1BAB9232C466E2100873CA6 /* RecommendationView.swift in Sources */,
 				E1BAB8EF2C46653100873CA6 /* TabBarView.swift in Sources */,
-				E1BAB8F12C46653100873CA6 /* Item.swift in Sources */,
 				E1BAB9262C47AFB400873CA6 /* AddRestaurantSheet.swift in Sources */,
 				E1E1A2922C4A336E00DDABF8 /* RestaurantCardView.swift in Sources */,
 				E1E1A28E2C4A2D5E00DDABF8 /* Restaurant+CoreDataProperties.swift in Sources */,
@@ -561,7 +553,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -618,7 +610,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -644,7 +636,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -674,7 +666,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
