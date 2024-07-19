@@ -21,7 +21,7 @@ struct RestaurantView: View {
                         .shadow(radius: 4, x: 8, y: 8)
                         .padding(.bottom, 16)
                 }
-                AddRestaurantCardView()
+                AddRestaurantCard()
             }
             .background(.gray.opacity(0.1))
             .navigationBarBackButtonHidden(true)

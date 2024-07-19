@@ -1,5 +1,5 @@
 //
-//  RestaurantDetailView.swift
+//  AddRestaurantSheet.swift
 //  BestEats
 //
 //  Created by BH on 2024/07/17.
@@ -15,7 +15,7 @@ enum Rate: String, CaseIterable, Identifiable {
     var id: String { self.rawValue }
 }
 
-struct RestaurantDetailView: View {
+struct AddRestaurantSheet: View {
     
     @Environment(\.dismiss) private var dismiss
     @Environment(\.managedObjectContext) var viewContext
@@ -114,7 +114,7 @@ struct RestaurantDetailView: View {
 }
 
 #Preview {
-    RestaurantDetailView(
+    AddRestaurantSheet(
         restaurantName: "",
         menuName: "",
         oneLiner: "",

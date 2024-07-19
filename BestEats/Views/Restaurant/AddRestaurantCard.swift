@@ -1,5 +1,5 @@
 //
-//  AddRestaurantCardView.swift
+//  AddRestaurantCard.swift
 //  BestEats
 //
 //  Created by BH on 2024/07/19.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AddRestaurantCardView: View {
+struct AddRestaurantCard: View {
     @State private var isPresented = false
     
     var body: some View {
@@ -31,7 +31,7 @@ struct AddRestaurantCardView: View {
             .padding(.vertical, 40)
             .sheet(
                 isPresented: $isPresented,
-                content: { RestaurantDetailView() }
+                content: { AddRestaurantSheet() }
             )
         }
         .frame(maxWidth: .infinity)
