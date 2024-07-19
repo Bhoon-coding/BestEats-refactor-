@@ -23,6 +23,11 @@ struct StoreDataManager {
         }
     }
     
+    func deleteRestaurant(with restaurant: Restaurant) {
+        container.viewContext.delete(restaurant)
+        saveContext()
+    }
+    
     func saveContext() {
         let context = container.viewContext
         
