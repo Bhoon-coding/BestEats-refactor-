@@ -13,6 +13,7 @@ struct RestaurantCardView: View {
     @State private var showEditAlert: Bool = false
     @State private var showDeleteAlert: Bool = false
     @State private var showDeleteConfirmAlert: Bool = false
+    @State private var newName: String = ""
     
     let columns = [GridItem(.flexible())]
     var restaurant: Restaurant
@@ -29,7 +30,7 @@ struct RestaurantCardView: View {
                     Spacer()
                     
                     Button(action: {
-                        self.showDialog = true
+                        self.showDialog.toggle()
                     }, label: {
                         Image(systemName: "ellipsis")
                             .foregroundStyle(.black)
@@ -40,11 +41,11 @@ struct RestaurantCardView: View {
                         titleVisibility: .visible,
                         actions: {
                             Button("변경") {
-                                // 변경 alert 띄우기
-                                print("변경")
+                                self.showEditAlert.toggle()
                             }
+                        
                             Button(role: .destructive) {
-                                StoreDataManager.shared.deleteRestaurant(with: restaurant)
+                                self.showDeleteAlert.toggle()
                             } label: {
                                 Text("삭제")
                             }
@@ -52,6 +53,22 @@ struct RestaurantCardView: View {
                         }, message: {
                             Text("아래 항목을 선택해주세요")
                         })
+                }
+                // 수정 Alert
+                .alert("맛집이름 변경", isPresented: $showEditAlert) {
+                    TextField("맛집이름", text: $newName)
+                    Button("취소", role: .cancel) {}
+                    Button("변경") { update(with: newName) }
+                } message: {
+                    Text("맛집이름을 변경해주세요")
+                }
+                
+                // 삭제 Alert
+                .alert("맛집 삭제", isPresented: $showDeleteAlert) {
+                    Button("취소", role: .cancel) {}
+                    Button("삭제", role: .destructive) { delete() }
+                } message: {
+                    Text("맛집에 포함된 메뉴들도 삭제 됩니다\n 삭제하시겠습니까?")
                 }
                 
                 Spacer()
@@ -85,8 +102,12 @@ struct RestaurantCardView: View {
         .clipShape(RoundedRectangle(cornerRadius: 16.0))
     }
     
-    private func delete(_ entity: Restaurant) {
-        
+    private func update(with name: String?) {
+        StoreDataManager.shared.updateRestaurant(with: restaurant, newName: name)
+    }
+    
+    private func delete() {
+        StoreDataManager.shared.deleteRestaurant(with: restaurant)
     }
 }
 

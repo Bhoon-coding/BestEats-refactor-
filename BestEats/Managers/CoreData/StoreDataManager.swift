@@ -23,6 +23,13 @@ struct StoreDataManager {
         }
     }
     
+    func updateRestaurant(with restaurant: Restaurant, newName: String? = nil) {
+        if let newName = newName {
+            restaurant.name = newName
+            saveContext()
+        }
+    }
+    
     func deleteRestaurant(with restaurant: Restaurant) {
         container.viewContext.delete(restaurant)
         saveContext()
