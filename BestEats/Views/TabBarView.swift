@@ -27,6 +27,7 @@ struct TabBarView: View {
                     Text("설정")
                 }
         }
+        
     }
 }
 

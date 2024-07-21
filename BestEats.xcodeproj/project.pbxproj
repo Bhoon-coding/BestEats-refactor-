@@ -48,6 +48,7 @@
 		E1E1A28E2C4A2D5E00DDABF8 /* Restaurant+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1A28A2C4A2D5E00DDABF8 /* Restaurant+CoreDataProperties.swift */; };
 		E1E1A2922C4A336E00DDABF8 /* RestaurantCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1A2912C4A336E00DDABF8 /* RestaurantCardView.swift */; };
 		E1E1A2942C4A360300DDABF8 /* AddRestaurantCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1A2932C4A360300DDABF8 /* AddRestaurantCard.swift */; };
+		E1E1A2982C4A528300DDABF8 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1A2972C4A528300DDABF8 /* MenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 		E1E1A28A2C4A2D5E00DDABF8 /* Restaurant+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Restaurant+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E1E1A2912C4A336E00DDABF8 /* RestaurantCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCardView.swift; sourceTree = "<group>"; };
 		E1E1A2932C4A360300DDABF8 /* AddRestaurantCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRestaurantCard.swift; sourceTree = "<group>"; };
+		E1E1A2972C4A528300DDABF8 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,14 +155,12 @@
 		E1BAB8EB2C46653100873CA6 /* BestEats */ = {
 			isa = PBXGroup;
 			children = (
-				E1E1A2712C49383300DDABF8 /* Managers */,
-				E1E1A26E2C49346700DDABF8 /* Components */,
 				E1BAB91D2C466DFB00873CA6 /* Views */,
+				E1E1A26E2C49346700DDABF8 /* Components */,
+				E1E1A2712C49383300DDABF8 /* Managers */,
 				E1DEE8C02C490E900035B56F /* Resource */,
 				E1DEE8B82C490B890035B56F /* Util */,
 				E1BAB8EC2C46653100873CA6 /* BestEatsApp.swift */,
-				E1E1A2722C49391D00DDABF8 /* RestaurantList.xcdatamodeld */,
-				E1BAB8F22C46653300873CA6 /* Assets.xcassets */,
 				E1BAB8F42C46653300873CA6 /* Preview Content */,
 			);
 			path = BestEats;
@@ -221,6 +221,7 @@
 		E1BAB91D2C466DFB00873CA6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E1E1A2962C4A526200DDABF8 /* Menu */,
 				E1BAB8EE2C46653100873CA6 /* TabBarView.swift */,
 				E1BAB91C2C466DF400873CA6 /* Restaurant */,
 				E1BAB91B2C466DEC00873CA6 /* Settings */,
@@ -242,6 +243,7 @@
 		E1DEE8C02C490E900035B56F /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E1BAB8F22C46653300873CA6 /* Assets.xcassets */,
 				E1DEE8C12C490E960035B56F /* Fonts */,
 			);
 			path = Resource;
@@ -290,6 +292,7 @@
 		E1E1A2902C4A30FC00DDABF8 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				E1E1A2722C49391D00DDABF8 /* RestaurantList.xcdatamodeld */,
 				E1E1A2872C4A2D5E00DDABF8 /* Menu+CoreDataClass.swift */,
 				E1E1A2882C4A2D5E00DDABF8 /* Menu+CoreDataProperties.swift */,
 				E1E1A2892C4A2D5E00DDABF8 /* Restaurant+CoreDataClass.swift */,
@@ -297,6 +300,14 @@
 				E1E1A27D2C493D2000DDABF8 /* StoreDataManager.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		E1E1A2962C4A526200DDABF8 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				E1E1A2972C4A528300DDABF8 /* MenuView.swift */,
+			);
+			path = Menu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -450,6 +461,7 @@
 				E1E1A28B2C4A2D5E00DDABF8 /* Menu+CoreDataClass.swift in Sources */,
 				E1BAB9232C466E2100873CA6 /* RecommendationView.swift in Sources */,
 				E1BAB8EF2C46653100873CA6 /* TabBarView.swift in Sources */,
+				E1E1A2982C4A528300DDABF8 /* MenuView.swift in Sources */,
 				E1BAB9262C47AFB400873CA6 /* AddRestaurantSheet.swift in Sources */,
 				E1E1A2922C4A336E00DDABF8 /* RestaurantCardView.swift in Sources */,
 				E1E1A28E2C4A2D5E00DDABF8 /* Restaurant+CoreDataProperties.swift in Sources */,
