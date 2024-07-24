@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RestaurantCardView: View {
     
+    @EnvironmentObject var coreDataManager: CoreDataManager
     @State private var showDialog: Bool = false
     @State private var showEditAlert: Bool = false
     @State private var showDeleteAlert: Bool = false
@@ -103,11 +104,11 @@ struct RestaurantCardView: View {
     }
     
     private func update(with name: String?) {
-        StoreDataManager.shared.updateRestaurant(with: restaurant, newName: name)
+        coreDataManager.updateRestaurant(with: restaurant, newName: name)
     }
     
     private func delete() {
-        StoreDataManager.shared.deleteRestaurant(with: restaurant)
+        coreDataManager.deleteRestaurant(with: restaurant)
     }
 }
 

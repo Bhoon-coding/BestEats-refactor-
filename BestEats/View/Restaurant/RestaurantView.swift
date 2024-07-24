@@ -9,15 +9,15 @@ import SwiftUI
 
 struct RestaurantView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @FetchRequest(sortDescriptors: []) var restaurantList: FetchedResults<Restaurant>
+    @EnvironmentObject var coreDataManager: CoreDataManager
     @State private var searchText = ""
     
     var body: some View {
         NavigationView {
             ScrollView {
-                ForEach(restaurantList) { item in
+                ForEach(coreDataManager.savedRestaurant) { item in
                     NavigationLink {
-                        MenuView(restaurant: item)
+                        MenuView(viewModel: MenuViewModel(restaurant: item))
                     } label: {
                         RestaurantCardView(restaurant: item)
                             .padding(.horizontal, 24)
@@ -26,6 +26,7 @@ struct RestaurantView: View {
                     }
                 }
                 AddRestaurantCard()
+//                    .environmentObject(coreDataManager)
             }
             .background(.gray.opacity(0.1))
             .navigationBarBackButtonHidden(true)

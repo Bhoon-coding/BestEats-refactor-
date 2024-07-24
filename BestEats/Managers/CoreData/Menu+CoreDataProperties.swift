@@ -23,12 +23,16 @@ extension Menu {
     @NSManaged public var isFavorite: Bool
     @NSManaged public var restaurant: Restaurant?
     
+    public var wrappedId: UUID {
+        id ?? UUID()
+    }
+    
     public var wrappedName: String {
-        name ?? "메뉴가 없음"
+        name ?? ""
     }
     
     public var wrappedOneLiner: String {
-        oneLiner ?? "한줄평이 없음"
+        oneLiner ?? ""
     }
     
     public var wrappedRate: String {

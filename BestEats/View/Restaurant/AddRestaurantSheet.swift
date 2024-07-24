@@ -18,12 +18,12 @@ enum Rate: String, CaseIterable, Identifiable {
 struct AddRestaurantSheet: View {
     
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.managedObjectContext) var viewContext
+    @EnvironmentObject var coreDataManager: CoreDataManager
     
     @State var restaurantName: String = ""
     @State var menuName: String = ""
     @State var oneLiner: String = ""
-    @State var rateType: Rate?
+    @State var rateType: Rate = .like
     
     var body: some View {
         VStack {
@@ -55,10 +55,11 @@ struct AddRestaurantSheet: View {
                 HStack {
                     ForEach(Rate.allCases) { rate in
                         Button(action: {
+                            // TODO: [] 바인딩 처리하면 에러 ($rateType)
                             rateType = rate
                         }, label: {
                             Spacer()
-                            Image(rateType?.rawValue == rate.rawValue ? "\(rate.rawValue)Fill" : rate.rawValue)
+                            Image(rateType.rawValue == rate.rawValue ? "\(rate.rawValue)Fill" : rate.rawValue)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 32, height: 32)
@@ -80,7 +81,9 @@ struct AddRestaurantSheet: View {
             Spacer()
             
             Button(action: {
-                addRestaurant()
+                isValidToAdd(restaurantName, menuName, oneLiner, rateType)
+                ? coreDataManager.addRestaurant(restaurantName, menuName, oneLiner, rateType)
+                : showFillOutToast()
                 dismiss()
             }, label: {
                 Text("추가하기")
@@ -96,28 +99,27 @@ struct AddRestaurantSheet: View {
         .padding(.top, 24)
     }
     
-    private func addRestaurant() {
-        let newRestaurant = Restaurant(context: viewContext)
-        let newMenu = Menu(context: viewContext)
+    private func isValidToAdd(
+        _ restaurantName: String,
+        _ menuName: String,
+        _ oneLiner: String,
+        _ rateType: Rate
+    ) -> Bool {
+        guard restaurantName.isEmpty, menuName.isEmpty, oneLiner.isEmpty else { return false }
         
-        newRestaurant.id = UUID()
-        newRestaurant.name = restaurantName
+        if rateType == .like {
+            // TODO: [] 팝업
+            
+        }
         
-        newMenu.id = UUID()
-        newMenu.name = menuName
-        newMenu.oneLiner = oneLiner
-        newMenu.rate = rateType?.rawValue
-        newMenu.restaurant = newRestaurant
-        
-        StoreDataManager.shared.saveContext()
+        return true
+    }
+    
+    private func showFillOutToast() {
+        // TODO: [] 토스트 띄우기
     }
 }
 
 #Preview {
-    AddRestaurantSheet(
-        restaurantName: "",
-        menuName: "",
-        oneLiner: "",
-        rateType: nil
-    )
+    AddRestaurantSheet()
 }

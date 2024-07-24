@@ -24,6 +24,10 @@ extension Restaurant {
         name ?? "Unknown Restaurant"
     }
     
+    public var wrappedId: UUID {
+        id ?? UUID()
+    }
+    
     public var MenuList: [Menu] {
         let set = menu as? Set<Menu> ?? []
         // MARK: - 즐겨찾기 메뉴를 상단에 표시하고자함

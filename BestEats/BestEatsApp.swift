@@ -9,12 +9,13 @@ import SwiftUI
 
 @main
 struct BestEatsApp: App {
-    let storeDataManager = StoreDataManager.shared
+    @StateObject var coreDataManager: CoreDataManager = CoreDataManager()
     
     var body: some Scene {
         WindowGroup {
             TabBarView()
-                .environment(\.managedObjectContext, storeDataManager.container.viewContext)
+                .environment(\.managedObjectContext, coreDataManager.container.viewContext)
+                .environmentObject(coreDataManager)
         }
         
     }
