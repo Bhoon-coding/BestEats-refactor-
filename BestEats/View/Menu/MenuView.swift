@@ -1,0 +1,77 @@
+//
+//  MenuView.swift
+//  BestEats
+//
+//  Created by BH on 2024/07/19.
+//
+
+import SwiftUI
+
+struct MenuView: View {
+    
+    @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var coreDataManager: CoreDataManager
+    @State var rateType: Rate = Rate.like
+    
+    var restaurant: Restaurant 
+    
+    var body: some View {
+        Self._printChanges()
+        
+        return VStack {
+            VStack {
+                CategoryView(rateType: $rateType, restaurant: restaurant)
+                
+                List {
+                    ForEach(coreDataManager.filteredMenu, id: \.self) { menu in
+                        MenuItemView(rateType: $rateType, restaurant: restaurant, menu: menu)
+                        // TODO: [] navigation
+                    }
+                }
+                .environment(\.defaultMinListRowHeight, 128)
+            }
+        }
+        .onAppear { coreDataManager.fetchMenu(with: restaurant, .like) }
+        .background(.gray.opacity(0.1))
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle(self.restaurant.wrappedName)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button(action: {
+                    dismiss()
+                }, label: {
+                    Image(systemName: "chevron.left")
+                        .foregroundStyle(.black)
+                })
+            }
+        }
+    }
+}
+
+//#Preview {
+//    let context = CoreDataManager.shared.container.viewContext
+//    let restaurant = Restaurant(context: context)
+//    let menu = Menu(context: context)
+//    restaurant.id = UUID()
+//    restaurant.name = "아웃백"
+//    
+//    menu.id = UUID()
+//    menu.isFavorite = false
+//    menu.name = "아아"
+//    menu.oneLiner = "soso"
+//    menu.rate = Rate.like.rawValue
+//    
+//    menu.restaurant = restaurant
+//    
+//    let menu2 = Menu(context: context)
+//    menu2.id = UUID()
+//    menu2.isFavorite = true
+//    menu2.name = "자허블"
+//    menu2.oneLiner = "good"
+//    menu2.rate = Rate.like.rawValue
+//    
+//    menu2.restaurant = restaurant
+//    
+//    return MenuView(viewModel: MenuViewModel(restaurant: restaurant))
+//}

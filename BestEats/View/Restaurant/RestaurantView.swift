@@ -17,7 +17,7 @@ struct RestaurantView: View {
             ScrollView {
                 ForEach(coreDataManager.savedRestaurant) { item in
                     NavigationLink {
-                        MenuView(viewModel: MenuViewModel(restaurant: item))
+                        MenuView(restaurant: item)
                     } label: {
                         RestaurantCardView(restaurant: item)
                             .padding(.horizontal, 24)
@@ -26,7 +26,6 @@ struct RestaurantView: View {
                     }
                 }
                 AddRestaurantCard()
-//                    .environmentObject(coreDataManager)
             }
             .background(.gray.opacity(0.1))
             .navigationBarBackButtonHidden(true)
@@ -37,6 +36,7 @@ struct RestaurantView: View {
 
 #Preview {
     RestaurantView()
+        .environmentObject(CoreDataManager())
 }
 
 

@@ -7,14 +7,6 @@
 
 import SwiftUI
 
-enum Rate: String, CaseIterable, Identifiable {
-    case like = "like"
-    case curious = "curious"
-    case warning = "warning"
-    
-    var id: String { self.rawValue }
-}
-
 struct AddRestaurantSheet: View {
     
     @Environment(\.dismiss) private var dismiss
@@ -56,10 +48,10 @@ struct AddRestaurantSheet: View {
                     ForEach(Rate.allCases) { rate in
                         Button(action: {
                             // TODO: [] 바인딩 처리하면 에러 ($rateType)
-                            rateType = rate
+                            self.rateType = rate
                         }, label: {
                             Spacer()
-                            Image(rateType.rawValue == rate.rawValue ? "\(rate.rawValue)Fill" : rate.rawValue)
+                            Image(rateType == rate ? "\(rate.rawValue)Fill" : rate.rawValue)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 32, height: 32)
@@ -105,7 +97,7 @@ struct AddRestaurantSheet: View {
         _ oneLiner: String,
         _ rateType: Rate
     ) -> Bool {
-        guard restaurantName.isEmpty, menuName.isEmpty, oneLiner.isEmpty else { return false }
+        guard !restaurantName.isEmpty, !menuName.isEmpty, !oneLiner.isEmpty else { return false }
         
         if rateType == .like {
             // TODO: [] 팝업

@@ -10,9 +10,11 @@ import Foundation
 
 final class CoreDataManager: ObservableObject {
     
+    @Published var savedRestaurant: [Restaurant] = []
+    @Published var filteredMenu: [Menu] = []
+    
     let container: NSPersistentContainer
     let context: NSManagedObjectContext
-    @Published var savedRestaurant: [Restaurant] = []
     
     init() {
         self.container = NSPersistentContainer(name: "RestaurantList")
@@ -25,13 +27,17 @@ final class CoreDataManager: ObservableObject {
         fetchRestaurant()
     }
     
-    func fetchRestaurant() {
+    private func fetchRestaurant() {
         let request = NSFetchRequest<Restaurant>(entityName: "Restaurant")
         do {
-            savedRestaurant = try context.fetch(request)
+            self.savedRestaurant = try context.fetch(request)
         } catch {
             print("Fetch Error: \(error.localizedDescription)")
         }
+    }
+    
+    func fetchMenu(with restaurant: Restaurant, _ type: Rate) {
+        self.filteredMenu = restaurant.MenuList.filter { $0.rate == type.rawValue }
     }
     
     func addRestaurant(
@@ -68,7 +74,7 @@ final class CoreDataManager: ObservableObject {
         name menuName: String? = nil,
         oneLiner menuOneLiner: String? = nil,
         rate menuRate: String? = nil,
-        isFavorite isFavorite: Bool = false
+        isFavorite: Bool = false
     ) {
         guard let menuSet = restaurant.menu as? Set<Menu> else {
             print("No menu in restaurant")
@@ -88,7 +94,7 @@ final class CoreDataManager: ObservableObject {
                 menu.rate = rate
             }
             
-            menu.isFavorite = isFavorite
+            menu.isFavorite = !isFavorite
             saveContext()
         }
     }
