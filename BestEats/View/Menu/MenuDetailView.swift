@@ -22,6 +22,19 @@ struct MenuDetailView: View {
     var restaurant: Restaurant
     var menu: Menu
     
+    private var backButton: some View {
+        Button(action: { dismiss() }, label: {
+            Image(systemName: "chevron.left")
+                .foregroundStyle(.black)
+        })
+    }
+    
+    private var toolBarButton: some View {
+        Button(isEditMode ? "저장" : "수정") { isEditMode ? handleSaveAction() : handleEdit() }
+        .font(.pretendardBold18)
+        .foregroundStyle(.black)
+    }
+    
     init(rateType: Binding<Rate>, restaurant: Restaurant, menu: Menu) {
         self._rateType = rateType
         self.restaurant = restaurant
@@ -76,28 +89,8 @@ struct MenuDetailView: View {
             "즐겨찾기 추가",
             isPresented: $showFavoriteAlert,
             actions: {
-                Button("네") {
-                    coreDataManager.updateMenu(
-                        with: restaurant,
-                        id: menu.id ?? UUID(),
-                        name: name,
-                        oneLiner: oneLiner,
-                        rate: rateType.rawValue,
-                        isFavorite: true
-                    )
-                    dismiss()
-                }
-                Button("아니오", role: .cancel) {
-                    coreDataManager.updateMenu(
-                        with: restaurant,
-                        id: menu.id ?? UUID(),
-                        name: name,
-                        oneLiner: oneLiner,
-                        rate: rateType.rawValue,
-                        isFavorite: false
-                    )
-                    dismiss()
-                }
+                Button("네") { handleSave(isFavorite: true) }
+                Button("아니오", role: .cancel) { handleSave(isFavorite: false) }
             },
             message: {
                 Text("즐겨찾기에 추가 하시겠습니까?")
@@ -107,49 +100,35 @@ struct MenuDetailView: View {
         .padding(24)
         .navigationBarBackButtonHidden(true)
         .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                Button(action: {
-                    dismiss()
-                }, label: {
-                    Image(systemName: "chevron.left")
-                        .foregroundStyle(.black)
-                })
-            }
-            ToolbarItem {
-                if isEditMode {
-                    Button("저장") {
-                        // TODO: [] isFavorite 적용 필요
-                        
-                        if rateType == .like {
-                            // TODO: [] 즐겨찾기 팝업 띄우기
-                            self.showFavoriteAlert.toggle()
-                        } else {
-                            coreDataManager.updateMenu(
-                                with: restaurant,
-                                id: menu.id ?? UUID(),
-                                name: name,
-                                oneLiner: oneLiner,
-                                rate: rateType.rawValue,
-                                isFavorite: false
-                            )
-                            dismiss()
-                        }
-                    }
-                    .font(.pretendardBold18)
-                    .foregroundStyle(.black)
-                } else {
-                    Button("수정") {
-                        self.isEditMode.toggle()
-                    }
-                    .font(.pretendardBold18)
-                    .foregroundStyle(.black)
-                }
-            }
+            ToolbarItem(placement: .topBarLeading) { backButton }
+            ToolbarItem { toolBarButton }
         }
         
         // TODO: [] 뒤로 갔을 때 이전 rate값 그대로 보여주기
         
         Spacer()
+    }
+    
+    private func handleSaveAction() {
+        rateType == .like
+        ? showFavoriteAlert.toggle()
+        : handleSave(isFavorite: false)
+    }
+    
+    private func handleEdit() {
+        self.isEditMode.toggle()
+    }
+    
+    private func handleSave(isFavorite: Bool) {
+        coreDataManager.updateMenu(
+            with: restaurant,
+            id: menu.id ?? UUID(),
+            name: name,
+            oneLiner: oneLiner,
+            rate: rateType.rawValue,
+            isFavorite: isFavorite
+        )
+        dismiss()
     }
 }
 
