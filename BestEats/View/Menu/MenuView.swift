@@ -22,6 +22,7 @@ struct MenuView: View {
         return VStack {
             VStack(spacing: 8) {
                 CategoryView(rateType: $rateType, restaurant: restaurant)
+                    .padding(.top)
                 
                 ScrollView {
                     LazyVGrid(columns: columns) {
@@ -41,8 +42,8 @@ struct MenuView: View {
                             }
                         }
                     }
-                    .padding(24)
                 }
+                .padding(24)
             }
         }
         .onAppear { coreDataManager.fetchMenu(with: restaurant, rateType) }
@@ -50,17 +51,7 @@ struct MenuView: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle(self.restaurant.wrappedName)
         .navigationBarBackButtonHidden(true)
-        .toolbar {
-            // TODO: [] backButton 컴포넌트화
-            ToolbarItem(placement: .topBarLeading) {
-                Button(action: {
-                    dismiss()
-                }, label: {
-                    Image(systemName: "chevron.left")
-                        .foregroundStyle(.black)
-                })
-            }
-        }
+        .toolbar { ToolbarItem(placement: .topBarLeading) { BackButton() } }
     }
 }
 

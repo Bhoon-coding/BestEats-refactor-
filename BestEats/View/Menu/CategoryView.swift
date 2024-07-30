@@ -30,7 +30,6 @@ struct CategoryView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 8))
             }
         }
-        .padding(.vertical)
     }
     
     private func rateDescription(with rate: Rate) -> String {

@@ -22,13 +22,6 @@ struct MenuDetailView: View {
     var restaurant: Restaurant
     var menu: Menu
     
-    private var backButton: some View {
-        Button(action: { dismiss() }, label: {
-            Image(systemName: "chevron.left")
-                .foregroundStyle(.black)
-        })
-    }
-    
     private var toolBarButton: some View {
         Button(isEditMode ? "저장" : "수정") { isEditMode ? handleSaveAction() : handleEdit() }
         .font(.pretendardBold18)
@@ -100,11 +93,9 @@ struct MenuDetailView: View {
         .padding(24)
         .navigationBarBackButtonHidden(true)
         .toolbar {
-            ToolbarItem(placement: .topBarLeading) { backButton }
+            ToolbarItem(placement: .topBarLeading) { BackButton() }
             ToolbarItem { toolBarButton }
         }
-        
-        // TODO: [] 뒤로 갔을 때 이전 rate값 그대로 보여주기
         
         Spacer()
     }
