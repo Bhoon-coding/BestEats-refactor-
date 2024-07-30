@@ -27,7 +27,6 @@ struct MenuView: View {
                     LazyVGrid(columns: columns) {
                         ForEach(coreDataManager.filteredMenu, id: \.self) { menu in
                             NavigationLink {
-//                                MenuDetailView(restaurant: restaurant, menu: menu)
                                 MenuDetailView(
                                     rateType: $rateType,
                                     restaurant: restaurant,
@@ -46,12 +45,13 @@ struct MenuView: View {
                 }
             }
         }
-        .onAppear { coreDataManager.fetchMenu(with: restaurant, .like) }
+        .onAppear { coreDataManager.fetchMenu(with: restaurant, rateType) }
         .background(.gray.opacity(0.1))
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle(self.restaurant.wrappedName)
         .navigationBarBackButtonHidden(true)
         .toolbar {
+            // TODO: [] backButton 컴포넌트화
             ToolbarItem(placement: .topBarLeading) {
                 Button(action: {
                     dismiss()
