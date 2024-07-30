@@ -13,22 +13,37 @@ struct MenuView: View {
     @EnvironmentObject var coreDataManager: CoreDataManager
     @State var rateType: Rate = Rate.like
     
-    var restaurant: Restaurant 
+    let columns = [GridItem(.flexible())]
+    var restaurant: Restaurant
     
     var body: some View {
         Self._printChanges()
         
         return VStack {
-            VStack {
+            VStack(spacing: 8) {
                 CategoryView(rateType: $rateType, restaurant: restaurant)
                 
-                List {
-                    ForEach(coreDataManager.filteredMenu, id: \.self) { menu in
-                        MenuItemView(rateType: $rateType, restaurant: restaurant, menu: menu)
-                        // TODO: [] navigation
+                ScrollView {
+                    LazyVGrid(columns: columns) {
+                        ForEach(coreDataManager.filteredMenu, id: \.self) { menu in
+                            NavigationLink {
+//                                MenuDetailView(restaurant: restaurant, menu: menu)
+                                MenuDetailView(
+                                    rateType: $rateType,
+                                    restaurant: restaurant,
+                                    menu: menu
+                                )
+                            } label: {
+                                MenuItemView(
+                                    rateType: $rateType,
+                                    restaurant: restaurant,
+                                    menu: menu
+                                )
+                            }
+                        }
                     }
+                    .padding(24)
                 }
-                .environment(\.defaultMinListRowHeight, 128)
             }
         }
         .onAppear { coreDataManager.fetchMenu(with: restaurant, .like) }
@@ -49,29 +64,31 @@ struct MenuView: View {
     }
 }
 
-//#Preview {
-//    let context = CoreDataManager.shared.container.viewContext
-//    let restaurant = Restaurant(context: context)
-//    let menu = Menu(context: context)
-//    restaurant.id = UUID()
-//    restaurant.name = "아웃백"
-//    
-//    menu.id = UUID()
-//    menu.isFavorite = false
-//    menu.name = "아아"
-//    menu.oneLiner = "soso"
-//    menu.rate = Rate.like.rawValue
-//    
-//    menu.restaurant = restaurant
-//    
-//    let menu2 = Menu(context: context)
-//    menu2.id = UUID()
-//    menu2.isFavorite = true
-//    menu2.name = "자허블"
-//    menu2.oneLiner = "good"
-//    menu2.rate = Rate.like.rawValue
-//    
-//    menu2.restaurant = restaurant
-//    
-//    return MenuView(viewModel: MenuViewModel(restaurant: restaurant))
-//}
+#Preview {
+    let context = CoreDataManager().context
+    let restaurant = Restaurant(context: context)
+    let menu = Menu(context: context)
+    restaurant.id = UUID()
+    restaurant.name = "스벅"
+    
+    menu.id = UUID()
+    menu.isFavorite = false
+    menu.name = "아아"
+    menu.oneLiner = "soso"
+    menu.rate = Rate.like.rawValue
+    
+    menu.restaurant = restaurant
+    
+    let menu2 = Menu(context: context)
+    menu2.id = UUID()
+    menu2.isFavorite = true
+    menu2.name = "자허블"
+    menu2.oneLiner = "good"
+    menu2.rate = Rate.like.rawValue
+    
+    menu2.restaurant = restaurant
+    
+    return MenuView(restaurant: restaurant)
+        .environment(\.managedObjectContext, context)
+        .environmentObject(CoreDataManager())
+}

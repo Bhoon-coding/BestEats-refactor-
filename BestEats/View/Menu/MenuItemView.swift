@@ -15,7 +15,7 @@ struct MenuItemView: View {
     var menu: Menu
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 16) {
             HStack {
                 Text(menu.wrappedName)
                     .font(.pretendardBold20)
@@ -24,12 +24,13 @@ struct MenuItemView: View {
                 Spacer()
                 
                 if rateType == .like {
+                    
                     Button {
                         DispatchQueue.main.async {
                             coreDataManager.updateMenu(
                                 with: restaurant,
                                 id: menu.wrappedId,
-                                isFavorite: menu.isFavorite
+                                isFavorite: !menu.isFavorite
                             )
                         }
                     } label: {
@@ -48,7 +49,9 @@ struct MenuItemView: View {
                     .font(.pretendardSemiBold16)
             }
         }
-        .padding(.vertical, 16)
+        .padding(24)
+        .background(.background)
+        .clipShape(RoundedRectangle(cornerRadius: 16))
     }
 }
 

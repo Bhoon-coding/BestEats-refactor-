@@ -94,7 +94,7 @@ final class CoreDataManager: ObservableObject {
                 menu.rate = rate
             }
             
-            menu.isFavorite = !isFavorite
+            menu.isFavorite = isFavorite
             saveContext()
         }
     }

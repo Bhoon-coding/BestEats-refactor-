@@ -21,10 +21,10 @@ struct RestaurantCardView: View {
     
     var body: some View {
         LazyVGrid(columns: columns) {
-            // TODO: [] 데이터가 없을 경우의 맛집추가 유도 카드 필요
+            // TODO: [] 데이터가 없을 경우의 맛집추가 유도 카드 필요 (Float 버튼으로 만들기)
             VStack(alignment: .leading, spacing: 8) {
                 HStack {
-                    Text(restaurant.name ?? "unknowned restaurant")
+                    Text(restaurant.wrappedName)
                         .font(.pretendardBold24)
                         .foregroundStyle(.orange)
                     
@@ -98,7 +98,7 @@ struct RestaurantCardView: View {
                 }
             }
         }
-        .padding()
+        .padding(24)
         .background(.background)
         .clipShape(RoundedRectangle(cornerRadius: 16.0))
     }

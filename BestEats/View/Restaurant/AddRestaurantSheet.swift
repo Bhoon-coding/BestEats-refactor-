@@ -17,6 +17,10 @@ struct AddRestaurantSheet: View {
     @State var oneLiner: String = ""
     @State var rateType: Rate = .like
     
+    private var isValid: Bool {
+        return !restaurantName.isEmpty && !menuName.isEmpty && !oneLiner.isEmpty
+    }
+    
     var body: some View {
         VStack {
             CloseButton()
@@ -73,10 +77,13 @@ struct AddRestaurantSheet: View {
             Spacer()
             
             Button(action: {
-                isValidToAdd(restaurantName, menuName, oneLiner, rateType)
-                ? coreDataManager.addRestaurant(restaurantName, menuName, oneLiner, rateType)
-                : showFillOutToast()
-                dismiss()
+//                if isValidToAdd(restaurantName, menuName, oneLiner, rateType) {
+                if isValid {
+                    coreDataManager.addRestaurant(restaurantName, menuName, oneLiner, rateType)
+                    dismiss()
+                } else {
+                    showFillOutToast()
+                }
             }, label: {
                 Text("추가하기")
                     .padding()
