@@ -20,7 +20,7 @@ struct MenuDetailView: View {
     @State var showFavoriteAlert: Bool = false
     
     var restaurant: Restaurant
-    var menu: Menu
+    var menu: Menu?
     
     private var toolBarButton: some View {
         Button(isEditMode ? "저장" : "수정") { isEditMode ? handleSaveAction() : handleEdit() }
@@ -28,12 +28,12 @@ struct MenuDetailView: View {
         .foregroundStyle(.black)
     }
     
-    init(rateType: Binding<Rate>, restaurant: Restaurant, menu: Menu) {
+    init(rateType: Binding<Rate>, restaurant: Restaurant, menu: Menu? = nil) {
         self._rateType = rateType
         self.restaurant = restaurant
         self.menu = menu
-        self._name = State(initialValue: menu.wrappedName)
-        self._oneLiner = State(initialValue: menu.wrappedOneLiner)
+        self._name = State(initialValue: menu?.wrappedName ?? "")
+        self._oneLiner = State(initialValue: menu?.wrappedOneLiner ?? "")
     }
     
     var body: some View {
@@ -113,7 +113,7 @@ struct MenuDetailView: View {
     private func handleSave(isFavorite: Bool) {
         coreDataManager.updateMenu(
             with: restaurant,
-            id: menu.id ?? UUID(),
+            id: menu?.id ?? UUID(),
             name: name,
             oneLiner: oneLiner,
             rate: rateType.rawValue,

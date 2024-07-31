@@ -12,6 +12,7 @@ struct MenuView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var coreDataManager: CoreDataManager
     @State var rateType: Rate = Rate.like
+    @State var showAddView: Bool = false
     
     let columns = [GridItem(.flexible())]
     var restaurant: Restaurant
@@ -51,7 +52,17 @@ struct MenuView: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle(self.restaurant.wrappedName)
         .navigationBarBackButtonHidden(true)
-        .toolbar { ToolbarItem(placement: .topBarLeading) { BackButton() } }
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button("추가") { self.showAddView.toggle() }
+                    .font(.pretendardBold18)
+                    .foregroundStyle(.black)
+            }
+            ToolbarItem(placement: .topBarLeading) { BackButton() }
+        }
+        .sheet(isPresented: $showAddView) {
+            AddMenuSheet(rateType: $rateType, restaurant: restaurant)
+        }
     }
 }
 

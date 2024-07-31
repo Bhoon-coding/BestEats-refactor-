@@ -61,6 +61,23 @@ final class CoreDataManager: ObservableObject {
         saveContext()
     }
     
+    func addMenu(
+        with restaurant: Restaurant,
+        _ name: String,
+        _ oneLiner: String,
+        _ rateType: Rate
+    ) {
+        let newMenu = Menu(context: context)
+        
+        newMenu.id = UUID()
+        newMenu.name = name
+        newMenu.oneLiner = oneLiner
+        newMenu.rate = rateType.rawValue
+        newMenu.restaurant = restaurant
+        
+        fetchMenu(with: restaurant, rateType)
+    }
+    
     func updateRestaurant(with restaurant: Restaurant, newName: String? = nil) {
         if let newName = newName {
             restaurant.name = newName

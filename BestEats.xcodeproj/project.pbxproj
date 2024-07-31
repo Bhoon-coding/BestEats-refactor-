@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		E1067C302C58C3E8005FE587 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1067C2F2C58C3E8005FE587 /* BackButton.swift */; };
+		E1067C322C58D216005FE587 /* AddMenuSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1067C312C58D216005FE587 /* AddMenuSheet.swift */; };
+		E1067C342C58DB6F005FE587 /* AddText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1067C332C58DB6F005FE587 /* AddText.swift */; };
+		E1067C372C58E25F005FE587 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = E1067C362C58E25F005FE587 /* PopupView */; };
 		E118E28D2C4E376800480A39 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E118E28C2C4E376800480A39 /* MenuViewModel.swift */; };
 		E1484FB12C4E44F7000A4272 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1484FB02C4E44F7000A4272 /* CategoryView.swift */; };
 		E1484FB32C4E500E000A4272 /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1484FB22C4E500E000A4272 /* MenuItemView.swift */; };
@@ -78,6 +81,8 @@
 
 /* Begin PBXFileReference section */
 		E1067C2F2C58C3E8005FE587 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
+		E1067C312C58D216005FE587 /* AddMenuSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMenuSheet.swift; sourceTree = "<group>"; };
+		E1067C332C58DB6F005FE587 /* AddText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddText.swift; sourceTree = "<group>"; };
 		E118E28C2C4E376800480A39 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		E1484FB02C4E44F7000A4272 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		E1484FB22C4E500E000A4272 /* MenuItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemView.swift; sourceTree = "<group>"; };
@@ -128,6 +133,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1067C372C58E25F005FE587 /* PopupView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +320,7 @@
 			children = (
 				E1E1A26F2C49349E00DDABF8 /* CloseButton.swift */,
 				E1067C2F2C58C3E8005FE587 /* BackButton.swift */,
+				E1067C332C58DB6F005FE587 /* AddText.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -346,6 +353,7 @@
 				E1484FB02C4E44F7000A4272 /* CategoryView.swift */,
 				E1484FB22C4E500E000A4272 /* MenuItemView.swift */,
 				E1484FB42C4E61FD000A4272 /* MenuDetailView.swift */,
+				E1067C312C58D216005FE587 /* AddMenuSheet.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -366,6 +374,9 @@
 			dependencies = (
 			);
 			name = BestEats;
+			packageProductDependencies = (
+				E1067C362C58E25F005FE587 /* PopupView */,
+			);
 			productName = BestEats;
 			productReference = E1BAB8E92C46653100873CA6 /* BestEats.app */;
 			productType = "com.apple.product-type.application";
@@ -438,6 +449,9 @@
 				Base,
 			);
 			mainGroup = E1BAB8E02C46653100873CA6;
+			packageReferences = (
+				E1067C352C58E25F005FE587 /* XCRemoteSwiftPackageReference "PopupView" */,
+			);
 			productRefGroup = E1BAB8EA2C46653100873CA6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -515,6 +529,7 @@
 				E1E1A28C2C4A2D5E00DDABF8 /* Menu+CoreDataProperties.swift in Sources */,
 				E1DEE8BD2C490BCB0035B56F /* ColorEx.swift in Sources */,
 				E1BAB9212C466E1B00873CA6 /* SettingsView.swift in Sources */,
+				E1067C322C58D216005FE587 /* AddMenuSheet.swift in Sources */,
 				E1BAB91F2C466E1200873CA6 /* RestaurantView.swift in Sources */,
 				E1DEE8BF2C490BD00035B56F /* ImageEx.swift in Sources */,
 				E148503C2C522CB8000A4272 /* Rate.swift in Sources */,
@@ -525,6 +540,7 @@
 				E1E1A27E2C493D2000DDABF8 /* CoreDataManager.swift in Sources */,
 				E14850392C5211C1000A4272 /* MenuItemViewModel.swift in Sources */,
 				E1BAB8ED2C46653100873CA6 /* BestEatsApp.swift in Sources */,
+				E1067C342C58DB6F005FE587 /* AddText.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -856,6 +872,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E1067C352C58E25F005FE587 /* XCRemoteSwiftPackageReference "PopupView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/PopupView";
+			requirement = {
+				kind = exactVersion;
+				version = 3.0.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E1067C362C58E25F005FE587 /* PopupView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1067C352C58E25F005FE587 /* XCRemoteSwiftPackageReference "PopupView" */;
+			productName = PopupView;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		E1E1A2722C49391D00DDABF8 /* RestaurantList.xcdatamodeld */ = {

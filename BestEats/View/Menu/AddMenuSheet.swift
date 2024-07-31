@@ -1,38 +1,30 @@
 //
-//  AddRestaurantSheet.swift
+//  MenuAddView.swift
 //  BestEats
 //
-//  Created by BH on 2024/07/17.
+//  Created by BH on 2024/07/30.
 //
 
 import SwiftUI
 
-struct AddRestaurantSheet: View {
+struct AddMenuSheet: View {
     
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.dismiss) var dismiss
     @EnvironmentObject var coreDataManager: CoreDataManager
     
-    @State var restaurantName: String = ""
     @State var menuName: String = ""
     @State var oneLiner: String = ""
-    @State var rateType: Rate = .like
+    @Binding var rateType: Rate
     
-    private var isValid: Bool {
-        return !restaurantName.isEmpty && !menuName.isEmpty && !oneLiner.isEmpty
-    }
+    var restaurant: Restaurant
+    
+    private var isValid: Bool { !menuName.isEmpty && !oneLiner.isEmpty }
     
     var body: some View {
         VStack {
             CloseButton()
             
             VStack(alignment: .leading, spacing: 16) {
-                Text("맛집명")
-                TextField(
-                    "맛집을 입력해주세요",
-                    text: $restaurantName
-                )
-                .textFieldStyle(.roundedBorder)
-                .font(.pretendardMedium16)
                 Text("메뉴명")
                 TextField(
                     "메뉴를 입력해주세요",
@@ -77,40 +69,18 @@ struct AddRestaurantSheet: View {
             Spacer()
             
             Button(action: {
-                if isValid {
-                    coreDataManager.addRestaurant(restaurantName, menuName, oneLiner, rateType)
-                    dismiss()
-                } else {
-                    showFillOutToast()
-                }
-            }, label: {
-                Text("추가하기")
-                    .padding()
-                    .frame(maxWidth: .infinity, maxHeight: 54)
-                    .background(.green)
-                    .foregroundStyle(.white)
-                    .font(.pretendardBold18)
-                    .clipShape(Capsule())
-            })
+                isValid
+                ? addMenu(name: menuName, oneLiner: oneLiner, rateType: rateType)
+                : showFillOutToast()
+            }, label: { AddText() })
         }
         .padding(.horizontal, 24)
         .padding(.top, 24)
     }
     
-    private func isValidToAdd(
-        _ restaurantName: String,
-        _ menuName: String,
-        _ oneLiner: String,
-        _ rateType: Rate
-    ) -> Bool {
-        guard !restaurantName.isEmpty, !menuName.isEmpty, !oneLiner.isEmpty else { return false }
-        
-        if rateType == .like {
-            // TODO: [] 팝업
-            
-        }
-        
-        return true
+    private func addMenu(name: String, oneLiner: String, rateType: Rate) {
+        coreDataManager.addMenu(with: self.restaurant, menuName, oneLiner, rateType)
+        dismiss()
     }
     
     private func showFillOutToast() {
@@ -119,5 +89,7 @@ struct AddRestaurantSheet: View {
 }
 
 #Preview {
-    AddRestaurantSheet()
+    @State var rateType: Rate = .curious
+    
+    return AddMenuSheet(rateType: $rateType, restaurant: Restaurant())
 }
