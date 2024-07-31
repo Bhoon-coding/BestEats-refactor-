@@ -11,6 +11,8 @@
 		E1067C322C58D216005FE587 /* AddMenuSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1067C312C58D216005FE587 /* AddMenuSheet.swift */; };
 		E1067C342C58DB6F005FE587 /* AddText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1067C332C58DB6F005FE587 /* AddText.swift */; };
 		E1067C372C58E25F005FE587 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = E1067C362C58E25F005FE587 /* PopupView */; };
+		E1067C3A2C5A13CC005FE587 /* ToastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1067C392C5A13CC005FE587 /* ToastManager.swift */; };
+		E1067C3F2C5A1749005FE587 /* ViewEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1067C3E2C5A1749005FE587 /* ViewEx.swift */; };
 		E118E28D2C4E376800480A39 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E118E28C2C4E376800480A39 /* MenuViewModel.swift */; };
 		E1484FB12C4E44F7000A4272 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1484FB02C4E44F7000A4272 /* CategoryView.swift */; };
 		E1484FB32C4E500E000A4272 /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1484FB22C4E500E000A4272 /* MenuItemView.swift */; };
@@ -83,6 +85,8 @@
 		E1067C2F2C58C3E8005FE587 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		E1067C312C58D216005FE587 /* AddMenuSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMenuSheet.swift; sourceTree = "<group>"; };
 		E1067C332C58DB6F005FE587 /* AddText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddText.swift; sourceTree = "<group>"; };
+		E1067C392C5A13CC005FE587 /* ToastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastManager.swift; sourceTree = "<group>"; };
+		E1067C3E2C5A1749005FE587 /* ViewEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEx.swift; sourceTree = "<group>"; };
 		E118E28C2C4E376800480A39 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		E1484FB02C4E44F7000A4272 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		E1484FB22C4E500E000A4272 /* MenuItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemView.swift; sourceTree = "<group>"; };
@@ -154,6 +158,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E1067C382C5A13B7005FE587 /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				E1067C392C5A13CC005FE587 /* ToastManager.swift */,
+			);
+			path = Toast;
+			sourceTree = "<group>";
+		};
+		E1067C3B2C5A1426005FE587 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E1DEE8B92C490BB30035B56F /* FontEx.swift */,
+				E1DEE8BC2C490BCB0035B56F /* ColorEx.swift */,
+				E1DEE8BE2C490BD00035B56F /* ImageEx.swift */,
+				E1067C3E2C5A1749005FE587 /* ViewEx.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		E118E28B2C4E373B00480A39 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,10 +297,8 @@
 		E1DEE8B82C490B890035B56F /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				E1067C3B2C5A1426005FE587 /* Extensions */,
 				E148503A2C522CAE000A4272 /* Type */,
-				E1DEE8B92C490BB30035B56F /* FontEx.swift */,
-				E1DEE8BC2C490BCB0035B56F /* ColorEx.swift */,
-				E1DEE8BE2C490BD00035B56F /* ImageEx.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -328,6 +349,7 @@
 		E1E1A2712C49383300DDABF8 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				E1067C382C5A13B7005FE587 /* Toast */,
 				E1E1A2902C4A30FC00DDABF8 /* CoreData */,
 			);
 			path = Managers;
@@ -527,10 +549,12 @@
 				E1484FB52C4E61FD000A4272 /* MenuDetailView.swift in Sources */,
 				E1E1A2702C49349E00DDABF8 /* CloseButton.swift in Sources */,
 				E1E1A28C2C4A2D5E00DDABF8 /* Menu+CoreDataProperties.swift in Sources */,
+				E1067C3A2C5A13CC005FE587 /* ToastManager.swift in Sources */,
 				E1DEE8BD2C490BCB0035B56F /* ColorEx.swift in Sources */,
 				E1BAB9212C466E1B00873CA6 /* SettingsView.swift in Sources */,
 				E1067C322C58D216005FE587 /* AddMenuSheet.swift in Sources */,
 				E1BAB91F2C466E1200873CA6 /* RestaurantView.swift in Sources */,
+				E1067C3F2C5A1749005FE587 /* ViewEx.swift in Sources */,
 				E1DEE8BF2C490BD00035B56F /* ImageEx.swift in Sources */,
 				E148503C2C522CB8000A4272 /* Rate.swift in Sources */,
 				E1E1A28D2C4A2D5E00DDABF8 /* Restaurant+CoreDataClass.swift in Sources */,

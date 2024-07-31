@@ -11,9 +11,12 @@ struct AddMenuSheet: View {
     
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var coreDataManager: CoreDataManager
+    @EnvironmentObject var toastManager: ToastManager
     
     @State var menuName: String = ""
     @State var oneLiner: String = ""
+    @State var toastText: String = ""
+    
     @Binding var rateType: Rate
     
     var restaurant: Restaurant
@@ -70,21 +73,22 @@ struct AddMenuSheet: View {
             
             Button(action: {
                 isValid
-                ? addMenu(name: menuName, oneLiner: oneLiner, rateType: rateType)
                 : showFillOutToast()
             }, label: { AddText() })
         }
         .padding(.horizontal, 24)
         .padding(.top, 24)
+        .toast(toastManager: toastManager)
     }
     
-    private func addMenu(name: String, oneLiner: String, rateType: Rate) {
-        coreDataManager.addMenu(with: self.restaurant, menuName, oneLiner, rateType)
+    }
+    
         dismiss()
     }
     
     private func showFillOutToast() {
-        // TODO: [] 토스트 띄우기
+        self.toastText = menuName.isEmpty ? "메뉴명을 입력해주세요" : "한줄평을 입력해주세요"
+        toastManager.showToast(message: self.toastText)
     }
 }
 

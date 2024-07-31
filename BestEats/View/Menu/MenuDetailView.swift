@@ -11,6 +11,7 @@ struct MenuDetailView: View {
     
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var coreDataManager: CoreDataManager
+    @EnvironmentObject var toastManager: ToastManager
     @Binding var rateType: Rate
     
     @State var name: String
@@ -18,12 +19,13 @@ struct MenuDetailView: View {
     @State var isEditMode: Bool = false
     @State var isFavorite: Bool = false
     @State var showFavoriteAlert: Bool = false
+    @State var toastText: String = ""
     
     var restaurant: Restaurant
     var menu: Menu?
     
     private var toolBarButton: some View {
-        Button(isEditMode ? "저장" : "수정") { isEditMode ? handleSaveAction() : handleEdit() }
+        Button(isEditMode ? "저장" : "수정") { isEditMode ? checkValid() : handleEdit() }
         .font(.pretendardBold18)
         .foregroundStyle(.black)
     }
@@ -37,72 +39,77 @@ struct MenuDetailView: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text("메뉴명")
-            TextField(
-                "메뉴를 입력해주세요",
-                text: $name
-            )
-            .disabled(!isEditMode)
-            .textFieldStyle(.roundedBorder)
-            .font(.pretendardMedium16)
-            Text("한줄평")
-            TextField(
-                "한줄평을 입력해주세요",
-                text: $oneLiner
-            )
-            .disabled(!isEditMode)
-            .textFieldStyle(.roundedBorder)
-            .font(.pretendardMedium16)
-            Text("내평가")
-            HStack {
-                ForEach(Rate.allCases) { rate in
-                    Button(action: {
-                        self.rateType = rate
-                    }, label: {
-                        Spacer()
-                        Image(rateType == rate ? "\(rate.rawValue)Fill" : rate.rawValue)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 32, height: 32)
-                        Spacer()
-                    })
-                    .disabled(!isEditMode)
+        VStack {
+            VStack(alignment: .leading, spacing: 16) {
+                Text("메뉴명")
+                TextField(
+                    "메뉴를 입력해주세요",
+                    text: $name
+                )
+                .disabled(!isEditMode)
+                .textFieldStyle(.roundedBorder)
+                .font(.pretendardMedium16)
+                Text("한줄평")
+                TextField(
+                    "한줄평을 입력해주세요",
+                    text: $oneLiner
+                )
+                .disabled(!isEditMode)
+                .textFieldStyle(.roundedBorder)
+                .font(.pretendardMedium16)
+                Text("내평가")
+                HStack {
+                    ForEach(Rate.allCases) { rate in
+                        Button(action: {
+                            self.rateType = rate
+                        }, label: {
+                            Spacer()
+                            Image(rateType == rate ? "\(rate.rawValue)Fill" : rate.rawValue)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 32, height: 32)
+                            Spacer()
+                        })
+                        .disabled(!isEditMode)
+                    }
+                }
+                .frame(maxWidth: .infinity, maxHeight: 40)
+                .padding()
+                .padding(.horizontal, 24)
+                .overlay {
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(.gray.opacity(0.5), lineWidth: 1)
                 }
             }
-            .frame(maxWidth: .infinity, maxHeight: 40)
-            .padding()
-            .padding(.horizontal, 24)
-            .overlay {
-                RoundedRectangle(cornerRadius: 8)
-                    .stroke(.gray.opacity(0.5), lineWidth: 1)
             }
-        }
-        .alert(
-            "즐겨찾기 추가",
-            isPresented: $showFavoriteAlert,
-            actions: {
-                Button("네") { handleSave(isFavorite: true) }
-                Button("아니오", role: .cancel) { handleSave(isFavorite: false) }
-            },
-            message: {
-                Text("즐겨찾기에 추가 하시겠습니까?")
+            .font(.pretendardBold18)
+            .padding(24)
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) { BackButton() }
+                ToolbarItem { toolBarButton }
             }
-        )
-        .font(.pretendardBold18)
-        .padding(24)
-        .navigationBarBackButtonHidden(true)
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) { BackButton() }
-            ToolbarItem { toolBarButton }
+            Spacer()
         }
-        
-        Spacer()
+        .toast(toastManager: toastManager)
+    }
+    
+    
+    private func checkValid() {
+        if name.isEmpty || oneLiner.isEmpty {
+            showFillOutToast()
+        } else {
+            handleSaveAction()
+        }
+    }
+    
+    private func showFillOutToast() {
+        self.toastText = name.isEmpty ? "메뉴명을 입력해주세요" : "한줄평을 입력해주세요"
+        toastManager.showToast(message: toastText)
     }
     
     private func handleSaveAction() {
         rateType == .like
-        ? showFavoriteAlert.toggle()
         : handleSave(isFavorite: false)
     }
     
@@ -150,4 +157,5 @@ struct MenuDetailView: View {
     menu2.restaurant = restaurant
     
     return MenuDetailView(rateType: $rateType, restaurant: restaurant, menu: menu)
+        .environmentObject(ToastManager())
 }

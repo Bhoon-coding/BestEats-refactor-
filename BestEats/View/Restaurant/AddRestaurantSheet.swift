@@ -11,15 +11,15 @@ struct AddRestaurantSheet: View {
     
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var coreDataManager: CoreDataManager
+    @EnvironmentObject var toastManager: ToastManager
     
     @State var restaurantName: String = ""
     @State var menuName: String = ""
     @State var oneLiner: String = ""
     @State var rateType: Rate = .like
+    @State var toastText: String = ""
     
-    private var isValid: Bool {
-        return !restaurantName.isEmpty && !menuName.isEmpty && !oneLiner.isEmpty
-    }
+    private var isValid: Bool { !restaurantName.isEmpty && !menuName.isEmpty && !oneLiner.isEmpty }
     
     var body: some View {
         VStack {
@@ -77,44 +77,49 @@ struct AddRestaurantSheet: View {
             Spacer()
             
             Button(action: {
-                if isValid {
-                    coreDataManager.addRestaurant(restaurantName, menuName, oneLiner, rateType)
-                    dismiss()
-                } else {
-                    showFillOutToast()
-                }
-            }, label: {
-                Text("추가하기")
-                    .padding()
-                    .frame(maxWidth: .infinity, maxHeight: 54)
-                    .background(.green)
-                    .foregroundStyle(.white)
-                    .font(.pretendardBold18)
-                    .clipShape(Capsule())
-            })
+                isValid
+                ? handleAddAction()
+                : checkEmptyForm()
+                
+            }, label: { AddText() }
+            )
         }
         .padding(.horizontal, 24)
         .padding(.top, 24)
+        .favoriteAlert(isPresented: $showFavoriteAlert) { isFavorite in
+            addRestaurant(isFavorite: isFavorite)
+        }
     }
     
-    private func isValidToAdd(
-        _ restaurantName: String,
-        _ menuName: String,
-        _ oneLiner: String,
-        _ rateType: Rate
-    ) -> Bool {
-        guard !restaurantName.isEmpty, !menuName.isEmpty, !oneLiner.isEmpty else { return false }
+    // MARK: - Private
+    
+    private func handleAddAction() {
+        rateType == .like
+        ? showFavoriteAlert = true
+        : addRestaurant(isFavorite: false)
+    }
+    
+    private func addRestaurant(isFavorite: Bool) {
+        coreDataManager.addRestaurant(restaurantName, menuName, oneLiner, rateType, isFavorite)
+        dismiss()
+    }
+    
+    private func checkEmptyForm() {
+        var toastText: String = ""
         
-        if rateType == .like {
-            // TODO: [] 팝업
-            
+        if restaurantName.isEmpty {
+            toastText = "맛집명을 입력해주세요"
+        } else if menuName.isEmpty {
+            toastText = "메뉴명을 입력해주세요"
+        } else {
+            toastText = "한줄평을 입력해주세요"
         }
         
-        return true
+        showFillOutToast(message: toastText)
     }
     
-    private func showFillOutToast() {
-        // TODO: [] 토스트 띄우기
+    private func showFillOutToast(message: String) {
+        toastManager.showToast(message: message)
     }
 }
 
