@@ -27,24 +27,14 @@ final class CoreDataManager: ObservableObject {
         fetchRestaurant()
     }
     
-    private func fetchRestaurant() {
-        let request = NSFetchRequest<Restaurant>(entityName: "Restaurant")
-        do {
-            self.savedRestaurant = try context.fetch(request)
-        } catch {
-            print("Fetch Error: \(error.localizedDescription)")
-        }
-    }
-    
-    func fetchMenu(with restaurant: Restaurant, _ type: Rate) {
-        self.filteredMenu = restaurant.MenuList.filter { $0.rate == type.rawValue }
-    }
+    // MARK: - Add
     
     func addRestaurant(
         _ restaurantName: String,
         _ menuName: String,
         _ oneLiner: String,
-        _ rateType: Rate
+        _ rateType: Rate,
+        _ isFavorite: Bool
     ) {
         let newRestaurant = Restaurant(context: context)
         let newMenu = Menu(context: context)
@@ -57,6 +47,7 @@ final class CoreDataManager: ObservableObject {
         newMenu.oneLiner = oneLiner
         newMenu.rate = rateType.rawValue
         newMenu.restaurant = newRestaurant
+        newMenu.isFavorite = isFavorite
         
         saveContext()
     }
@@ -65,7 +56,8 @@ final class CoreDataManager: ObservableObject {
         with restaurant: Restaurant,
         _ name: String,
         _ oneLiner: String,
-        _ rateType: Rate
+        _ rateType: Rate,
+        _ isFavorite: Bool
     ) {
         let newMenu = Menu(context: context)
         
@@ -73,10 +65,13 @@ final class CoreDataManager: ObservableObject {
         newMenu.name = name
         newMenu.oneLiner = oneLiner
         newMenu.rate = rateType.rawValue
+        newMenu.isFavorite = isFavorite
         newMenu.restaurant = restaurant
         
         fetchMenu(with: restaurant, rateType)
     }
+    
+    // MARK: - Update
     
     func updateRestaurant(with restaurant: Restaurant, newName: String? = nil) {
         if let newName = newName {
@@ -116,12 +111,16 @@ final class CoreDataManager: ObservableObject {
         }
     }
     
+    // MARK: - Delete
+    
     func deleteRestaurant(with restaurant: Restaurant) {
         context.delete(restaurant)
         saveContext()
     }
     
-    func saveContext() {
+    // MARK: - Private
+    
+    private func saveContext() {
         if context.hasChanges {
             do {
                 try context.save()
@@ -131,6 +130,20 @@ final class CoreDataManager: ObservableObject {
                 print("Unresolved error: \(error.localizedDescription)")
             }
         }
+    }
+    
+    private func fetchRestaurant() {
+        let request = NSFetchRequest<Restaurant>(entityName: "Restaurant")
+        do {
+            self.savedRestaurant = try context.fetch(request)
+        } catch {
+            print("Fetch Error: \(error.localizedDescription)")
+        }
+    }
+    
+    // TODO: [] Private 가능?
+    func fetchMenu(with restaurant: Restaurant, _ type: Rate) {
+        self.filteredMenu = restaurant.MenuList.filter { $0.rate == type.rawValue }
     }
     
 }

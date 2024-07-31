@@ -18,6 +18,7 @@ struct AddRestaurantSheet: View {
     @State var oneLiner: String = ""
     @State var rateType: Rate = .like
     @State var toastText: String = ""
+    @State var showFavoriteAlert: Bool = false
     
     private var isValid: Bool { !restaurantName.isEmpty && !menuName.isEmpty && !oneLiner.isEmpty }
     

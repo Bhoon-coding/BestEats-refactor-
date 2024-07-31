@@ -16,6 +16,7 @@ struct AddMenuSheet: View {
     @State var menuName: String = ""
     @State var oneLiner: String = ""
     @State var toastText: String = ""
+    @State var showFavoriteAlert: Bool = false
     
     @Binding var rateType: Rate
     
@@ -73,16 +74,26 @@ struct AddMenuSheet: View {
             
             Button(action: {
                 isValid
+                ? handleAddAction()
                 : showFillOutToast()
             }, label: { AddText() })
         }
         .padding(.horizontal, 24)
         .padding(.top, 24)
         .toast(toastManager: toastManager)
+        .favoriteAlert(isPresented: $showFavoriteAlert) { isFavorite in
+            addMenu(isFavorite: isFavorite)
+        }
     }
     
+    private func handleAddAction() {
+        rateType == .like
+        ? showFavoriteAlert = true
+        : addMenu(isFavorite: false)
     }
     
+    private func addMenu(isFavorite: Bool) {
+        coreDataManager.addMenu(with: restaurant, menuName, oneLiner, rateType, isFavorite)
         dismiss()
     }
     

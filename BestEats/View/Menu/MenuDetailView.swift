@@ -81,6 +81,8 @@ struct MenuDetailView: View {
                         .stroke(.gray.opacity(0.5), lineWidth: 1)
                 }
             }
+            .favoriteAlert(isPresented: $showFavoriteAlert) { isFavorite in
+                handleSave(isFavorite: isFavorite)
             }
             .font(.pretendardBold18)
             .padding(24)
@@ -110,6 +112,7 @@ struct MenuDetailView: View {
     
     private func handleSaveAction() {
         rateType == .like
+        ? self.showFavoriteAlert = true
         : handleSave(isFavorite: false)
     }
     

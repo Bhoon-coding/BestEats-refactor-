@@ -28,3 +28,21 @@ extension View {
                 .autohideIn(2)
         }
     }
+    
+    func favoriteAlert(
+        isPresented: Binding<Bool>,
+        completion: @escaping (Bool) -> Void
+    ) -> some View {
+        self.alert(
+            "즐겨찾기 추가",
+            isPresented: isPresented,
+            actions: {
+                Button("네") { completion(true) }
+                Button("아니오", role: .cancel) { completion(false) }
+            },
+            message: {
+                Text("즐겨찾기에 추가 하시겠습니까?")
+            }
+        )
+    }
+}
