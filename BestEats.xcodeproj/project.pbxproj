@@ -302,6 +302,7 @@
 		E1DEE8C02C490E900035B56F /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E1BAB8F22C46653300873CA6 /* Assets.xcassets */,
 				E1DEE8C12C490E960035B56F /* Fonts */,
 			);
 			path = Resource;
@@ -353,6 +354,7 @@
 		E1E1A2902C4A30FC00DDABF8 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				E1E1A2722C49391D00DDABF8 /* RestaurantList.xcdatamodeld */,
 				E1E1A2872C4A2D5E00DDABF8 /* Menu+CoreDataClass.swift */,
 				E1E1A2882C4A2D5E00DDABF8 /* Menu+CoreDataProperties.swift */,
 				E1E1A2892C4A2D5E00DDABF8 /* Restaurant+CoreDataClass.swift */,
