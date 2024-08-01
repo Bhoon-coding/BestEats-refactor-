@@ -8,7 +8,7 @@
 enum Rate: String, CaseIterable, Identifiable {
     case like = "like"
     case curious = "curious"
-    case warning = "warning"
+    case bad = "bad"
     
     var id: String { self.rawValue }
 }

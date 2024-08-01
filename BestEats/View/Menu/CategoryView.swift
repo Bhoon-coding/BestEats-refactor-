@@ -38,7 +38,7 @@ struct CategoryView: View {
             return "좋아요"
         case .curious:
             return "먹어볼래요"
-        case .warning:
+        case .bad:
             return "별로에요"
         }
     }

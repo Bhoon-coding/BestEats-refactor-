@@ -18,6 +18,9 @@ struct RestaurantCardView: View {
     
     let columns = [GridItem(.flexible())]
     var restaurant: Restaurant
+    var likeMenu: [Menu] { restaurant.MenuList.filter { $0.rate == "like" } }
+    var curiousMenu: [Menu] { restaurant.MenuList.filter { $0.rate == "curious" } }
+    var badMenu: [Menu] { restaurant.MenuList.filter { $0.rate == "bad" } }
     
     var body: some View {
         LazyVGrid(columns: columns) {
@@ -73,27 +76,26 @@ struct RestaurantCardView: View {
                 }
                 
                 Spacer()
-                Text(restaurant.MenuList.first?.wrappedName ?? "메뉴가 없음")
-                    .font(.pretendardBold18)
-                    .foregroundStyle(.green)
+                favoriteMenuText(with: restaurant)
                 
                 Spacer()
                 
+                // TODO: [] 컴포넌트로 만들기
                 HStack(alignment: .center , spacing: 8) {
                     Image("likeFill")
                         .resizable()
                         .frame(width: 16, height: 16)
-                    Text("23")
+                    Text("\(likeMenu.count)")
                         .foregroundStyle(.black.opacity(0.5))
                     Image("curiousFill")
                         .resizable()
                         .frame(width: 16, height: 16)
-                    Text("1")
+                    Text("\(curiousMenu.count)")
                         .foregroundStyle(.black.opacity(0.5))
-                    Image("warningFill")
+                    Image("badFill")
                         .resizable()
                         .frame(width: 16, height: 16)
-                    Text("10")
+                    Text("\(badMenu.count)")
                         .foregroundStyle(.black.opacity(0.5))
                 }
             }
@@ -101,6 +103,24 @@ struct RestaurantCardView: View {
         .padding(24)
         .background(.background)
         .clipShape(RoundedRectangle(cornerRadius: 16.0))
+    }
+    
+    private func favoriteMenuText(with restaurant: Restaurant) -> Text {
+        let favoriteMenus = restaurant.MenuList.filter { $0.isFavorite }
+        
+        if let menu = favoriteMenus.first {
+            let menuText = favoriteMenus.count == 1
+            ? "\(menu.wrappedName)"
+            : "\(menu.wrappedName) 외 \(favoriteMenus.count - 1)"
+        
+            return Text(menuText)
+                .font(.pretendardBold18)
+                .foregroundColor(.green)
+        } else {
+            return Text("즐겨찾는 메뉴를 추가해보세요 😆")
+                .font(.pretendardRegular14)
+                .foregroundColor(.green)
+        }
     }
     
     private func updateRestaurant(with name: String?) {
