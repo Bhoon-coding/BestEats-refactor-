@@ -6,16 +6,18 @@
 //
 
 import SwiftUI
-import SwiftData
 
 @main
 struct BestEatsApp: App {
-    let storeDataManager = StoreDataManager.shared
+    @StateObject var coreDataManager = CoreDataManager()
+    @StateObject var toastManager = ToastManager()
     
     var body: some Scene {
         WindowGroup {
             TabBarView()
-                .environment(\.managedObjectContext, storeDataManager.container.viewContext)
+                .environment(\.managedObjectContext, coreDataManager.container.viewContext)
+                .environmentObject(coreDataManager)
+                .environmentObject(toastManager)
         }
         
     }
