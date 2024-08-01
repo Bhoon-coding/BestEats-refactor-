@@ -23,28 +23,31 @@ struct MenuView: View {
         return VStack {
             VStack(spacing: 8) {
                 CategoryView(rateType: $rateType, restaurant: restaurant)
-                    .padding(.top)
-                
-                ScrollView {
-                    LazyVGrid(columns: columns) {
+                    .padding(.vertical)
+                    List {
                         ForEach(coreDataManager.filteredMenu, id: \.self) { menu in
-                            NavigationLink {
-                                MenuDetailView(
-                                    rateType: $rateType,
-                                    restaurant: restaurant,
-                                    menu: menu
-                                )
-                            } label: {
-                                MenuItemView(
-                                    rateType: $rateType,
-                                    restaurant: restaurant,
-                                    menu: menu
-                                )
+                            ScrollView {
+                                NavigationLink {
+                                    MenuDetailView(
+                                        rateType: $rateType,
+                                        restaurant: restaurant,
+                                        menu: menu
+                                    )
+                                } label: {
+                                    MenuItemView(
+                                        rateType: $rateType,
+                                        restaurant: restaurant,
+                                        menu: menu
+                                    )
+                                }
                             }
+                            
                         }
+                        .onDelete(perform: { indexSet in
+                            deleteMenu(at: indexSet, rate: rateType)
+                        })
                     }
-                }
-                .padding(24)
+                    .listStyle(PlainListStyle())
             }
         }
         .onAppear { coreDataManager.fetchMenu(with: restaurant, rateType) }
@@ -62,6 +65,14 @@ struct MenuView: View {
         }
         .sheet(isPresented: $showAddView) {
             AddMenuSheet(rateType: $rateType, restaurant: restaurant)
+        }
+    }
+    
+    private func deleteMenu(at offsets: IndexSet, rate: Rate) {
+        for index in offsets {
+            let selectedMenu = coreDataManager.filteredMenu[index]
+            coreDataManager.delete(with: selectedMenu) // 실제 데이터 삭제
+            coreDataManager.filteredMenu.remove(at: index) // UI반영
         }
     }
 }

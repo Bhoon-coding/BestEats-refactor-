@@ -113,8 +113,8 @@ final class CoreDataManager: ObservableObject {
     
     // MARK: - Delete
     
-    func deleteRestaurant(with restaurant: Restaurant) {
-        context.delete(restaurant)
+    func delete(with object: NSManagedObject) {
+        context.delete(object)
         saveContext()
     }
     

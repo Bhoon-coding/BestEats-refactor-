@@ -49,9 +49,8 @@ struct MenuItemView: View {
                     .font(.pretendardSemiBold16)
             }
         }
-        .padding(24)
+        .padding(.top)
         .background(.background)
-        .clipShape(RoundedRectangle(cornerRadius: 16))
     }
 }
 

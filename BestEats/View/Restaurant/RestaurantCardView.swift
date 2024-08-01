@@ -59,7 +59,7 @@ struct RestaurantCardView: View {
                 .alert("맛집이름 변경", isPresented: $showEditAlert) {
                     TextField("맛집이름", text: $newName)
                     Button("취소", role: .cancel) {}
-                    Button("변경") { update(with: newName) }
+                    Button("변경") { updateRestaurant(with: newName) }
                 } message: {
                     Text("맛집이름을 변경해주세요")
                 }
@@ -67,7 +67,7 @@ struct RestaurantCardView: View {
                 // 삭제 Alert
                 .alert("맛집 삭제", isPresented: $showDeleteAlert) {
                     Button("취소", role: .cancel) {}
-                    Button("삭제", role: .destructive) { delete() }
+                    Button("삭제", role: .destructive) { deleteRestaurant() }
                 } message: {
                     Text("맛집에 포함된 메뉴들도 삭제 됩니다\n 삭제하시겠습니까?")
                 }
@@ -103,12 +103,12 @@ struct RestaurantCardView: View {
         .clipShape(RoundedRectangle(cornerRadius: 16.0))
     }
     
-    private func update(with name: String?) {
+    private func updateRestaurant(with name: String?) {
         coreDataManager.updateRestaurant(with: restaurant, newName: name)
     }
     
-    private func delete() {
-        coreDataManager.deleteRestaurant(with: restaurant)
+    private func deleteRestaurant() {
+        coreDataManager.delete(with: restaurant)
     }
 }
 
