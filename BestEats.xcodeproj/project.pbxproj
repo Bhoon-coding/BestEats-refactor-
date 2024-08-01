@@ -17,8 +17,6 @@
 		E1484FB12C4E44F7000A4272 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1484FB02C4E44F7000A4272 /* CategoryView.swift */; };
 		E1484FB32C4E500E000A4272 /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1484FB22C4E500E000A4272 /* MenuItemView.swift */; };
 		E1484FB52C4E61FD000A4272 /* MenuDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1484FB42C4E61FD000A4272 /* MenuDetailView.swift */; };
-		E1484FF82C4F8AA2000A4272 /* RestaurantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1484FF72C4F8AA2000A4272 /* RestaurantViewModel.swift */; };
-		E14850392C5211C1000A4272 /* MenuItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14850382C5211C1000A4272 /* MenuItemViewModel.swift */; };
 		E148503C2C522CB8000A4272 /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E148503B2C522CB8000A4272 /* Rate.swift */; };
 		E1BAB8ED2C46653100873CA6 /* BestEatsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB8EC2C46653100873CA6 /* BestEatsApp.swift */; };
 		E1BAB8EF2C46653100873CA6 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB8EE2C46653100873CA6 /* TabBarView.swift */; };
@@ -91,8 +89,6 @@
 		E1484FB02C4E44F7000A4272 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		E1484FB22C4E500E000A4272 /* MenuItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemView.swift; sourceTree = "<group>"; };
 		E1484FB42C4E61FD000A4272 /* MenuDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailView.swift; sourceTree = "<group>"; };
-		E1484FF72C4F8AA2000A4272 /* RestaurantViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantViewModel.swift; sourceTree = "<group>"; };
-		E14850382C5211C1000A4272 /* MenuItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemViewModel.swift; sourceTree = "<group>"; };
 		E148503B2C522CB8000A4272 /* Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
 		E1BAB8E92C46653100873CA6 /* BestEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BestEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1BAB8EC2C46653100873CA6 /* BestEatsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestEatsApp.swift; sourceTree = "<group>"; };
@@ -181,8 +177,6 @@
 			isa = PBXGroup;
 			children = (
 				E118E28C2C4E376800480A39 /* MenuViewModel.swift */,
-				E1484FF72C4F8AA2000A4272 /* RestaurantViewModel.swift */,
-				E14850382C5211C1000A4272 /* MenuItemViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -537,7 +531,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1E1A28B2C4A2D5E00DDABF8 /* Menu+CoreDataClass.swift in Sources */,
-				E1484FF82C4F8AA2000A4272 /* RestaurantViewModel.swift in Sources */,
 				E1484FB32C4E500E000A4272 /* MenuItemView.swift in Sources */,
 				E1BAB9232C466E2100873CA6 /* RecommendationView.swift in Sources */,
 				E1BAB8EF2C46653100873CA6 /* TabBarView.swift in Sources */,
@@ -564,7 +557,6 @@
 				E1E1A2942C4A360300DDABF8 /* AddRestaurantCard.swift in Sources */,
 				E1067C302C58C3E8005FE587 /* BackButton.swift in Sources */,
 				E1E1A27E2C493D2000DDABF8 /* CoreDataManager.swift in Sources */,
-				E14850392C5211C1000A4272 /* MenuItemViewModel.swift in Sources */,
 				E1BAB8ED2C46653100873CA6 /* BestEatsApp.swift in Sources */,
 				E1067C342C58DB6F005FE587 /* AddText.swift in Sources */,
 			);
