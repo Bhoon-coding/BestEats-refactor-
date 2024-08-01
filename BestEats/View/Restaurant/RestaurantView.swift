@@ -12,10 +12,19 @@ struct RestaurantView: View {
     @EnvironmentObject var coreDataManager: CoreDataManager
     @State private var searchText = ""
     
+    var filteredData: [Restaurant] {
+        if searchText.isEmpty {
+            return coreDataManager.savedRestaurant
+        } else {
+            return coreDataManager.savedRestaurant.filter { $0.wrappedName.localizedStandardContains(searchText)
+            }
+        }
+    }
+    
     var body: some View {
         NavigationView {
             ScrollView {
-                ForEach(coreDataManager.savedRestaurant) { item in
+                ForEach(filteredData) { item in
                     NavigationLink {
                         MenuView(restaurant: item)
                     } label: {
@@ -28,8 +37,11 @@ struct RestaurantView: View {
                 AddRestaurantCard()
             }
             .background(.gray.opacity(0.1))
-            .navigationBarBackButtonHidden(true)
-            .searchable(text: $searchText, prompt: "맛집을 검색해주세요")
+            .searchable(
+                text: $searchText,
+                placement: .navigationBarDrawer(displayMode: .always),
+                prompt: "맛집을 검색해주세요"
+            )
         }
     }
 }
