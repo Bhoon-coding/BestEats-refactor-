@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "thumbs-down-1.png",
+      "filename" : "appLogo.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "appLogo.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "appLogo.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
