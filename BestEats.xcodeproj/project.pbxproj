@@ -19,6 +19,7 @@
 		E1484FB52C4E61FD000A4272 /* MenuDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1484FB42C4E61FD000A4272 /* MenuDetailView.swift */; };
 		E148503C2C522CB8000A4272 /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E148503B2C522CB8000A4272 /* Rate.swift */; };
 		E1492FA12C5B7D8E008EDC83 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1492FA02C5B7D8E008EDC83 /* SplashView.swift */; };
+		E1492FA42C5CBB7F008EDC83 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1492FA32C5CBB7F008EDC83 /* TabItem.swift */; };
 		E1BAB8ED2C46653100873CA6 /* BestEatsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB8EC2C46653100873CA6 /* BestEatsApp.swift */; };
 		E1BAB8EF2C46653100873CA6 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB8EE2C46653100873CA6 /* TabBarView.swift */; };
 		E1BAB8F32C46653300873CA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1BAB8F22C46653300873CA6 /* Assets.xcassets */; };
@@ -92,6 +93,7 @@
 		E1484FB42C4E61FD000A4272 /* MenuDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailView.swift; sourceTree = "<group>"; };
 		E148503B2C522CB8000A4272 /* Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
 		E1492FA02C5B7D8E008EDC83 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		E1492FA32C5CBB7F008EDC83 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		E1BAB8E92C46653100873CA6 /* BestEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BestEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1BAB8EC2C46653100873CA6 /* BestEatsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestEatsApp.swift; sourceTree = "<group>"; };
 		E1BAB8EE2C46653100873CA6 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
@@ -199,6 +201,14 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
+		E1492FA22C5CBB70008EDC83 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E1492FA32C5CBB7F008EDC83 /* TabItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		E1BAB8E02C46653100873CA6 = {
 			isa = PBXGroup;
 			children = (
@@ -222,6 +232,7 @@
 		E1BAB8EB2C46653100873CA6 /* BestEats */ = {
 			isa = PBXGroup;
 			children = (
+				E1492FA22C5CBB70008EDC83 /* Model */,
 				E118E28B2C4E373B00480A39 /* ViewModel */,
 				E1BAB91D2C466DFB00873CA6 /* View */,
 				E1E1A26E2C49346700DDABF8 /* Components */,
@@ -549,6 +560,7 @@
 				E1E1A2922C4A336E00DDABF8 /* RestaurantCardView.swift in Sources */,
 				E1E1A28E2C4A2D5E00DDABF8 /* Restaurant+CoreDataProperties.swift in Sources */,
 				E1484FB12C4E44F7000A4272 /* CategoryView.swift in Sources */,
+				E1492FA42C5CBB7F008EDC83 /* TabItem.swift in Sources */,
 				E1DEE8BA2C490BB30035B56F /* FontEx.swift in Sources */,
 				E1484FB52C4E61FD000A4272 /* MenuDetailView.swift in Sources */,
 				E1E1A2702C49349E00DDABF8 /* CloseButton.swift in Sources */,

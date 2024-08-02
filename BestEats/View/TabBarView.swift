@@ -9,25 +9,38 @@ import SwiftUI
 
 struct TabBarView: View {
     
+    @State var isLoading: Bool = true
+    
+    let tabs: [TabItem] = [
+        TabItem(view: .init(RestaurantView()), icon: "house.fill", title: "홈"),
+        TabItem(view: .init(RecommendationView()), icon: "person.fill.questionmark", title: "추천"),
+        TabItem(view: .init(SettingsView()), icon: "gearshape.fill", title: "설정")
+    ]
+    
     var body: some View {
-        TabView {
-            RestaurantView()
-                .tabItem {
-                    Image(systemName: "house.fill")
-                    Text("홈")
+        ZStack {
+            if isLoading {
+                SplashView()
+                    .transition(.opacity)
+            } else {
+                TabView {
+                    ForEach(tabs) { tab in
+                        tab.view
+                            .tabItem {
+                                Image(systemName: tab.icon)
+                                Text(tab.title)
+                            }
+                    }
                 }
-            RecommendationView()
-                .tabItem {
-                    Image(systemName: "person.fill.questionmark")
-                    Text("추천")
-                }
-            SettingsView()
-                .tabItem {
-                    Image(systemName: "gearshape.fill")
-                    Text("설정")
-                }
+            }
         }
-        
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                withAnimation {
+                    isLoading = false
+                }
+            }
+        }
     }
 }
 
