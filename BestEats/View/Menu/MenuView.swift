@@ -21,9 +21,10 @@ struct MenuView: View {
         Self._printChanges()
         
         return VStack {
-            VStack(spacing: 8) {
-                CategoryView(rateType: $rateType, restaurant: restaurant)
-                    .padding(.vertical)
+            ZStack(alignment: .bottomTrailing) {
+                VStack(spacing: 8) {
+                    CategoryView(rateType: $rateType, restaurant: restaurant)
+                        .padding(.vertical)
                     List {
                         ForEach(coreDataManager.filteredMenu, id: \.self) { menu in
                             ScrollView {
@@ -48,6 +49,8 @@ struct MenuView: View {
                         })
                     }
                     .listStyle(PlainListStyle())
+                }
+                AddButton(sheet: .menu(rateType: $rateType, restaurant: restaurant))
             }
         }
         .onAppear { coreDataManager.fetchMenu(with: restaurant, rateType) }
@@ -55,17 +58,7 @@ struct MenuView: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle(self.restaurant.wrappedName)
         .navigationBarBackButtonHidden(true)
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                Button("추가") { self.showAddView.toggle() }
-                    .font(.pretendardBold18)
-                    .foregroundStyle(.black)
-            }
-            ToolbarItem(placement: .topBarLeading) { BackButton() }
-        }
-        .sheet(isPresented: $showAddView) {
-            AddMenuSheet(rateType: $rateType, restaurant: restaurant)
-        }
+        .toolbar { ToolbarItem(placement: .topBarLeading) { BackButton() } }
     }
     
     private func deleteMenu(at offsets: IndexSet, rate: Rate) {

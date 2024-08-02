@@ -7,8 +7,26 @@
 
 import SwiftUI
 
-struct AddRestaurantCard: View {
+struct AddButton: View {
+    
     @State private var isPresented = false
+    
+    var sheet: AddSheetType
+    
+    enum AddSheetType {
+        case restaurant
+        case menu(rateType: Binding<Rate>, restaurant: Restaurant)
+        
+        @ViewBuilder
+        var sheetView: some View {
+            switch self {
+            case .restaurant:
+                AddRestaurantSheet()
+            case .menu(let rateType, let restaurant):
+                AddMenuSheet(rateType: rateType, restaurant: restaurant)
+            }
+        }
+    }
     
     var body: some View {
         Button(action: {
@@ -25,7 +43,7 @@ struct AddRestaurantCard: View {
         .padding()
         .sheet(
             isPresented: $isPresented,
-            content: { AddRestaurantSheet() }
+            content: { sheet.sheetView }
         )
     }
 }

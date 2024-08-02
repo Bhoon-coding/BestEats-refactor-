@@ -23,7 +23,7 @@ struct RestaurantView: View {
     
     var body: some View {
         
-        NavigationStack {
+        NavigationView {
             ZStack(alignment: .bottomTrailing) {
                 ScrollView {
                     ForEach(filteredData) { item in
@@ -45,7 +45,7 @@ struct RestaurantView: View {
                     placement: .navigationBarDrawer(displayMode: .always),
                     prompt: "맛집을 검색해주세요"
                 )
-                AddRestaurantCard()
+                AddButton(sheet: .restaurant)
             }
         }
     }

@@ -60,7 +60,7 @@
 		E1E1A28D2C4A2D5E00DDABF8 /* Restaurant+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1A2892C4A2D5E00DDABF8 /* Restaurant+CoreDataClass.swift */; };
 		E1E1A28E2C4A2D5E00DDABF8 /* Restaurant+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1A28A2C4A2D5E00DDABF8 /* Restaurant+CoreDataProperties.swift */; };
 		E1E1A2922C4A336E00DDABF8 /* RestaurantCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1A2912C4A336E00DDABF8 /* RestaurantCardView.swift */; };
-		E1E1A2942C4A360300DDABF8 /* AddRestaurantCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1A2932C4A360300DDABF8 /* AddRestaurantCard.swift */; };
+		E1E1A2942C4A360300DDABF8 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1A2932C4A360300DDABF8 /* AddButton.swift */; };
 		E1E1A2982C4A528300DDABF8 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1A2972C4A528300DDABF8 /* MenuView.swift */; };
 /* End PBXBuildFile section */
 
@@ -128,7 +128,7 @@
 		E1E1A2892C4A2D5E00DDABF8 /* Restaurant+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Restaurant+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E1E1A28A2C4A2D5E00DDABF8 /* Restaurant+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Restaurant+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E1E1A2912C4A336E00DDABF8 /* RestaurantCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCardView.swift; sourceTree = "<group>"; };
-		E1E1A2932C4A360300DDABF8 /* AddRestaurantCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRestaurantCard.swift; sourceTree = "<group>"; };
+		E1E1A2932C4A360300DDABF8 /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 		E1E1A2972C4A528300DDABF8 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -294,7 +294,7 @@
 				E1BAB9252C47AFB400873CA6 /* AddRestaurantSheet.swift */,
 				E1BAB91E2C466E1200873CA6 /* RestaurantView.swift */,
 				E1E1A2912C4A336E00DDABF8 /* RestaurantCardView.swift */,
-				E1E1A2932C4A360300DDABF8 /* AddRestaurantCard.swift */,
+				E1E1A2932C4A360300DDABF8 /* AddButton.swift */,
 			);
 			path = Restaurant;
 			sourceTree = "<group>";
@@ -576,7 +576,7 @@
 				E148503C2C522CB8000A4272 /* Rate.swift in Sources */,
 				E1E1A28D2C4A2D5E00DDABF8 /* Restaurant+CoreDataClass.swift in Sources */,
 				E1E1A2742C49391D00DDABF8 /* RestaurantList.xcdatamodeld in Sources */,
-				E1E1A2942C4A360300DDABF8 /* AddRestaurantCard.swift in Sources */,
+				E1E1A2942C4A360300DDABF8 /* AddButton.swift in Sources */,
 				E1067C302C58C3E8005FE587 /* BackButton.swift in Sources */,
 				E1E1A27E2C493D2000DDABF8 /* CoreDataManager.swift in Sources */,
 				E1BAB8ED2C46653100873CA6 /* BestEatsApp.swift in Sources */,
