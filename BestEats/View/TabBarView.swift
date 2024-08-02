@@ -11,12 +11,6 @@ struct TabBarView: View {
     
     @State var isLoading: Bool = true
     
-    let tabs: [TabItem] = [
-        TabItem(view: .init(RestaurantView()), icon: "house.fill", title: "홈"),
-        TabItem(view: .init(RecommendationView()), icon: "person.fill.questionmark", title: "추천"),
-        TabItem(view: .init(SettingsView()), icon: "gearshape.fill", title: "설정")
-    ]
-    
     var body: some View {
         ZStack {
             if isLoading {
@@ -24,18 +18,27 @@ struct TabBarView: View {
                     .transition(.opacity)
             } else {
                 TabView {
-                    ForEach(tabs) { tab in
-                        tab.view
-                            .tabItem {
-                                Image(systemName: tab.icon)
-                                Text(tab.title)
-                            }
-                    }
+                    RestaurantView()
+                        .tabItem {
+                            Image(systemName: "house.fill")
+                            Text("홈")
+                        }
+                    RecommendationView()
+                        .tabItem {
+                            Image(systemName: "person.fill.questionmark")
+                            Text("추천")
+                        }
+                    SettingsView()
+                        .tabItem {
+                            Image(systemName: "gearshape.fill")
+                            Text("설정")
+                        }
                 }
             }
         }
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            // TODO: [] 추후 데이터 fetch시간이 걸리는경우 로딩 구현
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
                 withAnimation {
                     isLoading = false
                 }
