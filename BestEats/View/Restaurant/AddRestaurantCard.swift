@@ -11,33 +11,21 @@ struct AddRestaurantCard: View {
     @State private var isPresented = false
     
     var body: some View {
-        ZStack {
-            Button {
-                self.isPresented.toggle()
-            } label: {
-                HStack {
-                    Image(systemName: "plus")
-                    Text("맛집 추가")
-                }
-                .font(.pretendardBold18)
-                .foregroundStyle(.gray)
-                .padding(.vertical, 12)
-                .padding(.horizontal, 40)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 24)
-                    .stroke(.gray.opacity(0.5), lineWidth: 2)
-                )
-            }
-            .padding(.vertical, 40)
-            .sheet(
-                isPresented: $isPresented,
-                content: { AddRestaurantSheet() }
-            )
-        }
-        .frame(maxWidth: .infinity)
-        .background(.background)
-        .clipShape(RoundedRectangle(cornerRadius: 16))
-        .padding(.horizontal, 24)
-        .shadow(radius: 4, x: 8, y: 8)
+        Button(action: {
+            self.isPresented = true
+        }, label: {
+            Image(systemName: "plus")
+                .font(.pretendardBold24)
+                .padding()
+                .background(.green)
+                .foregroundStyle(.white)
+                .clipShape(Circle())
+                .shadow(radius: 4, x: 0, y: 4)
+        })
+        .padding()
+        .sheet(
+            isPresented: $isPresented,
+            content: { AddRestaurantSheet() }
+        )
     }
 }
