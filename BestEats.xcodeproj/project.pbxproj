@@ -210,9 +210,26 @@
 		E1492FA22C5CBB70008EDC83 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E1492FA92C60E115008EDC83 /* RestaurantList */,
 				E1492FA32C5CBB7F008EDC83 /* TabItem.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E1492FA92C60E115008EDC83 /* RestaurantList */ = {
+			isa = PBXGroup;
+			children = (
+				E1E1A2722C49391D00DDABF8 /* RestaurantList.xcdatamodeld */,
+			);
+			path = RestaurantList;
+			sourceTree = "<group>";
+		};
+		E1492FAA2C60E141008EDC83 /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				E1BAB8EE2C46653100873CA6 /* TabBarView.swift */,
+			);
+			path = Tab;
 			sourceTree = "<group>";
 		};
 		E1BAB8E02C46653100873CA6 = {
@@ -246,7 +263,6 @@
 				E1DEE8C02C490E900035B56F /* Resource */,
 				E1DEE8B82C490B890035B56F /* Util */,
 				E1BAB8EC2C46653100873CA6 /* BestEatsApp.swift */,
-				E1E1A2722C49391D00DDABF8 /* RestaurantList.xcdatamodeld */,
 				E1BAB8F22C46653300873CA6 /* Assets.xcassets */,
 				E1BAB8F42C46653300873CA6 /* Preview Content */,
 			);
@@ -308,8 +324,8 @@
 		E1BAB91D2C466DFB00873CA6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E1492FAA2C60E141008EDC83 /* Tab */,
 				E1492F9F2C5B7D82008EDC83 /* Splash */,
-				E1BAB8EE2C46653100873CA6 /* TabBarView.swift */,
 				E1BAB91C2C466DF400873CA6 /* Restaurant */,
 				E1E1A2962C4A526200DDABF8 /* Menu */,
 				E1BAB91B2C466DEC00873CA6 /* Settings */,

@@ -53,17 +53,17 @@ struct RestaurantCardView: View {
                     Image(Img.likeFill)
                         .resizable()
                         .frame(width: 16, height: 16)
-                    Text(likeMenu.count)
+                    Text("\(likeMenu.count)")
                         .foregroundStyle(.black.opacity(0.5))
                     Image(Img.curiousFill)
                         .resizable()
                         .frame(width: 16, height: 16)
-                    Text(curiousMenu.count)
+                    Text("\(curiousMenu.count)")
                         .foregroundStyle(.black.opacity(0.5))
                     Image(Img.badFill)
                         .resizable()
                         .frame(width: 16, height: 16)
-                    Text(badMenu.count)
+                    Text("\(badMenu.count)")
                         .foregroundStyle(.black.opacity(0.5))
                 }
             }
@@ -115,7 +115,7 @@ struct RestaurantCardView: View {
         if let menu = sortedMenu.first {
             let menuText = favoriteMenus.count == 1
             ? menu.wrappedName
-            : "\(menu.wrappedName) 외 \(favoriteMenus.count - 1)"
+            : "\(menu.wrappedName) 외 \(favoriteMenus.count - 1)개"
         
             return Text(menuText)
                 .font(.pretendardBold18)

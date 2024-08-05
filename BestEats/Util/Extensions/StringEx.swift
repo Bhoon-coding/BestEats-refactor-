@@ -11,6 +11,8 @@ extension String {
     }
 }
 
+// MARK: - Namespace
+
 public enum Tab {
     static let home: String = "홈"
     static let recommend: String = "추천"
@@ -83,7 +85,5 @@ public enum Info {
 public enum ETC {
     enum Button {
         static let add: String = "추가하기"
-        static let confirm: String = "추가하기"
-        static let cancel: String = "추가하기"
     }
 }

@@ -23,11 +23,11 @@ struct TabBarView: View {
                             Image(systemName: Img.house)
                             Text(Tab.home)
                         }
-                    RecommendationView()
-                        .tabItem {
-                            Image(systemName: Img.recommend)
-                            Text(Tab.recommend)
-                        }
+//                    RecommendationView()
+//                        .tabItem {
+//                            Image(systemName: Img.recommend)
+//                            Text(Tab.recommend)
+//                        }
                     SettingsView()
                         .tabItem {
                             Image(systemName: Img.setting)
