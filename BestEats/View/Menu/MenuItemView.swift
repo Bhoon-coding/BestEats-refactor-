@@ -20,6 +20,7 @@ struct MenuItemView: View {
                 Text(menu.wrappedName)
                     .font(.pretendardBold20)
                     .foregroundStyle(.orange)
+                    .lineLimit(1)
                 
                 Spacer()
                 
@@ -47,6 +48,7 @@ struct MenuItemView: View {
             VStack {
                 Text(menu.wrappedOneLiner)
                     .font(.pretendardSemiBold16)
+                    .lineLimit(2)
             }
         }
         .padding(.top)

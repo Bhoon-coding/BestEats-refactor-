@@ -22,7 +22,11 @@ struct AddMenuSheet: View {
     
     var restaurant: Restaurant
     
-    private var isValid: Bool { !menuName.isEmpty && !oneLiner.isEmpty }
+    private var isValid: Bool {
+        !menuName.trimming().isEmpty &&
+        !oneLiner.trimming().isEmpty &&
+        oneLiner.trimming().count <= 30
+    }
     
     var body: some View {
         VStack {
@@ -38,7 +42,7 @@ struct AddMenuSheet: View {
                 .font(.pretendardMedium16)
                 Text("한줄평")
                 TextField(
-                    "한줄평을 입력해주세요",
+                    "한줄평을 입력해주세요 (30자 이내)",
                     text: $oneLiner
                 )
                 .textFieldStyle(.roundedBorder)
@@ -93,12 +97,18 @@ struct AddMenuSheet: View {
     }
     
     private func addMenu(isFavorite: Bool) {
+        let menuName = self.menuName.trimming()
+        let oneLiner = self.oneLiner.trimming()
+        
         coreDataManager.addMenu(with: restaurant, menuName, oneLiner, rateType, isFavorite)
         dismiss()
     }
     
     private func showFillOutToast() {
-        self.toastText = menuName.isEmpty ? "메뉴명을 입력해주세요" : "한줄평을 입력해주세요"
+        self.toastText = menuName.trimming().isEmpty
+        ? "메뉴명을 입력해주세요"
+        : "한줄평을 입력해주세요 (30자 이내)"
+        
         toastManager.showToast(message: self.toastText)
     }
 }

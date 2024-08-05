@@ -51,7 +51,7 @@ struct MenuDetailView: View {
                 .font(.pretendardMedium16)
                 Text("한줄평")
                 TextField(
-                    "한줄평을 입력해주세요",
+                    "한줄평을 입력해주세요 (30자 이내)",
                     text: $oneLiner
                 )
                 .disabled(!isEditMode)
@@ -98,7 +98,7 @@ struct MenuDetailView: View {
     
     
     private func checkValid() {
-        if name.isEmpty || oneLiner.isEmpty {
+        if name.trimming().isEmpty || oneLiner.trimming().isEmpty {
             showFillOutToast()
         } else {
             handleSaveAction()
@@ -106,13 +106,16 @@ struct MenuDetailView: View {
     }
     
     private func showFillOutToast() {
-        self.toastText = name.isEmpty ? "메뉴명을 입력해주세요" : "한줄평을 입력해주세요"
+        self.toastText = name.trimming().isEmpty
+        ? "메뉴명을 입력해주세요"
+        : "한줄평을 입력해주세요 (30자 이내)"
+        
         toastManager.showToast(message: toastText)
     }
     
     private func handleSaveAction() {
         rateType == .like
-        ? self.showFavoriteAlert = true
+        ? showFavoriteAlert = true
         : handleSave(isFavorite: false)
     }
     
@@ -121,6 +124,9 @@ struct MenuDetailView: View {
     }
     
     private func handleSave(isFavorite: Bool) {
+        let name = self.name.trimming()
+        let oneLiner = self.oneLiner.trimming()
+        
         coreDataManager.updateMenu(
             with: restaurant,
             id: menu?.id ?? UUID(),

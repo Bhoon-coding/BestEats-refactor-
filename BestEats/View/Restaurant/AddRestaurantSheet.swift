@@ -20,7 +20,12 @@ struct AddRestaurantSheet: View {
     @State var toastText: String = ""
     @State var showFavoriteAlert: Bool = false
     
-    private var isValid: Bool { !restaurantName.isEmpty && !menuName.isEmpty && !oneLiner.isEmpty }
+    private var isValid: Bool {
+        !restaurantName.trimming().isEmpty &&
+        !menuName.trimming().isEmpty &&
+        !oneLiner.trimming().isEmpty &&
+        oneLiner.trimming().count <= 30
+    }
     
     var body: some View {
         VStack {
@@ -43,7 +48,7 @@ struct AddRestaurantSheet: View {
                 .font(.pretendardMedium16)
                 Text("한줄평")
                 TextField(
-                    "한줄평을 입력해주세요",
+                    "한줄평을 입력해주세요 (30자 이내)",
                     text: $oneLiner
                 )
                 .textFieldStyle(.roundedBorder)
@@ -87,6 +92,7 @@ struct AddRestaurantSheet: View {
         }
         .padding(.horizontal, 24)
         .padding(.top, 24)
+        .toast(toastManager: toastManager)
         .favoriteAlert(isPresented: $showFavoriteAlert) { isFavorite in
             addRestaurant(isFavorite: isFavorite)
         }
@@ -101,6 +107,10 @@ struct AddRestaurantSheet: View {
     }
     
     private func addRestaurant(isFavorite: Bool) {
+        let restaurantName = self.restaurantName.trimming()
+        let menuName = self.menuName.trimming()
+        let oneLiner = self.oneLiner.trimming()
+        
         coreDataManager.addRestaurant(restaurantName, menuName, oneLiner, rateType, isFavorite)
         dismiss()
     }
@@ -108,12 +118,12 @@ struct AddRestaurantSheet: View {
     private func checkEmptyForm() {
         var toastText: String = ""
         
-        if restaurantName.isEmpty {
+        if restaurantName.trimming().isEmpty {
             toastText = "맛집명을 입력해주세요"
-        } else if menuName.isEmpty {
+        } else if menuName.trimming().isEmpty {
             toastText = "메뉴명을 입력해주세요"
         } else {
-            toastText = "한줄평을 입력해주세요"
+            toastText = "한줄평을 입력해주세요 (30자 이내)"
         }
         
         showFillOutToast(message: toastText)

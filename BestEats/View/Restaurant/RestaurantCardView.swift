@@ -29,6 +29,7 @@ struct RestaurantCardView: View {
                     Text(restaurant.wrappedName)
                         .font(.pretendardBold24)
                         .foregroundStyle(.orange)
+                        .lineLimit(1)
                     
                     Spacer()
                     
@@ -38,45 +39,12 @@ struct RestaurantCardView: View {
                         Image(systemName: "ellipsis")
                             .foregroundStyle(.black)
                     })
-                    .confirmationDialog(
-                        "맛집 설정",
-                        isPresented: $showDialog,
-                        titleVisibility: .visible,
-                        actions: {
-                            Button("변경") {
-                                self.showEditAlert.toggle()
-                            }
-                        
-                            Button(role: .destructive) {
-                                self.showDeleteAlert.toggle()
-                            } label: {
-                                Text("삭제")
-                            }
-                            Button("취소", role: .cancel) {}
-                        }, message: {
-                            Text("아래 항목을 선택해주세요")
-                        })
-                }
-                // 수정 Alert
-                .alert("맛집이름 변경", isPresented: $showEditAlert) {
-                    TextField("맛집이름", text: $newName)
-                    Button("취소", role: .cancel) {}
-                    Button("변경") { updateRestaurant(with: newName) }
-                } message: {
-                    Text("맛집이름을 변경해주세요")
-                }
-                
-                // 삭제 Alert
-                .alert("맛집 삭제", isPresented: $showDeleteAlert) {
-                    Button("취소", role: .cancel) {}
-                    Button("삭제", role: .destructive) { deleteRestaurant() }
-                } message: {
-                    Text("맛집에 포함된 메뉴들도 삭제 됩니다\n 삭제하시겠습니까?")
                 }
                 
                 Spacer()
                 
                 favoriteMenuText(with: restaurant)
+                    .lineLimit(1)
                 
                 Spacer()
                 
@@ -103,6 +71,41 @@ struct RestaurantCardView: View {
         .padding(24)
         .background(.background)
         .clipShape(RoundedRectangle(cornerRadius: 16.0))
+        .confirmationDialog(
+            "맛집 설정",
+            isPresented: $showDialog,
+            titleVisibility: .visible,
+            actions: {
+                Button("변경") {
+                    self.showEditAlert.toggle()
+                }
+            
+                Button(role: .destructive) {
+                    self.showDeleteAlert.toggle()
+                } label: {
+                    Text("삭제")
+                }
+                Button("취소", role: .cancel) {}
+            }, message: {
+                Text("아래 항목을 선택해주세요")
+            })
+        
+        // 수정 Alert
+        .alert("맛집이름 변경", isPresented: $showEditAlert) {
+            TextField("맛집이름", text: $newName)
+            Button("취소", role: .cancel) {}
+            Button("변경") { updateRestaurant(with: newName) }
+        } message: {
+            Text("맛집이름을 변경해주세요")
+        }
+        
+        // 삭제 Alert
+        .alert("맛집 삭제", isPresented: $showDeleteAlert) {
+            Button("취소", role: .cancel) {}
+            Button("삭제", role: .destructive) { deleteRestaurant() }
+        } message: {
+            Text("맛집에 포함된 메뉴들도 삭제 됩니다\n 삭제하시겠습니까?")
+        }
     }
     
     private func favoriteMenuText(with restaurant: Restaurant) -> Text {
