@@ -21,6 +21,7 @@
 		E1492FA12C5B7D8E008EDC83 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1492FA02C5B7D8E008EDC83 /* SplashView.swift */; };
 		E1492FA42C5CBB7F008EDC83 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1492FA32C5CBB7F008EDC83 /* TabItem.swift */; };
 		E1492FA62C6090C2008EDC83 /* UINavigationControllerEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1492FA52C6090C2008EDC83 /* UINavigationControllerEx.swift */; };
+		E1492FA82C609B47008EDC83 /* StringEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1492FA72C609B47008EDC83 /* StringEx.swift */; };
 		E1BAB8ED2C46653100873CA6 /* BestEatsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB8EC2C46653100873CA6 /* BestEatsApp.swift */; };
 		E1BAB8EF2C46653100873CA6 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB8EE2C46653100873CA6 /* TabBarView.swift */; };
 		E1BAB8F32C46653300873CA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1BAB8F22C46653300873CA6 /* Assets.xcassets */; };
@@ -96,6 +97,7 @@
 		E1492FA02C5B7D8E008EDC83 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		E1492FA32C5CBB7F008EDC83 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		E1492FA52C6090C2008EDC83 /* UINavigationControllerEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerEx.swift; sourceTree = "<group>"; };
+		E1492FA72C609B47008EDC83 /* StringEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringEx.swift; sourceTree = "<group>"; };
 		E1BAB8E92C46653100873CA6 /* BestEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BestEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1BAB8EC2C46653100873CA6 /* BestEatsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestEatsApp.swift; sourceTree = "<group>"; };
 		E1BAB8EE2C46653100873CA6 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				E1DEE8BE2C490BD00035B56F /* ImageEx.swift */,
 				E1067C3E2C5A1749005FE587 /* ViewEx.swift */,
 				E1492FA52C6090C2008EDC83 /* UINavigationControllerEx.swift */,
+				E1492FA72C609B47008EDC83 /* StringEx.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -580,6 +583,7 @@
 				E148503C2C522CB8000A4272 /* Rate.swift in Sources */,
 				E1E1A28D2C4A2D5E00DDABF8 /* Restaurant+CoreDataClass.swift in Sources */,
 				E1E1A2742C49391D00DDABF8 /* RestaurantList.xcdatamodeld in Sources */,
+				E1492FA82C609B47008EDC83 /* StringEx.swift in Sources */,
 				E1E1A2942C4A360300DDABF8 /* AddButton.swift in Sources */,
 				E1067C302C58C3E8005FE587 /* BackButton.swift in Sources */,
 				E1E1A27E2C493D2000DDABF8 /* CoreDataManager.swift in Sources */,
