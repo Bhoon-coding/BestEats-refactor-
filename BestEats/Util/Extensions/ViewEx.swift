@@ -34,14 +34,14 @@ extension View {
         completion: @escaping (Bool) -> Void
     ) -> some View {
         self.alert(
-            "즐겨찾기 추가",
+            Alerts.Title.addFavorite,
             isPresented: isPresented,
             actions: {
-                Button("네") { completion(true) }
-                Button("아니오", role: .cancel) { completion(false) }
+                Button(Alerts.Button.confirm) { completion(true) }
+                Button(Alerts.Button.cancel, role: .cancel) { completion(false) }
             },
             message: {
-                Text("즐겨찾기에 추가 하시겠습니까?")
+                Text(Alerts.Message.addFavorite)
             }
         )
     }

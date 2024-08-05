@@ -20,18 +20,18 @@ struct TabBarView: View {
                 TabView {
                     RestaurantView()
                         .tabItem {
-                            Image(systemName: "house.fill")
-                            Text("홈")
+                            Image(systemName: Img.house)
+                            Text(Tab.home)
                         }
                     RecommendationView()
                         .tabItem {
-                            Image(systemName: "person.fill.questionmark")
-                            Text("추천")
+                            Image(systemName: Img.recommend)
+                            Text(Tab.recommend)
                         }
                     SettingsView()
                         .tabItem {
-                            Image(systemName: "gearshape.fill")
-                            Text("설정")
+                            Image(systemName: Img.setting)
+                            Text(Tab.setting)
                         }
                 }
             }

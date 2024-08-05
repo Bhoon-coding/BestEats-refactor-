@@ -35,11 +35,11 @@ struct CategoryView: View {
     private func rateDescription(with rate: Rate) -> String {
         switch rate {
         case .like:
-            return "좋아요"
+            return Info.RateDescription.like
         case .curious:
-            return "먹어볼래요"
+            return Info.RateDescription.curious
         case .bad:
-            return "별로에요"
+            return Info.RateDescription.bad
         }
     }
 }

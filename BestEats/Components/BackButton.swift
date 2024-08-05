@@ -13,7 +13,7 @@ struct BackButton: View {
     
     var body: some View {
         Button(action: { dismiss() }, label: {
-            Image(systemName: "chevron.left")
+            Image(systemName: Img.back)
                 .foregroundStyle(.black)
                 .font(.pretendardBold18)
         })

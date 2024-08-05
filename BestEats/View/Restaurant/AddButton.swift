@@ -32,7 +32,7 @@ struct AddButton: View {
         Button(action: {
             self.isPresented = true
         }, label: {
-            Image(systemName: "plus")
+            Image(systemName: Img.add)
                 .font(.pretendardBold24)
                 .padding()
                 .background(.green)

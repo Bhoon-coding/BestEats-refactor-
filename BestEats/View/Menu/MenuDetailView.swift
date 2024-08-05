@@ -25,7 +25,13 @@ struct MenuDetailView: View {
     var menu: Menu?
     
     private var toolBarButton: some View {
-        Button(isEditMode ? "저장" : "수정") { isEditMode ? checkValid() : handleEdit() }
+        Button(
+            isEditMode 
+            ? Navigation.Button.save 
+            : Navigation.Button.update
+        ) {
+            isEditMode ? checkValid() : handleEdit()
+        }
         .font(.pretendardBold18)
         .foregroundStyle(.black)
     }
@@ -41,23 +47,23 @@ struct MenuDetailView: View {
     var body: some View {
         VStack {
             VStack(alignment: .leading, spacing: 16) {
-                Text("메뉴명")
+                Text(Info.Label.menu)
                 TextField(
-                    "메뉴를 입력해주세요",
+                    Info.Placeholder.needMenuName,
                     text: $name
                 )
                 .disabled(!isEditMode)
                 .textFieldStyle(.roundedBorder)
                 .font(.pretendardMedium16)
-                Text("한줄평")
+                Text(Info.Label.oneLiner)
                 TextField(
-                    "한줄평을 입력해주세요 (30자 이내)",
+                    Info.Placeholder.needOneLiner,
                     text: $oneLiner
                 )
                 .disabled(!isEditMode)
                 .textFieldStyle(.roundedBorder)
                 .font(.pretendardMedium16)
-                Text("내평가")
+                Text(Info.Label.rating)
                 HStack {
                     ForEach(Rate.allCases) { rate in
                         Button(action: {
@@ -107,8 +113,8 @@ struct MenuDetailView: View {
     
     private func showFillOutToast() {
         self.toastText = name.trimming().isEmpty
-        ? "메뉴명을 입력해주세요"
-        : "한줄평을 입력해주세요 (30자 이내)"
+        ? Info.Placeholder.needMenuName
+        : Info.Placeholder.needOneLiner
         
         toastManager.showToast(message: toastText)
     }

@@ -36,7 +36,7 @@ struct RestaurantCardView: View {
                     Button(action: {
                         self.showDialog.toggle()
                     }, label: {
-                        Image(systemName: "ellipsis")
+                        Image(systemName: Img.more)
                             .foregroundStyle(.black)
                     })
                 }
@@ -50,20 +50,20 @@ struct RestaurantCardView: View {
                 
                 // TODO: [] 컴포넌트로 만들기
                 HStack(alignment: .center , spacing: 8) {
-                    Image("likeFill")
+                    Image(Img.likeFill)
                         .resizable()
                         .frame(width: 16, height: 16)
-                    Text("\(likeMenu.count)")
+                    Text(likeMenu.count)
                         .foregroundStyle(.black.opacity(0.5))
-                    Image("curiousFill")
+                    Image(Img.curiousFill)
                         .resizable()
                         .frame(width: 16, height: 16)
-                    Text("\(curiousMenu.count)")
+                    Text(curiousMenu.count)
                         .foregroundStyle(.black.opacity(0.5))
-                    Image("badFill")
+                    Image(Img.badFill)
                         .resizable()
                         .frame(width: 16, height: 16)
-                    Text("\(badMenu.count)")
+                    Text(badMenu.count)
                         .foregroundStyle(.black.opacity(0.5))
                 }
             }
@@ -72,39 +72,39 @@ struct RestaurantCardView: View {
         .background(.background)
         .clipShape(RoundedRectangle(cornerRadius: 16.0))
         .confirmationDialog(
-            "맛집 설정",
+            Alerts.Title.Restaurant.setting,
             isPresented: $showDialog,
             titleVisibility: .visible,
             actions: {
-                Button("변경") {
+                Button(Alerts.Button.update) {
                     self.showEditAlert.toggle()
                 }
             
                 Button(role: .destructive) {
                     self.showDeleteAlert.toggle()
                 } label: {
-                    Text("삭제")
+                    Text(Alerts.Button.delete)
                 }
-                Button("취소", role: .cancel) {}
+                Button(Alerts.Button.cancel, role: .cancel) {}
             }, message: {
-                Text("아래 항목을 선택해주세요")
+                Text(Alerts.Message.selectBelow)
             })
         
         // 수정 Alert
-        .alert("맛집이름 변경", isPresented: $showEditAlert) {
-            TextField("맛집이름", text: $newName)
-            Button("취소", role: .cancel) {}
-            Button("변경") { updateRestaurant(with: newName) }
+        .alert(Alerts.Title.Restaurant.update, isPresented: $showEditAlert) {
+            TextField(restaurant.wrappedName, text: $newName)
+            Button(Alerts.Button.cancel, role: .cancel) {}
+            Button(Alerts.Button.update) { updateRestaurant(with: newName) }
         } message: {
-            Text("맛집이름을 변경해주세요")
+            Text(Alerts.Message.Restaurant.update)
         }
         
         // 삭제 Alert
-        .alert("맛집 삭제", isPresented: $showDeleteAlert) {
-            Button("취소", role: .cancel) {}
-            Button("삭제", role: .destructive) { deleteRestaurant() }
+        .alert(Alerts.Title.Restaurant.delete, isPresented: $showDeleteAlert) {
+            Button(Alerts.Button.cancel, role: .cancel) {}
+            Button(Alerts.Button.delete, role: .destructive) { deleteRestaurant() }
         } message: {
-            Text("맛집에 포함된 메뉴들도 삭제 됩니다\n 삭제하시겠습니까?")
+            Text(Alerts.Message.Restaurant.delete)
         }
     }
     
@@ -114,14 +114,14 @@ struct RestaurantCardView: View {
         
         if let menu = sortedMenu.first {
             let menuText = favoriteMenus.count == 1
-            ? "\(menu.wrappedName)"
+            ? menu.wrappedName
             : "\(menu.wrappedName) 외 \(favoriteMenus.count - 1)"
         
             return Text(menuText)
                 .font(.pretendardBold18)
                 .foregroundColor(.green)
         } else {
-            return Text("즐겨찾는 메뉴를 추가해보세요 😆")
+            return Text(Info.favoriteMenuSuggestion)
                 .font(.pretendardRegular14)
                 .foregroundColor(.green)
         }

@@ -33,21 +33,21 @@ struct AddMenuSheet: View {
             CloseButton()
             
             VStack(alignment: .leading, spacing: 16) {
-                Text("메뉴명")
+                Text(Info.Label.menu)
                 TextField(
-                    "메뉴를 입력해주세요",
+                    Info.Placeholder.needMenuName,
                     text: $menuName
                 )
                 .textFieldStyle(.roundedBorder)
                 .font(.pretendardMedium16)
-                Text("한줄평")
+                Text(Info.Label.oneLiner)
                 TextField(
-                    "한줄평을 입력해주세요 (30자 이내)",
+                    Info.Placeholder.needOneLiner,
                     text: $oneLiner
                 )
                 .textFieldStyle(.roundedBorder)
                 .font(.pretendardMedium16)
-                Text("내평가")
+                Text(Info.Label.rating)
                 HStack {
                     ForEach(Rate.allCases) { rate in
                         Button(action: {
@@ -106,8 +106,8 @@ struct AddMenuSheet: View {
     
     private func showFillOutToast() {
         self.toastText = menuName.trimming().isEmpty
-        ? "메뉴명을 입력해주세요"
-        : "한줄평을 입력해주세요 (30자 이내)"
+        ? Info.Placeholder.needMenuName
+        : Info.Placeholder.needOneLiner
         
         toastManager.showToast(message: self.toastText)
     }

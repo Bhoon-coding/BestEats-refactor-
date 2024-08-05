@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddText: View {
     var body: some View {
-        Text("추가하기")
+        Text(ETC.Button.add)
             .padding()
             .frame(maxWidth: .infinity, maxHeight: 54)
             .background(.green)

@@ -32,28 +32,28 @@ struct AddRestaurantSheet: View {
             CloseButton()
             
             VStack(alignment: .leading, spacing: 16) {
-                Text("맛집명")
+                Text(Info.Label.restaurant)
                 TextField(
-                    "맛집을 입력해주세요",
+                    Info.Placeholder.needRestaurantName,
                     text: $restaurantName
                 )
                 .textFieldStyle(.roundedBorder)
                 .font(.pretendardMedium16)
-                Text("메뉴명")
+                Text(Info.Label.menu)
                 TextField(
-                    "메뉴를 입력해주세요",
+                    Info.Placeholder.needMenuName,
                     text: $menuName
                 )
                 .textFieldStyle(.roundedBorder)
                 .font(.pretendardMedium16)
-                Text("한줄평")
+                Text(Info.Label.oneLiner)
                 TextField(
-                    "한줄평을 입력해주세요 (30자 이내)",
+                    Info.Placeholder.needOneLiner,
                     text: $oneLiner
                 )
                 .textFieldStyle(.roundedBorder)
                 .font(.pretendardMedium16)
-                Text("내평가")
+                Text(Info.Label.rating)
                 HStack {
                     ForEach(Rate.allCases) { rate in
                         Button(action: {
@@ -119,11 +119,11 @@ struct AddRestaurantSheet: View {
         var toastText: String = ""
         
         if restaurantName.trimming().isEmpty {
-            toastText = "맛집명을 입력해주세요"
+            toastText = Info.Placeholder.needRestaurantName
         } else if menuName.trimming().isEmpty {
-            toastText = "메뉴명을 입력해주세요"
+            toastText = Info.Placeholder.needMenuName
         } else {
-            toastText = "한줄평을 입력해주세요 (30자 이내)"
+            toastText = Info.Placeholder.needOneLiner
         }
         
         showFillOutToast(message: toastText)

@@ -39,11 +39,11 @@ struct RestaurantView: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(.gray.opacity(0.1))
-                .navigationTitle("BestEats")
+                .navigationTitle(Navigation.Title.appName)
                 .searchable(
                     text: $searchText,
                     placement: .navigationBarDrawer(displayMode: .always),
-                    prompt: "맛집을 검색해주세요"
+                    prompt: Info.Placeholder.needRestaurantName
                 )
                 AddButton(sheet: .restaurant)
             }

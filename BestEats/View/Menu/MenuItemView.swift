@@ -35,7 +35,7 @@ struct MenuItemView: View {
                             )
                         }
                     } label: {
-                        Image(menu.isFavorite ? "starFill" : "star")
+                        Image(menu.isFavorite ? Img.starFill : Img.star)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                     }
