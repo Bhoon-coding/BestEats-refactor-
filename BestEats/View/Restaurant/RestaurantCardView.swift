@@ -24,7 +24,6 @@ struct RestaurantCardView: View {
     
     var body: some View {
         LazyVGrid(columns: columns) {
-            // TODO: [] 데이터가 없을 경우의 맛집추가 유도 카드 필요 (Float 버튼으로 만들기)
             VStack(alignment: .leading, spacing: 8) {
                 HStack {
                     Text(restaurant.wrappedName)
@@ -76,6 +75,7 @@ struct RestaurantCardView: View {
                 }
                 
                 Spacer()
+                
                 favoriteMenuText(with: restaurant)
                 
                 Spacer()
@@ -106,9 +106,10 @@ struct RestaurantCardView: View {
     }
     
     private func favoriteMenuText(with restaurant: Restaurant) -> Text {
-        let favoriteMenus = restaurant.MenuList.filter { $0.isFavorite }
+        let favoriteMenus: [Menu] = restaurant.MenuList.filter { $0.isFavorite }
+        let sortedMenu: [Menu] = favoriteMenus.sorted(by: { $0.wrappedName < $1.wrappedName })
         
-        if let menu = favoriteMenus.first {
+        if let menu = sortedMenu.first {
             let menuText = favoriteMenus.count == 1
             ? "\(menu.wrappedName)"
             : "\(menu.wrappedName) 외 \(favoriteMenus.count - 1)"
