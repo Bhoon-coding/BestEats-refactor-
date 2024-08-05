@@ -143,7 +143,8 @@ final class CoreDataManager: ObservableObject {
     
     // TODO: [] Private 가능?
     func fetchMenu(with restaurant: Restaurant, _ type: Rate) {
-        self.filteredMenu = restaurant.MenuList.filter { $0.rate == type.rawValue }
+        let sortedMenu: [Menu] = restaurant.MenuList.sorted(by: { $0.wrappedName < $1.wrappedName })
+        self.filteredMenu = sortedMenu.filter { $0.rate == type.rawValue }
     }
     
 }
