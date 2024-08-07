@@ -10,6 +10,7 @@ import SwiftUI
 struct TabBarView: View {
     
     @State var isLoading: Bool = true
+    @State var draw: Bool = false // 뷰의 appear 상태를 전달하기 위한 변수
     
     var body: some View {
         ZStack {
@@ -23,16 +24,19 @@ struct TabBarView: View {
                             Image(systemName: Img.house)
                             Text(Tab.home)
                         }
-//                    RecommendationView()
-//                        .tabItem {
-//                            Image(systemName: Img.recommend)
-//                            Text(Tab.recommend)
-//                        }
-                    SettingsView()
+                    KakaoMapView(draw: $draw)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .onAppear { self.draw = true }
+                        .onDisappear { self.draw = false }
                         .tabItem {
-                            Image(systemName: Img.setting)
-                            Text(Tab.setting)
+                            Image(systemName: Img.map)
+                            Text(Tab.map)
                         }
+//                    SettingsView()
+//                        .tabItem {
+//                            Image(systemName: Img.setting)
+//                            Text(Tab.setting)
+//                        }
                 }
             }
         }
