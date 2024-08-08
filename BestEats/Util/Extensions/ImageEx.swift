@@ -25,4 +25,5 @@ public enum Img {
     static let recommend = "person.fill.questionmark"
     static let map = "map"
     static let setting = "gearshape.fill"
+    static let currentLocation = "currentLocation"
 }
