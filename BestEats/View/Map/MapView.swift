@@ -25,7 +25,7 @@ struct MapView: View {
                 .ignoresSafeArea(edges: .all)
             VStack {
                 // TODO: [] [상단] 돋보기 아이콘 => sheet 띄우기
-                // TODO: [] [우하단] 현재 위치로 돌아오는 기능 구현 (버튼)
+                // TODO: [] 현재위치 표기 POI 적용
                 Spacer()
                 HStack {
                     Spacer()
