@@ -22,6 +22,6 @@ public enum Img {
     static let back = "chevron.left"
     static let add = "plus"
     static let house = "house.fill"
-    static let recommend = "person.fill.questionmark"
+    static let map = "map"
     static let setting = "gearshape.fill"
 }
