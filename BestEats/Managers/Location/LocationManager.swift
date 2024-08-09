@@ -58,6 +58,7 @@ extension LocationManager: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("location check: \(locations)")
         if let location = locations.first {
             locationCompletion?(location)
             stopLocationManager()

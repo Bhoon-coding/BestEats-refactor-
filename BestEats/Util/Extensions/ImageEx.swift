@@ -24,4 +24,5 @@ public enum Img {
     static let house = "house.fill"
     static let map = "map"
     static let setting = "gearshape.fill"
+    static let currentLocation = "currentLocation"
 }

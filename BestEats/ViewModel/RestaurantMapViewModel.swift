@@ -20,10 +20,13 @@ final class RestaurantMapViewModel: ObservableObject {
     
     private func getCurrentLocation() {
         locationManager.locationCompletion = { [weak self] location in
-            let span: MKCoordinateSpan = .init(latitudeDelta: 0.05, longitudeDelta: 0.05)
+            let span: MKCoordinateSpan = .init(latitudeDelta: 0.006, longitudeDelta: 0.006)
             self?.region = .init(center: location.coordinate, span: span)
         }
     }
     
-    // TODO: [] 현재위치 누르면 startUpdateLocation 다시 활성화
+    func didTapCurrentLocation() {
+        locationManager.startUpdateLocation()
+        getCurrentLocation()
+    }
 }

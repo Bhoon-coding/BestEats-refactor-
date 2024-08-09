@@ -15,7 +15,26 @@ struct RestaurantMapView: View {
     var body: some View {
         ZStack {
             Map(coordinateRegion: $vm.region, showsUserLocation: true)
-                .ignoresSafeArea()
+                .ignoresSafeArea(edges: .top)
+            
+            VStack {
+                Spacer()
+                
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        vm.didTapCurrentLocation()
+                    }, label: {
+                        Image(Img.currentLocation)
+                            .resizable()
+                            .frame(width: 48, height: 48)
+                            .clipShape(Circle())
+                            .padding()
+                            
+                })
+                    
+                }
+            }
         }
     
     }
