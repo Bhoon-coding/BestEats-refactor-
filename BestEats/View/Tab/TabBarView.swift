@@ -23,16 +23,16 @@ struct TabBarView: View {
                             Image(systemName: Img.house)
                             Text(Tab.home)
                         }
-//                    RecommendationView()
-//                        .tabItem {
-//                            Image(systemName: Img.recommend)
-//                            Text(Tab.recommend)
-//                        }
-                    SettingsView()
+                    RestaurantMapView()
                         .tabItem {
-                            Image(systemName: Img.setting)
-                            Text(Tab.setting)
+                            Image(systemName: Img.map)
+                            Text(Tab.recommend)
                         }
+//                    SettingsView()
+//                        .tabItem {
+//                            Image(systemName: Img.setting)
+//                            Text(Tab.setting)
+//                        }
                 }
             }
         }

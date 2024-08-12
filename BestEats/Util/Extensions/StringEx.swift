@@ -15,7 +15,7 @@ extension String {
 
 public enum Tab {
     static let home: String = "홈"
-    static let recommend: String = "추천"
+    static let recommend: String = "근처 맛집"
     static let setting: String = "설정"
 }
 
