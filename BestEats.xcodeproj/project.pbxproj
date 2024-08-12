@@ -31,6 +31,7 @@
 		E1BAB90C2C46653300873CA6 /* BestEatsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB90B2C46653300873CA6 /* BestEatsUITestsLaunchTests.swift */; };
 		E1BAB91F2C466E1200873CA6 /* RestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB91E2C466E1200873CA6 /* RestaurantView.swift */; };
 		E1BAB9212C466E1B00873CA6 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB9202C466E1B00873CA6 /* SettingsView.swift */; };
+		E1BAB9232C466E2100873CA6 /* RestaurantMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB9222C466E2100873CA6 /* RestaurantMapView.swift */; };
 		E1BAB9262C47AFB400873CA6 /* AddRestaurantSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAB9252C47AFB400873CA6 /* AddRestaurantSheet.swift */; };
 		E1DEE8BA2C490BB30035B56F /* FontEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DEE8B92C490BB30035B56F /* FontEx.swift */; };
 		E1DEE8BD2C490BCB0035B56F /* ColorEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DEE8BC2C490BCB0035B56F /* ColorEx.swift */; };
@@ -63,6 +64,8 @@
 		E1E1A2922C4A336E00DDABF8 /* RestaurantCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1A2912C4A336E00DDABF8 /* RestaurantCardView.swift */; };
 		E1E1A2942C4A360300DDABF8 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1A2932C4A360300DDABF8 /* AddButton.swift */; };
 		E1E1A2982C4A528300DDABF8 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1A2972C4A528300DDABF8 /* MenuView.swift */; };
+		E1F999A12C66518800A0651E /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F999A02C66518800A0651E /* LocationManager.swift */; };
+		E1F999A32C6660E800A0651E /* RestaurantMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F999A22C6660E800A0651E /* RestaurantMapViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +112,7 @@
 		E1BAB90B2C46653300873CA6 /* BestEatsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestEatsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E1BAB91E2C466E1200873CA6 /* RestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantView.swift; sourceTree = "<group>"; };
 		E1BAB9202C466E1B00873CA6 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		E1BAB9222C466E2100873CA6 /* RestaurantMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantMapView.swift; sourceTree = "<group>"; };
 		E1BAB9252C47AFB400873CA6 /* AddRestaurantSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRestaurantSheet.swift; sourceTree = "<group>"; };
 		E1DEE8B92C490BB30035B56F /* FontEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontEx.swift; sourceTree = "<group>"; };
 		E1DEE8BC2C490BCB0035B56F /* ColorEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorEx.swift; sourceTree = "<group>"; };
@@ -132,6 +136,8 @@
 		E1E1A2912C4A336E00DDABF8 /* RestaurantCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCardView.swift; sourceTree = "<group>"; };
 		E1E1A2932C4A360300DDABF8 /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 		E1E1A2972C4A528300DDABF8 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		E1F999A02C66518800A0651E /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		E1F999A22C6660E800A0651E /* RestaurantMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantMapViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				E118E28C2C4E376800480A39 /* MenuViewModel.swift */,
+				E1F999A22C6660E800A0651E /* RestaurantMapViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -295,6 +302,7 @@
 		E1BAB91A2C466DBC00873CA6 /* Recommendation */ = {
 			isa = PBXGroup;
 			children = (
+				E1BAB9222C466E2100873CA6 /* RestaurantMapView.swift */,
 			);
 			path = Recommendation;
 			sourceTree = "<group>";
@@ -385,6 +393,7 @@
 		E1E1A2712C49383300DDABF8 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				E1F9999F2C66517800A0651E /* Location */,
 				E1067C382C5A13B7005FE587 /* Toast */,
 				E1E1A2902C4A30FC00DDABF8 /* CoreData */,
 			);
@@ -413,6 +422,14 @@
 				E1067C312C58D216005FE587 /* AddMenuSheet.swift */,
 			);
 			path = Menu;
+			sourceTree = "<group>";
+		};
+		E1F9999F2C66517800A0651E /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				E1F999A02C66518800A0651E /* LocationManager.swift */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -571,6 +588,7 @@
 			files = (
 				E1E1A28B2C4A2D5E00DDABF8 /* Menu+CoreDataClass.swift in Sources */,
 				E1484FB32C4E500E000A4272 /* MenuItemView.swift in Sources */,
+				E1BAB9232C466E2100873CA6 /* RestaurantMapView.swift in Sources */,
 				E1BAB8EF2C46653100873CA6 /* TabBarView.swift in Sources */,
 				E118E28D2C4E376800480A39 /* MenuViewModel.swift in Sources */,
 				E1E1A2982C4A528300DDABF8 /* MenuView.swift in Sources */,
@@ -586,6 +604,7 @@
 				E1E1A28C2C4A2D5E00DDABF8 /* Menu+CoreDataProperties.swift in Sources */,
 				E1067C3A2C5A13CC005FE587 /* ToastManager.swift in Sources */,
 				E1DEE8BD2C490BCB0035B56F /* ColorEx.swift in Sources */,
+				E1F999A12C66518800A0651E /* LocationManager.swift in Sources */,
 				E1BAB9212C466E1B00873CA6 /* SettingsView.swift in Sources */,
 				E1492FA12C5B7D8E008EDC83 /* SplashView.swift in Sources */,
 				E1067C322C58D216005FE587 /* AddMenuSheet.swift in Sources */,
@@ -594,6 +613,7 @@
 				E1DEE8BF2C490BD00035B56F /* ImageEx.swift in Sources */,
 				E148503C2C522CB8000A4272 /* Rate.swift in Sources */,
 				E1E1A28D2C4A2D5E00DDABF8 /* Restaurant+CoreDataClass.swift in Sources */,
+				E1F999A32C6660E800A0651E /* RestaurantMapViewModel.swift in Sources */,
 				E1E1A2742C49391D00DDABF8 /* RestaurantList.xcdatamodeld in Sources */,
 				E1492FA82C609B47008EDC83 /* StringEx.swift in Sources */,
 				E1E1A2942C4A360300DDABF8 /* AddButton.swift in Sources */,
@@ -768,6 +788,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BestEats/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "근처 맛집 정보를 제공하기 위해 \\n위치 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -801,6 +822,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BestEats/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "근처 맛집 정보를 제공하기 위해 \\n위치 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
