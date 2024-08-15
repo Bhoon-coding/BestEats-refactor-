@@ -22,6 +22,16 @@ enum V2 {
 public protocol APIDefinition {
     var path: String { get }
     var headers: HTTPHeaders? { get }
-    var params: Parameters? { get }
+    var parameters: Parameters? { get }
     var method: HTTPMethod { get }
+}
+
+protocol APIErrorDefinable: Error {
+    var httpStatusCode: Int { get }
+    var errorMessage: String? { get }
+}
+
+struct CommonAPIError: APIErrorDefinable {
+    var httpStatusCode: Int
+    var errorMessage: String?
 }

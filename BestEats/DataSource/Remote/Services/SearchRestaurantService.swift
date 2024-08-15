@@ -10,41 +10,118 @@ import Foundation
 import Alamofire
 
 protocol SearchRestaurantServiceable {
-    func fetchNearbyRestaurant(keyword: Parameters) async throws -> [RestaurantInfo]
+    func request(params: V2.Local.Search.Keyword.Params) async throws -> V2.Local.Search.Keyword.Response
 }
 
 struct SearchRestaurantService: SearchRestaurantServiceable {
-    func fetchNearbyRestaurant(keyword: Parameters) async throws -> [RestaurantInfo] {
-        let keywordAPI = V2.Local.Search.Keyword(params: keyword)
-        let data: NearbyRestaurant = try await NetworkManager.shared.requestJSON(
-            path: keywordAPI.path,
-            params: keyword
-        )
+    func request(params: V2.Local.Search.Keyword.Params) async throws -> V2.Local.Search.Keyword.Response {
+        let keywordAPI = V2.Local.Search.Keyword(keywordParams: params)
         
-        return data.restaurantInfo
+        do {
+            let data: V2.Local.Search.Keyword.Response = try await NetworkManager.shared.requestJSON(
+                path: keywordAPI.path,
+                headers: keywordAPI.headers,
+                params: keywordAPI.parameters
+            )
+            return data
+        } catch {
+            throw error
+        }
     }
 }
 
 extension V2.Local.Search {
     struct Keyword: APIDefinition {
+        
         var path: String = "/v2/local/search/keyword"
         
         var headers: HTTPHeaders?
         
-        var params: Parameters?
+        var parameters: Parameters?
         
         var method: HTTPMethod = .get
         
-        init(params: Parameters? = nil) {
+        init(headers: HTTPHeaders? = nil, keywordParams: Params) {
             guard let apiKey = Bundle.main.kakaoAPIKey else {
                 // TODO: [] 에러로그 (Crashlytics)
                 print(BestEatsError.NetworkError.invalidKey.messageDescription)
                 return
             }
-            self.headers = HTTPHeaders(
-                ["Authorization": "KakaoAK \(apiKey)"]
-            )
-            self.params = params
+            
+            let headers: HTTPHeaders = [
+                .authorization("KakaoAK \(apiKey)"),
+            ]
+            self.headers = headers
+            self.parameters = try? keywordParams.encode()
+        }
+        
+        struct Params: Encodable {
+            let query: String
+            let x: String // longitude (경도)
+            let y: String // latitude  (위도)
+            let radius: Int = 2000
+            let sort: String = "distance"
+        }
+        
+        struct Response: Codable {
+            let restaurantInfo: [RestaurantInfo]?
+            let meta: Meta?
+            
+            enum CodingKeys: String, CodingKey {
+                case restaurantInfo = "documents"
+                case meta
+            }
+            
+            // MARK: - RestaurantInfo
+            struct RestaurantInfo: Codable {
+                let id: String?
+                let categoryGroupCode, categoryGroupName, categoryName: String?
+                let distance, phone: String?
+                let placeName, placeURL: String?
+                let roadAddressName, addressName: String?
+                let x, y: String?
+                
+                enum CodingKeys: String, CodingKey {
+                    case id
+                    case categoryGroupCode = "category_group_code"
+                    case categoryGroupName = "category_group_name"
+                    case categoryName = "category_name"
+                    case distance
+                    case phone
+                    case placeName = "place_name"
+                    case placeURL = "place_url"
+                    case roadAddressName = "road_address_name"
+                    case addressName = "address_name"
+                    case x, y
+                }
+            }
+
+            // MARK: - Meta
+            struct Meta: Codable {
+                let isEnd: Bool?
+                let pageableCount: Int?
+                let sameName: SameName?
+                let totalCount: Int?
+                
+                enum CodingKeys: String, CodingKey {
+                    case sameName = "same_name"
+                    case pageableCount = "pageable_count"
+                    case totalCount = "total_count"
+                    case isEnd = "is_end"
+                }
+            }
+
+            // MARK: - SameName
+            struct SameName: Codable {
+                let keyword: String?
+                let region: [String]?
+                let selectedRegion: String?
+                
+                enum CodingKeys: String, CodingKey {
+                    case keyword, region
+                    case selectedRegion = "selected_region"
+                }
+            }
         }
         
     }
