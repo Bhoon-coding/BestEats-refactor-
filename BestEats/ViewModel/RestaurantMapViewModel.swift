@@ -8,16 +8,14 @@
 import Foundation
 import MapKit
 
-@MainActor
 final class RestaurantMapViewModel: ObservableObject {
+    // TODO: [] Publishing 에러 수정필요 (View에서 @State로 관리하면 해결되지만 그럼 뷰 모델이 불필요해짐)
     @Published var region: MKCoordinateRegion = MKCoordinateRegion()
-    @Published var nearRestaurant: [V2.Local.Search.Keyword.Response.RestaurantInfo] = []
+    @Published var nearRestaurants: [V2.Local.Search.Keyword.Response.RestaurantInfo] = []
     
     private let locationManager = LocationManager.shared
     
-    init() {
-        getCurrentLocation()
-    }
+    init() { }
     
     private func fetchNearRestaurant() async {
         let coordinate: CLLocationCoordinate2D = self.region.center
@@ -30,25 +28,22 @@ final class RestaurantMapViewModel: ObservableObject {
         
         do {
             let response = try await SearchRestaurantService().request(params: params)
-            DispatchQueue.main.async {
-                self.nearRestaurant = response.restaurantInfo ?? []
-            }
+            self.nearRestaurants = response.restaurantInfo ?? []
+            
         } catch {
-            DispatchQueue.main.async {
-                print(#function, "Error: \(error.localizedDescription)")
-            }
+            print(#function, "Error: \(error.localizedDescription)")
+            
         }
     }
     
-    private func getCurrentLocation() {
-        locationManager.locationCompletion = { [weak self] location in
+    func getCurrentLocation() {
+        locationManager.locationCompletion = { [weak self] coordinate in
             guard let self = self else { return }
+            // span: 카메라 줌
             let span: MKCoordinateSpan = .init(latitudeDelta: 0.006, longitudeDelta: 0.006)
-            self.region = .init(center: location.coordinate, span: span)
+            self.region = .init(center: coordinate, span: span)
             
-            Task {
-                await self.fetchNearRestaurant()
-            }
+            Task { await self.fetchNearRestaurant() }
         }
     }
     

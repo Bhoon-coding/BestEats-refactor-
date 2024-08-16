@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MapKit
 
 import Alamofire
 
@@ -18,12 +19,12 @@ struct SearchRestaurantService: SearchRestaurantServiceable {
         let keywordAPI = V2.Local.Search.Keyword(keywordParams: params)
         
         do {
-            let data: V2.Local.Search.Keyword.Response = try await NetworkManager.shared.requestJSON(
+            let response: V2.Local.Search.Keyword.Response = try await NetworkManager.shared.requestJSON(
                 path: keywordAPI.path,
                 headers: keywordAPI.headers,
                 params: keywordAPI.parameters
             )
-            return data
+            return response
         } catch {
             throw error
         }
@@ -47,10 +48,8 @@ extension V2.Local.Search {
                 print(BestEatsError.NetworkError.invalidKey.messageDescription)
                 return
             }
+            let headers: HTTPHeaders = [.authorization("KakaoAK \(apiKey)")]
             
-            let headers: HTTPHeaders = [
-                .authorization("KakaoAK \(apiKey)"),
-            ]
             self.headers = headers
             self.parameters = try? keywordParams.encode()
         }
@@ -63,6 +62,7 @@ extension V2.Local.Search {
             let sort: String = "distance"
         }
         
+        // TODO: [] nullable 한 속성들만 골라내기
         struct Response: Codable {
             let restaurantInfo: [RestaurantInfo]?
             let meta: Meta?
@@ -73,13 +73,16 @@ extension V2.Local.Search {
             }
             
             // MARK: - RestaurantInfo
-            struct RestaurantInfo: Codable {
-                let id: String?
+            struct RestaurantInfo: Codable, Identifiable {
+                let id = UUID()
                 let categoryGroupCode, categoryGroupName, categoryName: String?
                 let distance, phone: String?
                 let placeName, placeURL: String?
                 let roadAddressName, addressName: String?
-                let x, y: String?
+                let x, y: String
+                var coordinate: CLLocationCoordinate2D {
+                    CLLocationCoordinate2D(latitude: Double(y) ?? 0.0, longitude: Double(x) ?? 0.0)
+                }
                 
                 enum CodingKeys: String, CodingKey {
                     case id

@@ -14,8 +14,17 @@ struct RestaurantMapView: View {
     
     var body: some View {
         ZStack {
-            Map(coordinateRegion: $vm.region, showsUserLocation: true)
-                .ignoresSafeArea(edges: .top)
+            Map(
+                coordinateRegion: $vm.region,
+                showsUserLocation: true,
+                //                userTrackingMode: .constant(.follow),
+                annotationItems: vm.nearRestaurants
+            ) { nearPlace in
+                MapAnnotation(coordinate: nearPlace.coordinate) {
+                    CustomMapMarkerView(name: nearPlace.placeName ?? "", type: .western)
+                }
+            }
+            .ignoresSafeArea(edges: .top)
             
             VStack {
                 Spacer()
@@ -30,17 +39,17 @@ struct RestaurantMapView: View {
                             .frame(width: 48, height: 48)
                             .clipShape(Circle())
                             .padding()
-                            
-                })
-                    
+                    })
                 }
             }
         }
-    
+        .onAppear {
+            vm.getCurrentLocation()
+        }
     }
 }
 
 #Preview {
     RestaurantMapView()
-        
+    
 }

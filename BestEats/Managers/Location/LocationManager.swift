@@ -13,11 +13,12 @@ final class LocationManager: NSObject {
 
     private var manager = CLLocationManager()
     private var retryCount: Int = 0
-    var locationCompletion: ((CLLocation) -> Void)?
+    var locationCompletion: ((CLLocationCoordinate2D) -> Void)?
     
     override init() {
         super.init()
         manager.delegate = self
+        requestLocation()
     }
     
     func requestLocation() {
@@ -60,7 +61,7 @@ extension LocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("location check: \(locations)")
         if let location = locations.first {
-            locationCompletion?(location)
+            locationCompletion?(location.coordinate)
             stopLocationManager()
         }
     }
