@@ -9,7 +9,6 @@ import Foundation
 import MapKit
 
 final class RestaurantMapViewModel: ObservableObject {
-    // TODO: [] Publishing 에러 수정필요 (View에서 @State로 관리하면 해결되지만 그럼 뷰 모델이 불필요해짐)
     @Published var region: MKCoordinateRegion = MKCoordinateRegion()
     @Published var nearRestaurants: [V2.Local.Search.Keyword.Response.RestaurantInfo] = []
     
@@ -17,14 +16,12 @@ final class RestaurantMapViewModel: ObservableObject {
     
     init() { }
     
-    private func fetchNearRestaurant() async {
+    @MainActor
+    private func fetchNearRestaurant(foodType: FoodType) async {
         let coordinate: CLLocationCoordinate2D = self.region.center
-        
-        let params: V2.Local.Search.Keyword.Params = .init(
-            query: "카페",
-            x: "\(coordinate.longitude)",
-            y: "\(coordinate.latitude)"
-        )
+        let params: V2.Local.Search.Keyword.Params = .init(query: foodType.rawValue,
+                                                           x: "\(coordinate.longitude)",
+                                                           y: "\(coordinate.latitude)")
         
         do {
             let response = try await SearchRestaurantService().request(params: params)
@@ -37,13 +34,14 @@ final class RestaurantMapViewModel: ObservableObject {
     }
     
     func getCurrentLocation() {
+        locationManager.startUpdateLocation()
         locationManager.locationCompletion = { [weak self] coordinate in
             guard let self = self else { return }
             // span: 카메라 줌
             let span: MKCoordinateSpan = .init(latitudeDelta: 0.006, longitudeDelta: 0.006)
             self.region = .init(center: coordinate, span: span)
             
-            Task { await self.fetchNearRestaurant() }
+            Task { await self.fetchNearRestaurant(foodType: .korean) }
         }
     }
     

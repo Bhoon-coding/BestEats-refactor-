@@ -12,6 +12,8 @@ struct RestaurantMapView: View {
     
     @StateObject private var vm = RestaurantMapViewModel()
     
+    @State private var selectedId: UUID?
+    
     var body: some View {
         ZStack {
             Map(
@@ -21,7 +23,7 @@ struct RestaurantMapView: View {
                 annotationItems: vm.nearRestaurants
             ) { nearPlace in
                 MapAnnotation(coordinate: nearPlace.coordinate) {
-                    CustomMapMarkerView(name: nearPlace.placeName ?? "", type: .western)
+                    CustomMapMarkerView(selectedId: $selectedId, restaurant: nearPlace, type: .korean)
                 }
             }
             .ignoresSafeArea(edges: .top)
@@ -45,6 +47,17 @@ struct RestaurantMapView: View {
         }
         .onAppear {
             vm.getCurrentLocation()
+        }
+        .onChange(of: selectedId) { newId in
+            if let selectedRestaurant = vm.nearRestaurants.first(where: { $0.id == newId }) {
+                zoomToLocation(location: selectedRestaurant.coordinate)
+            }
+        }
+    }
+    
+    private func zoomToLocation(location: CLLocationCoordinate2D) {
+        withAnimation(.easeIn) {
+            vm.region.center = location
         }
     }
 }

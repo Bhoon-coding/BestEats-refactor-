@@ -8,53 +8,48 @@
 import SwiftUI
 
 struct CustomMapMarkerView: View {
+
+    @Binding var selectedId: UUID?
     
-    @State private var isTapped: Bool = false
-    
-    let name: String
-    // TODO: [] 음식종류별 타입 지정
+    let restaurant: V2.Local.Search.Keyword.Response.RestaurantInfo
     let type: FoodType
     
     var body: some View {
         
         Button(action: {
-            // TODO: [] isTapped 활성화가 되면 해야할것
-            /// 1. 해당 마커 크기 크게 (id 값으로 비교할것 id가 아닌 경우는 일반사이즈)
-            /// 2. 선택된 음식점 정보 보여주기 RestaurantMapView에서 정보를 받아 보여주기
-            
-            isTapped.toggle()
+            /// 1. 선택된 음식점 정보 보여주기 RestaurantMapView에서 정보를 받아 보여주기
+            self.selectedId = restaurant.id
         }, label: {
             VStack {
-    //            Image(type.rawValue)
-                Image(systemName: "fork.knife.circle.fill")
-                    .font(.title)
-                    .foregroundColor(.red)
+                Image(type == .cafe || type == .dessert ? Img.Map.Clip.cafe : Img.Map.Clip.restaurant)
+                    .resizable()
+                    .clipShape(Circle())
+                    .frame(width: self.selectedId == restaurant.id ? 64 : 32, height: self.selectedId == restaurant.id ? 64 : 32)
                 
-                Image(systemName: "arrowtriangle.down.fill")
+                Image(systemName: Img.Map.Clip.arrowPoint)
                     .font(.caption)
                     .foregroundColor(.red)
                     .offset(x: 0, y: -5)
             }
-            .frame(width: isTapped ? 32 : 16, height: isTapped ? 32 : 16)
+            .frame(width: 32, height: 32)
         })
-        
-        
-        
-        
-        
     }
 }
 
-enum FoodType: String {
-    case cafe
-    case korean
-    case japanese
-    case chinese
-    case western
-    case dessert
-    // TODO: [] 음식종류 추가
-}
-
 #Preview {
-    CustomMapMarkerView(name: "아웃백", type: .western)
+    @State var selectedId: UUID? = nil
+    let restaurant = V2.Local.Search.Keyword.Response.RestaurantInfo(
+        categoryGroupCode: "CE7",
+        categoryGroupName: "카페",
+        categoryName: "커피전문점",
+        distance: "121",
+        phone: "031-378-1980",
+        placeName: "메가MGC커피 동탄산척점",
+        placeURL: "http://place.map.kakao.com/1590183741",
+        roadAddressName: "경기 화성시 동탄순환대로 263",
+        addressName: "경기 화성시 산척동 723",
+        x: "127.11873431706917",
+        y: "37.17119905864608"
+    )
+    return CustomMapMarkerView(selectedId: $selectedId, restaurant: restaurant, type: .western)
 }

@@ -25,4 +25,12 @@ public enum Img {
     static let map = "map"
     static let setting = "gearshape.fill"
     static let currentLocation = "currentLocation"
+    
+    enum Map {
+        enum Clip {
+            static let cafe = "cafeClip"
+            static let restaurant = "restaurantClip"
+            static let arrowPoint = "arrowtriangle.down.fill"
+        }
+    }
 }
