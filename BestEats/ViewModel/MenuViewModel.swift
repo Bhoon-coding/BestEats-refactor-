@@ -27,6 +27,9 @@ class MenuViewModel: ObservableObject {
         coreDataManager.updateMenu(
             with: restaurant,
             id: menu.wrappedId,
+            name: menu.wrappedName,
+            oneLiner: menu.wrappedOneLiner,
+            rate: menu.wrappedRate,
             isFavorite: menu.isFavorite
         )
         

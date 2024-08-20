@@ -31,7 +31,10 @@ struct MenuItemView: View {
                             coreDataManager.updateMenu(
                                 with: restaurant,
                                 id: menu.wrappedId,
-                                isFavorite: !menu.isFavorite
+                                name: menu.wrappedName,
+                                oneLiner: menu.wrappedOneLiner,
+                                rate: menu.wrappedRate,
+                                isFavorite: menu.isFavorite
                             )
                         }
                     } label: {
