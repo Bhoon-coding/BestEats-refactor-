@@ -18,7 +18,6 @@ enum FoodType: String, CaseIterable {
     case asian = "아시안"
     case hamburger = "햄버거"
     case salad = "샐러드"
-    // TODO: [] 음식종류 추가
     
     var imageName: String {
         switch self {
