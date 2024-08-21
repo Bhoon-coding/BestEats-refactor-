@@ -17,7 +17,7 @@ final class RestaurantMapViewModel: ObservableObject {
     init() { }
     
     @MainActor
-    private func fetchNearRestaurant(foodType: FoodType) async {
+    func fetchNearRestaurant(foodType: FoodType) async {
         let coordinate: CLLocationCoordinate2D = self.region.center
         let params: V2.Local.Search.Keyword.Params = .init(query: foodType.rawValue,
                                                            x: "\(coordinate.longitude)",
@@ -41,12 +41,7 @@ final class RestaurantMapViewModel: ObservableObject {
             let span: MKCoordinateSpan = .init(latitudeDelta: 0.006, longitudeDelta: 0.006)
             self.region = .init(center: coordinate, span: span)
             
-            Task { await self.fetchNearRestaurant(foodType: .korean) }
+            Task { await self.fetchNearRestaurant(foodType: .cafe) }
         }
-    }
-    
-    func didTapCurrentLocation() {
-        locationManager.startUpdateLocation()
-        getCurrentLocation()
     }
 }

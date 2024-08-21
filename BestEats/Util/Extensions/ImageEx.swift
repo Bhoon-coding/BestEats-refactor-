@@ -33,4 +33,19 @@ public enum Img {
             static let arrowPoint = "arrowtriangle.down.fill"
         }
     }
+    
+    enum FoodCategory {
+        static let cafe = "cafe"
+        static let korean = "korean"
+        static let japanese = "japanese"
+        static let chinese = "chinese"
+        static let western = "western"
+        static let dessert = "dessert"
+        static let barbecue = "barbecue"
+        static let chicken = "chicken"
+        static let pizza = "pizza"
+        static let asian = "asian"
+        static let hamburger = "hamburger"
+        static let salad = "salad"
+    }
 }
