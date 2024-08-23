@@ -13,8 +13,10 @@ struct RestaurantMapView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var vm = RestaurantMapViewModel()
     @State private var isPresentedSheet: Bool = false
-    @State private var selectedId: UUID?
+    @State private var nearestPlace: V2.Local.Search.Keyword.Response.PlaceInfo? = nil
+    @State private var selectedPlace: V2.Local.Search.Keyword.Response.PlaceInfo?
     @State var foodType: FoodType = .cafe
+    
     
     private var map: some View {
         Map(
@@ -24,7 +26,11 @@ struct RestaurantMapView: View {
             annotationItems: vm.nearRestaurants
         ) { nearPlace in
             MapAnnotation(coordinate: nearPlace.coordinate) {
-                CustomMapMarkerView(selectedId: $selectedId, restaurant: nearPlace, type: foodType)
+                CustomMapMarkerView(
+                    selectedPlace: $selectedPlace,
+                    place: nearPlace,
+                    type: foodType
+                )
             }
         }
         .ignoresSafeArea(edges: .top)
@@ -39,7 +45,7 @@ struct RestaurantMapView: View {
             .clipShape(RoundedRectangle(cornerRadius: 16))
     }
     
-    private var searchButton: some View {
+    private var menuButton: some View {
         Button(action: {
             self.isPresentedSheet = true
         }, label: {
@@ -58,9 +64,11 @@ struct RestaurantMapView: View {
         }, label: {
             Image(Img.currentLocation)
                 .resizable()
-                .clipShape(Circle())
+                .frame(width: 24, height: 24)
         })
-        .frame(width: 48, height: 48)
+        .padding()
+        .background(.green)
+        .clipShape(Circle())
     }
     
     var body: some View {
@@ -74,7 +82,7 @@ struct RestaurantMapView: View {
                     HStack {
                         Spacer()
                         
-                        searchButton
+                        menuButton
                     }
                 }
                 
@@ -90,14 +98,14 @@ struct RestaurantMapView: View {
                     
                     HStack(spacing: 16) {
                         VStack(alignment: .leading) {
-                            Text("해품당 화덕생선구이")
+                            Text(setPlaceName())
                                 .font(.pretendardBold20)
                                 .padding(.bottom, 24)
                             
                             HStack(alignment: .bottom) {
                                 VStack(alignment: .leading, spacing: 8) {
-                                    Text("구이")
-                                    Text("화성시 오산동")
+                                    Text(setCategoryName())
+                                    Text(setAddressName())
                                 }
                                 .font(.pretendardRegular14)
                                 .foregroundStyle(.gray)
@@ -109,7 +117,7 @@ struct RestaurantMapView: View {
                                 } label: {
                                     HStack {
                                         Image(systemName: "location.fill")
-                                        Text("161m")
+                                        Text(setDistance())
                                     }
                                 }
                                 .font(.pretendardBold14)
@@ -123,7 +131,7 @@ struct RestaurantMapView: View {
                         .background(.white)
                         .clipShape(RoundedRectangle(cornerRadius: 16))
                         
-                        VStack { // 아래 두 버튼 너비 같게
+                        VStack {
                             Button("더보기") {
                                 // TODO: [] WebView 띄우기
                             }
@@ -153,9 +161,15 @@ struct RestaurantMapView: View {
             vm.getCurrentLocation()
             self.isPresentedSheet = true
         }
-        .onChange(of: selectedId) { newId in
-            if let selectedRestaurant = vm.nearRestaurants.first(where: { $0.id == newId }) {
-                zoomToLocation(location: selectedRestaurant.coordinate)
+        .onChange(of: vm.nearRestaurants) { newPlaces in
+            if let place = newPlaces.first {
+                self.nearestPlace = place
+                zoomToLocation(location: place.coordinate)
+            }
+        }
+        .onChange(of: selectedPlace) { newPlace in
+            if let selectedPlace = vm.nearRestaurants.first(where: { $0.id == newPlace!.id }) {
+                zoomToLocation(location: selectedPlace.coordinate)
             }
         }
         .onChange(of: foodType) { newFoodType in
@@ -168,6 +182,58 @@ struct RestaurantMapView: View {
         }
     }
     
+    enum PlaceInfoError: Error {
+        case emptyData
+        
+        var messageDescription: String {
+            switch self {
+            case .emptyData:
+                return "정보없음"
+            }
+        }
+    }
+    
+    private func setPlaceName() -> String {
+        guard let place = selectedPlace else {
+            return self.nearestPlace?.placeName ?? PlaceInfoError.emptyData.messageDescription
+        }
+        return place.placeName
+    }
+    
+    private func setCategoryName() -> String {
+        
+        guard let place = selectedPlace,
+              let categoryName = place.categoryName else {
+            return self.nearestPlace?.categoryName ?? PlaceInfoError.emptyData.messageDescription
+        }
+        return categoryName
+    }
+    
+    private func setAddressName() -> String {
+        guard let place = selectedPlace,
+              let roadAddress = place.roadAddressName else {
+            return self.nearestPlace?.roadAddressName ?? PlaceInfoError.emptyData.messageDescription
+        }
+        return place.addressName ?? roadAddress
+    }
+    
+    private func setDistance() -> String {
+        var distance: String?
+        
+        if let place = selectedPlace {
+            distance = place.distance
+        } else {
+            distance = nearestPlace?.distance
+        }
+        
+        guard let validDistance = distance,
+              let distanceValue = Double(validDistance) else {
+            return PlaceInfoError.emptyData.messageDescription
+        }
+        
+        return distanceValue.convertedDistance()
+    }
+    
     private func zoomToLocation(location: CLLocationCoordinate2D) {
         withAnimation(.easeIn) {
             vm.region.center = location
@@ -177,5 +243,5 @@ struct RestaurantMapView: View {
 
 #Preview {
     @State var type: FoodType = .cafe
-    return RestaurantMapView(foodType: type)
+    return RestaurantMapView()
 }

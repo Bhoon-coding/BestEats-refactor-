@@ -9,22 +9,24 @@ import SwiftUI
 
 struct CustomMapMarkerView: View {
 
-    @Binding var selectedId: UUID?
+    @Binding var selectedPlace: V2.Local.Search.Keyword.Response.PlaceInfo?
     
-    let restaurant: V2.Local.Search.Keyword.Response.RestaurantInfo
+    let place: V2.Local.Search.Keyword.Response.PlaceInfo
     let type: FoodType
     
     var body: some View {
         
         Button(action: {
-            /// 1. 선택된 음식점 정보 보여주기 RestaurantMapView에서 정보를 받아 보여주기
-            self.selectedId = restaurant.id
+            self.selectedPlace = place
         }, label: {
             VStack {
                 Image(type == .cafe || type == .dessert ? Img.Map.Clip.cafe : Img.Map.Clip.restaurant)
                     .resizable()
                     .clipShape(Circle())
-                    .frame(width: self.selectedId == restaurant.id ? 64 : 32, height: self.selectedId == restaurant.id ? 64 : 32)
+                    .frame(
+                        width: self.selectedPlace?.id == place.id ? 64 : 32,
+                        height: self.selectedPlace?.id == place.id ? 64 : 32
+                    )
                 
                 Image(systemName: Img.Map.Clip.arrowPoint)
                     .font(.caption)
@@ -37,19 +39,24 @@ struct CustomMapMarkerView: View {
 }
 
 #Preview {
-    @State var selectedId: UUID? = nil
-    let restaurant = V2.Local.Search.Keyword.Response.RestaurantInfo(
-        categoryGroupCode: "CE7",
-        categoryGroupName: "카페",
-        categoryName: "커피전문점",
-        distance: "121",
-        phone: "031-378-1980",
-        placeName: "메가MGC커피 동탄산척점",
+    let restaurant = V2.Local.Search.Keyword.Response.PlaceInfo(
+        placeName: "CE7",
+        distance: "카페",
+        categoryGroupCode: "커피전문점",
+        categoryGroupName: "121",
+        categoryName: "031-378-1980",
+        phone: "메가MGC커피 동탄산척점",
         placeURL: "http://place.map.kakao.com/1590183741",
         roadAddressName: "경기 화성시 동탄순환대로 263",
         addressName: "경기 화성시 산척동 723",
         x: "127.11873431706917",
         y: "37.17119905864608"
     )
-    return CustomMapMarkerView(selectedId: $selectedId, restaurant: restaurant, type: .western)
+    @State var selectedPlcae: V2.Local.Search.Keyword.Response.PlaceInfo? = restaurant
+    
+    return CustomMapMarkerView(
+        selectedPlace: $selectedPlcae,
+        place: restaurant,
+        type: .western
+    )
 }

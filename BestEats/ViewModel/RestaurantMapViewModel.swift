@@ -10,7 +10,7 @@ import MapKit
 
 final class RestaurantMapViewModel: ObservableObject {
     @Published var region: MKCoordinateRegion = MKCoordinateRegion()
-    @Published var nearRestaurants: [V2.Local.Search.Keyword.Response.RestaurantInfo] = []
+    @Published var nearRestaurants: [V2.Local.Search.Keyword.Response.PlaceInfo] = []
     
     private let locationManager = LocationManager.shared
     
@@ -19,9 +19,11 @@ final class RestaurantMapViewModel: ObservableObject {
     @MainActor
     func fetchNearRestaurant(foodType: FoodType) async {
         let coordinate: CLLocationCoordinate2D = self.region.center
-        let params: V2.Local.Search.Keyword.Params = .init(query: foodType.rawValue,
-                                                           x: "\(coordinate.longitude)",
-                                                           y: "\(coordinate.latitude)")
+        let params: V2.Local.Search.Keyword.Params = .init(
+            query: foodType.rawValue,
+            x: "\(coordinate.longitude)",
+            y: "\(coordinate.latitude)"
+        )
         
         do {
             let response = try await SearchRestaurantService().request(params: params)
@@ -40,8 +42,6 @@ final class RestaurantMapViewModel: ObservableObject {
             // span: 카메라 줌
             let span: MKCoordinateSpan = .init(latitudeDelta: 0.006, longitudeDelta: 0.006)
             self.region = .init(center: coordinate, span: span)
-            
-            Task { await self.fetchNearRestaurant(foodType: .cafe) }
         }
     }
 }

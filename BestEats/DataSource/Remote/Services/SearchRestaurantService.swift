@@ -64,7 +64,7 @@ extension V2.Local.Search {
         
         // TODO: [] nullable 한 속성들만 골라내기
         struct Response: Codable {
-            let restaurantInfo: [RestaurantInfo]?
+            let restaurantInfo: [PlaceInfo]?
             let meta: Meta?
             
             enum CodingKeys: String, CodingKey {
@@ -72,12 +72,16 @@ extension V2.Local.Search {
                 case meta
             }
             
-            // MARK: - RestaurantInfo
-            struct RestaurantInfo: Codable, Identifiable {
+            // MARK: - PlaceInfo
+            /// Identifiable: Map의 annotation Items에 필요
+            /// Equatable: .onChange에 필요
+            struct PlaceInfo: Codable, Identifiable, Equatable {
                 let id = UUID()
+                let placeName: String
+                let distance: String
                 let categoryGroupCode, categoryGroupName, categoryName: String?
-                let distance, phone: String?
-                let placeName, placeURL: String?
+                let phone: String?
+                let placeURL: String?
                 let roadAddressName, addressName: String?
                 let x, y: String
                 var coordinate: CLLocationCoordinate2D {
