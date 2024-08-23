@@ -10,23 +10,38 @@ import MapKit
 
 final class RestaurantMapViewModel: ObservableObject {
     @Published var region: MKCoordinateRegion = MKCoordinateRegion()
+    @Published var nearRestaurants: [V2.Local.Search.Keyword.Response.PlaceInfo] = []
     
     private let locationManager = LocationManager.shared
     
-    init() {
-        getCurrentLocation()
-        
-    }
+    init() { }
     
-    private func getCurrentLocation() {
-        locationManager.locationCompletion = { [weak self] location in
-            let span: MKCoordinateSpan = .init(latitudeDelta: 0.006, longitudeDelta: 0.006)
-            self?.region = .init(center: location.coordinate, span: span)
+    @MainActor
+    func fetchNearRestaurant(foodType: FoodType) async {
+        let coordinate: CLLocationCoordinate2D = self.region.center
+        let params: V2.Local.Search.Keyword.Params = .init(
+            query: foodType.rawValue,
+            x: "\(coordinate.longitude)",
+            y: "\(coordinate.latitude)"
+        )
+        
+        do {
+            let response = try await SearchRestaurantService().request(params: params)
+            self.nearRestaurants = response.restaurantInfo ?? []
+            
+        } catch {
+            print(#function, "Error: \(error.localizedDescription)")
+            
         }
     }
     
-    func didTapCurrentLocation() {
+    func getCurrentLocation() {
         locationManager.startUpdateLocation()
-        getCurrentLocation()
+        locationManager.locationCompletion = { [weak self] coordinate in
+            guard let self = self else { return }
+            // span: 카메라 줌
+            let span: MKCoordinateSpan = .init(latitudeDelta: 0.006, longitudeDelta: 0.006)
+            self.region = .init(center: coordinate, span: span)
+        }
     }
 }

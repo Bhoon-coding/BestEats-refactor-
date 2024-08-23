@@ -83,9 +83,9 @@ final class CoreDataManager: ObservableObject {
     func updateMenu(
         with restaurant: Restaurant,
         id menuId: UUID,
-        name menuName: String? = nil,
-        oneLiner menuOneLiner: String? = nil,
-        rate menuRate: String? = nil,
+        name menuName: String,
+        oneLiner menuOneLiner: String,
+        rate menuRate: String,
         isFavorite: Bool = false
     ) {
         guard let menuSet = restaurant.menu as? Set<Menu> else {
@@ -94,18 +94,9 @@ final class CoreDataManager: ObservableObject {
         }
         
         if let menu = menuSet.first(where: { $0.id == menuId }) {
-            if let name = menuName {
-                menu.name = name
-            }
-            
-            if let oneLiner = menuOneLiner {
-                menu.oneLiner = oneLiner
-            }
-            
-            if let rate = menuRate {
-                menu.rate = rate
-            }
-            
+            menu.name = menuName
+            menu.oneLiner = menuOneLiner
+            menu.rate = menuRate
             menu.isFavorite = isFavorite
             saveContext()
         }
@@ -141,7 +132,7 @@ final class CoreDataManager: ObservableObject {
         }
     }
     
-    // TODO: [] Private 가능?
+    // TODO: [] Private으로 만들기
     func fetchMenu(with restaurant: Restaurant, _ type: Rate) {
         let sortedMenu: [Menu] = restaurant.MenuList.sorted(by: { $0.wrappedName < $1.wrappedName })
         self.filteredMenu = sortedMenu.filter { $0.rate == type.rawValue }

@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>KAKAO_API_KEY</key>
+	<string>7072eb0a506b5f651bf1ad06d6f4db81</string>
+	<key>KAKAO_SERVER_HOST</key>
+	<string>${KAKAO_SERVER_HOST}</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Pretendard-Black.otf</string>
