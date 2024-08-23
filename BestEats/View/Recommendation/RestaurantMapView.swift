@@ -37,7 +37,8 @@ struct RestaurantMapView: View {
     }
     
     private var searchedPlaceText: some View {
-        Text("근처에 n개의 맛집이 있어요!")
+//        Text("근처에 n개의 맛집이 있어요!")
+        Text(setInfoNearPlaceCount())
             .font(.pretendardBold14)
             .foregroundStyle(.white)
             .padding()
@@ -139,7 +140,9 @@ struct RestaurantMapView: View {
                             .frame(width: 88)
                             .background(.green)
                             .clipShape(RoundedRectangle(cornerRadius: 16))
+                            
                             Spacer()
+                            
                             Button("예약하기") {
                                 // TODO: [] 전화 팝업 띄우기
                             }
@@ -191,6 +194,13 @@ struct RestaurantMapView: View {
                 return "정보없음"
             }
         }
+    }
+    
+    // MARK: - Function
+    
+    private func setInfoNearPlaceCount() -> String {
+        let placeCount: Int = vm.nearRestaurants.count
+        return "근처에 \(placeCount)개의 맛집이 있어요!"
     }
     
     private func setPlaceName() -> String {
