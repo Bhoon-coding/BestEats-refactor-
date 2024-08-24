@@ -81,7 +81,7 @@ extension V2.Local.Search {
                 let distance: String
                 let categoryGroupCode, categoryGroupName, categoryName: String?
                 let phone: String?
-                let placeURL: String?
+                let placeURL: String
                 let roadAddressName, addressName: String?
                 let x, y: String
                 var coordinate: CLLocationCoordinate2D {

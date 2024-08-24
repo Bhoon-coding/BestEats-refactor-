@@ -23,7 +23,7 @@ struct TabBarView: View {
                             Image(systemName: Img.house)
                             Text(Tab.home)
                         }
-                    RestaurantMapView()
+                    PlaceMapView()
                         .tabItem {
                             Image(systemName: Img.map)
                             Text(Tab.recommend)
