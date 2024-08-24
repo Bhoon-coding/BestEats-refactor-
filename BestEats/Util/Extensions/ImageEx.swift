@@ -32,6 +32,11 @@ public enum Img {
             static let restaurant = "restaurantClip"
             static let arrowPoint = "arrowtriangle.down.fill"
         }
+        
+        enum Icons {
+            static let menu = "line.3.horizontal"
+            static let location = "location.fill"
+        }
     }
     
     enum FoodCategory {

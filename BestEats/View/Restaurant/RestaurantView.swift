@@ -23,7 +23,7 @@ struct RestaurantView: View {
     
     var body: some View {
         
-        NavigationView {
+        NavigationStack {
             ZStack(alignment: .bottomTrailing) {
                 ScrollView {
                     ForEach(filteredData) { item in

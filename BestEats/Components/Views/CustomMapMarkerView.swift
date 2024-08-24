@@ -52,10 +52,10 @@ struct CustomMapMarkerView: View {
         x: "127.11873431706917",
         y: "37.17119905864608"
     )
-    @State var selectedPlcae: V2.Local.Search.Keyword.Response.PlaceInfo? = restaurant
+    @State var selectedPlace: V2.Local.Search.Keyword.Response.PlaceInfo? = restaurant
     
     return CustomMapMarkerView(
-        selectedPlace: $selectedPlcae,
+        selectedPlace: $selectedPlace,
         place: restaurant,
         type: .western
     )
