@@ -44,6 +44,7 @@
 		E1C24FE52C6A49930050AB45 /* BundleEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C24FE42C6A49930050AB45 /* BundleEx.swift */; };
 		E1D0BE792C746E4E00BAA9ED /* FoodTypeSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D0BE782C746E4E00BAA9ED /* FoodTypeSheetView.swift */; };
 		E1D0BE7B2C782A2000BAA9ED /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D0BE7A2C782A2000BAA9ED /* Double.swift */; };
+		E1D0BE7D2C78636600BAA9ED /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D0BE7C2C78636600BAA9ED /* WebView.swift */; };
 		E1D0BE802C79A7F700BAA9ED /* NameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D0BE7F2C79A7F700BAA9ED /* NameSpace.swift */; };
 		E1D0BE822C79A97900BAA9ED /* PlcaeInfoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D0BE812C79A97900BAA9ED /* PlcaeInfoError.swift */; };
 		E1DEE8BA2C490BB30035B56F /* FontEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DEE8B92C490BB30035B56F /* FontEx.swift */; };
@@ -137,6 +138,7 @@
 		E1C24FE42C6A49930050AB45 /* BundleEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleEx.swift; sourceTree = "<group>"; };
 		E1D0BE782C746E4E00BAA9ED /* FoodTypeSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTypeSheetView.swift; sourceTree = "<group>"; };
 		E1D0BE7A2C782A2000BAA9ED /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		E1D0BE7C2C78636600BAA9ED /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		E1D0BE7F2C79A7F700BAA9ED /* NameSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSpace.swift; sourceTree = "<group>"; };
 		E1D0BE812C79A97900BAA9ED /* PlcaeInfoError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlcaeInfoError.swift; sourceTree = "<group>"; };
 		E1DEE8B92C490BB30035B56F /* FontEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontEx.swift; sourceTree = "<group>"; };
@@ -708,6 +710,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1C24FE52C6A49930050AB45 /* BundleEx.swift in Sources */,
+				E1D0BE7D2C78636600BAA9ED /* WebView.swift in Sources */,
 				E1C24FD92C6A495F0050AB45 /* NetworkManager.swift in Sources */,
 				E1E1A28B2C4A2D5E00DDABF8 /* Menu+CoreDataClass.swift in Sources */,
 				E1484FB32C4E500E000A4272 /* MenuItemView.swift in Sources */,

@@ -6,6 +6,11 @@
 	<string>7072eb0a506b5f651bf1ad06d6f4db81</string>
 	<key>KAKAO_SERVER_HOST</key>
 	<string>${KAKAO_SERVER_HOST}</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Pretendard-Black.otf</string>
