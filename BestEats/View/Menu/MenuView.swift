@@ -18,9 +18,7 @@ struct MenuView: View {
     var restaurant: Restaurant
     
     var body: some View {
-        Self._printChanges()
-        
-        return VStack {
+        VStack {
             ZStack(alignment: .bottomTrailing) {
                 VStack(spacing: 8) {
                     CategoryView(rateType: $rateType, restaurant: restaurant)

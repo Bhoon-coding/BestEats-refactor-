@@ -23,6 +23,12 @@ struct ReuseWebView: View {
                     ProgressView()
                 }
             }
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    BackButton()
+                }
+            }
     }
 }
 
