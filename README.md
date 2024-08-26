@@ -12,7 +12,7 @@
 
 ## 목차
 1. [프로젝트 소개](#프로젝트-소개)
-    - 기능 소개
+    - [기능 소개](#기능소개)
 2. 객체 역할 소개
       - 앱 설계
       - View
@@ -29,6 +29,16 @@
 ### 👨‍💻 Developer
 |이병훈 (1인 개발)|
 |:--:|
+
+<br>
+
+### 작업 요약
+- UIKit → `SwiftUI` 컨버팅 작업
+- 로컬데이터 관리 컨버팅 작업 (UserDefaults → `CoreData`)
+- 앱의 비동기 처리를 위해 `Swift Concurrency` 적용
+- `MapKit`을 이용한 각 지역좌표의 마커표시
+- 주요 비즈니스로직 테스트를 위한 `UnitTest` 적용
+    - View의 로직이 많아짐과 역할 분리에 따른 `MVVM 패턴` 적용
 
 <br>
 
@@ -78,9 +88,9 @@
 
 ## 기능소개
 
-  
+<br>
 
-## Main page (개인 맛집 기록)
+### Main page (개인 맛집 기록)
 
 <img width = "30%" src = "https://github.com/user-attachments/assets/7d9d49d8-e219-4ba4-980d-0a81146e5a28">
 
@@ -104,7 +114,7 @@
 - `CoreData`를 사용하여 맛집 추가, 불러오기, 변경, 삭제 기능을 구현하여 로컬 데이터를 관리함
 - CoreDataManager로 CoreData관련 로직만 담당하도록 구현하여 테스트를 용이하게 하였으며, 의존성을 분리 시킴
 
-|Create <br> 맛집, 메뉴 등록|Update, Delete <br>맛집 변경 & 삭제
+|Create <br> 맛집, 메뉴 등록|Update, Delete <br>맛집변경 & 삭제
 |:--:|:--:|
 |<img width= "40%" src = "https://github.com/user-attachments/assets/f1818719-f310-47de-88d9-0ccfb1b25097">|<img width= "60%" src = "https://github.com/user-attachments/assets/d733033f-f119-41e9-9f9f-ab164d86d051">|
 
@@ -274,91 +284,25 @@ private func fetchRestaurant() {
 
   
 
-- 등록되어 있는 음식점을 `filter`, `contain` 메소드를 이용해서 사용자가 찾고자 하는 음식점을 직관적으로 추려내게 구현
-    
+- 등록되어 있는 음식점을 `filter`, `contain` 메소드를 이용해서 사용자가 찾고자 하는 음식점을 직관적으로 추려내게 구현
 <br><br>
 
   
-## 근처 맛집 (MapView)
+## 근처 맛집 ([PlaceMapView](https://github.com/Bhoon-coding/BestEats_refactor/blob/develop/BestEats/View/PlaceMap/PlaceMapView.swift))
     
-- MapKit을 이용해 지도를 활용함
+- MapKit을 이용해 지도 및 각 맛집 마커 구현함
 - CLLocation으로 현위치 좌표, 목적지까지 남은거리를 구해오도록 구현함
-- 선택된 카테고리에 따라 근처 맛집 검색결과를 보여주도록 구현
     
 
-    
+
+- [카카오 로컬 API](https://developers.kakao.com/docs/latest/ko/local/dev-guide#search-by-keyword)를 이용해 선택한 맛집 카테고리에 따라 근처 맛집 검색결과를 나타내도록 구현함
 
     
-
-<br>
-
-  
-
-#### 해당 맛집 메뉴타입별 숫자 보여주기
-
-- 등록된 맛집의 메뉴 타입별로 메뉴갯수를 나타내게 하였습니다.
+|근처 맛집 View|맛집 detailView(WebView) <br> 예약하기|
+|:--:|:--:|
+|<img width= "40%" src = "https://github.com/user-attachments/assets/fc29cacd-cfb7-44b8-bc7f-dc52048dea39">|<img width= "30%" src = "https://github.com/user-attachments/assets/fee3bc6b-90b7-4127-ad09-d8fe4eecd9db">|
 
   
-
-<br>
-
-  
-
-#### Empty State (CollectionView, TableView)
-
-- 데이터가 없을시 빈 화면이 아닌 맛집 데이터 추가를 유도하는 View를 보여주도록 하였습니다.
-
-
-<br>
-
-  
-
-## MenuList page (메뉴리스트 페이지)
-
-<img width="30%" src = "https://user-images.githubusercontent.com/64088377/168582735-dc804477-5649-42ce-b5cf-0795892bda57.png">
-
-  
-
-- TableView를 사용하여 등록한 `메뉴`와 `한줄팁`을 보기쉽게 구현 하였습니다.
-
-- Main page에서 받아온 데이터를 navigation title, tableViewCell에 보여주도록 하였습니다.
-
-- `좋아요`, `먹어볼래요`, `별로에요` 버튼 클릭시 `filter 메소드`를 사용하여 타입별로 나타내게 하였습니다.
-
--> 위 타입별로 filter 하게되면 index를 가져오는데 어려움이있어 Model 구조를 변경 하였습니다.
-
-- `좋아요` 타입에서 ⭐️ 터치시 메인페이지에 등록된 메뉴가 보이도록 즐겨찾기 기능 구현 하였습니다.
-
-  
-
-<br>
-
-
-
-## MenuAdd page (메뉴 추가 페이지)
-
-  
-
-- 메뉴 추가시 `해당 맛집`에 추가 되게 구현 하였습니다.
-- UserDefaults를 활용하여 사용자가 등록한 맛집들을 로컬에 저장하게 하였습니다.
-
-  
-
-<br>
-
-  
-## MenuDetail page (메뉴 상세 페이지)
-
-<img width="30%" src = "https://user-images.githubusercontent.com/64088377/169181539-1ce587dd-3cf3-41ee-a01a-0d96385c44da.gif">
-
-  
-
-- 메뉴 리스트의 선택된 cell의 데이터를 가져와서 보여주게 하였습니다.
-
-- 우측 상단 navItem에 `수정`, `저장` 버튼에 따라 이벤트를 주게 하였습니다. (수정모드 <-> 변경내용저장)
-
-- 타입(`좋아요`, `먹어볼래요`, `별로에요`)이 수정전 타입과 다르게 변경되면 `menuList페이지` 에서도 수정된 타입으로 메뉴가 이동하게 구현 하였습니다.
-
 
 
 <br>
@@ -384,7 +328,7 @@ private func fetchRestaurant() {
 
 ### ⚠️ 참고
 
-- 띄어쓰기 부분은 '-' 을 사용합니다.
+- 띄어쓰기 부분은 '_'(언더바)를 사용합니다.
 - branch 내용은 '소문자 영어'로만 작성합니다.
 
 
@@ -412,9 +356,7 @@ feat/serach_restaurant(#8)
 
 // 아래 구분마다 띄워쓰기 해주며, [이슈내용] 부분에 띄어쓰기시 그대로 띄워줍니다.
 
-[prefix]: [이슈내용](#이슈번호)
-
-  
+[prefix]: [이슈내용]
 
 ```
 
@@ -426,7 +368,7 @@ feat/serach_restaurant(#8)
 
 ```swift
 
-feat: 맛집 검색기능 구현(#12)
+feat: 맛집 검색기능 구현
 
 ```
 
