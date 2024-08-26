@@ -82,4 +82,11 @@ final class PlaceMapViewModel: ObservableObject {
         
         return distanceValue.convertedDistance()
     }
+    
+    func makeCall() {
+        let telephone = "tel://"
+        let formattedString = telephone + (place?.phone ?? "")
+        guard let url = URL(string: formattedString) else { return }
+        UIApplication.shared.open(url)
+    }
 }
