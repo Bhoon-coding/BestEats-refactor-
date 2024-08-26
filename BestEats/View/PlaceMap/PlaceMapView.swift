@@ -46,54 +46,6 @@ struct PlaceMapView: View {
         }
     }
     
-    // MARK: - Function
-    
-//    private func setInfoNearPlaceCount() -> String {
-//        let placeCount: Int = vm.placeList.count
-//        return "근처에 \(placeCount)개의 맛집이 있어요!"
-//    }
-//    
-//    private func setPlaceName() -> String {
-//        guard let place = selectedPlace else {
-//            return self.nearestPlace?.placeName ?? PlaceInfoError.emptyData.messageDescription
-//        }
-//        return place.placeName
-//    }
-//    
-//    private func setCategoryName() -> String {
-//        
-//        guard let place = selectedPlace,
-//              let categoryName = place.categoryName else {
-//            return self.nearestPlace?.categoryName ?? PlaceInfoError.emptyData.messageDescription
-//        }
-//        return categoryName
-//    }
-//    
-//    private func setAddressName() -> String {
-//        guard let place = selectedPlace,
-//              let roadAddress = place.roadAddressName else {
-//            return self.nearestPlace?.roadAddressName ?? PlaceInfoError.emptyData.messageDescription
-//        }
-//        return place.addressName ?? roadAddress
-//    }
-//    
-//    private func setDistance() -> String {
-//        var distance: String?
-//        
-//        if let place = selectedPlace {
-//            distance = place.distance
-//        } else {
-//            distance = nearestPlace?.distance
-//        }
-//        
-//        guard let validDistance = distance,
-//              let distanceValue = Double(validDistance) else {
-//            return PlaceInfoError.emptyData.messageDescription
-//        }
-//        
-//        return distanceValue.convertedDistance()
-//    }
-//    
     private func zoomToLocation(location: CLLocationCoordinate2D) {
         withAnimation(.easeIn) {
             vm.region.center = location
@@ -238,31 +190,37 @@ extension PlaceMapView {
     
     private var placeInfoButtonContainer: some View {
         VStack {
-            NavigationLink {
-                ReuseWebView(
-                    placeName: vm.place?.placeName ?? "",
-                    urlString: vm.place?.placeURL ?? ""
-                )
-            } label: {
-                Text(ETC.Button.more)
-                    .padding()
-                    .frame(width: 88)
-                    .background(.green)
-                    .clipShape(RoundedRectangle(cornerRadius: 16))
-            }
-            
+            routeToWebViewButton
             Spacer()
-            
-            Button(PlaceMap.Button.reserve) {
-                // TODO: [] 전화 팝업 띄우기
-            }
-            .padding()
-            .frame(width: 88)
-            .background(.red)
-            .clipShape(RoundedRectangle(cornerRadius: 16))
+            makeCallButton
         }
         .font(.pretendardBold14)
         .foregroundStyle(.white)
+    }
+    
+    private var routeToWebViewButton: some View {
+        NavigationLink {
+            ReuseWebView(
+                placeName: vm.place?.placeName ?? "",
+                urlString: vm.place?.placeURL ?? ""
+            )
+        } label: {
+            Text(ETC.Button.more)
+                .padding()
+                .frame(width: 88)
+                .background(.green)
+                .clipShape(RoundedRectangle(cornerRadius: 16))
+        }
+    }
+    
+    private var makeCallButton: some View {
+        Button(PlaceMap.Button.reserve) {
+            vm.makeCall()
+        }
+        .padding()
+        .frame(width: 88)
+        .background(.red)
+        .clipShape(RoundedRectangle(cornerRadius: 16))
     }
 }
 
