@@ -51,6 +51,7 @@ struct MenuItemView: View {
             VStack {
                 Text(menu.wrappedOneLiner)
                     .font(.pretendardSemiBold16)
+                    .foregroundStyle(.black)
                     .lineLimit(2)
             }
         }

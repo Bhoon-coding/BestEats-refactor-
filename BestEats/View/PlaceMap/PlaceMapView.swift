@@ -12,11 +12,13 @@ struct PlaceMapView: View {
     
     @Environment(\.dismiss) private var dismiss
     @StateObject private var vm = PlaceMapViewModel()
+    @State private var navPath = NavigationPath()
     @State private var isPresentedSheet: Bool = false
     @State var foodType: FoodType = .cafe
     
     var body: some View {
-        NavigationStack {
+        Self._printChanges()
+        return NavigationStack(path: $navPath) {
         ZStack {
             map
             
@@ -29,6 +31,9 @@ struct PlaceMapView: View {
             .padding(.vertical, 24)
         }
     }
+        .onDisappear {
+            navPath = .init()
+        }
         .onAppear {
             vm.getCurrentLocation()
             self.isPresentedSheet = true
@@ -38,6 +43,10 @@ struct PlaceMapView: View {
         }
         .onChange(of: foodType) { newFoodType in
             Task { await vm.fetchNearRestaurant(foodType: newFoodType) }
+        }
+        .onDisappear {
+            print("disappear")
+            
         }
         .sheet(isPresented: $isPresentedSheet) {
             FoodTypeSheetView(foodType: $foodType)
@@ -138,10 +147,7 @@ extension PlaceMapView {
     private var placeInfoAndButtonContainer: some View {
         HStack(spacing: 16) {
             placeInfoContainer
-//            if $vm.selectedPlace != nil || $vm.nearestPlace != nil {
-            // TODO: [] 확인 필요
-                placeInfoButtonContainer
-//            }
+            placeInfoButtonContainer
         }
         .frame(maxHeight: 128)
     }
@@ -199,17 +205,18 @@ extension PlaceMapView {
     }
     
     private var routeToWebViewButton: some View {
-        NavigationLink {
-            ReuseWebView(
-                placeName: vm.place?.placeName ?? "",
-                urlString: vm.place?.placeURL ?? ""
-            )
-        } label: {
+        NavigationLink(value: vm.place) {
             Text(ETC.Button.more)
                 .padding()
                 .frame(width: 88)
                 .background(.green)
                 .clipShape(RoundedRectangle(cornerRadius: 16))
+        }
+        .navigationDestination(for: V2.Local.Search.Keyword.Response.PlaceInfo.self) { place in
+            ReuseWebView(
+                placeName: place.placeName,
+                urlString: place.placeURL
+            )
         }
     }
     

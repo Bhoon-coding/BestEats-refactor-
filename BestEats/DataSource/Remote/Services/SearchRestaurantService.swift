@@ -75,7 +75,7 @@ extension V2.Local.Search {
             // MARK: - PlaceInfo
             /// Identifiable: Map의 annotation Items에 필요
             /// Equatable: .onChange에 필요
-            struct PlaceInfo: Codable, Identifiable, Equatable {
+            struct PlaceInfo: Codable, Identifiable, Equatable, Hashable {
                 let id = UUID()
                 let placeName: String
                 let distance: String

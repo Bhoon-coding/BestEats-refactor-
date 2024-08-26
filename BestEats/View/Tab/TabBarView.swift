@@ -28,11 +28,6 @@ struct TabBarView: View {
                             Image(systemName: Img.map)
                             Text(Tab.recommend)
                         }
-//                    SettingsView()
-//                        .tabItem {
-//                            Image(systemName: Img.setting)
-//                            Text(Tab.setting)
-//                        }
                 }
             }
         }

@@ -10,6 +10,7 @@ import SwiftUI
 struct RestaurantView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var coreDataManager: CoreDataManager
+    @State private var navPath = NavigationPath()
     @State private var searchText = ""
     
     var filteredData: [Restaurant] {
@@ -23,17 +24,18 @@ struct RestaurantView: View {
     
     var body: some View {
         
-        NavigationStack {
+        NavigationStack(path: $navPath) {
             ZStack(alignment: .bottomTrailing) {
                 ScrollView {
                     ForEach(filteredData) { item in
-                        NavigationLink {
-                            MenuView(restaurant: item)
-                        } label: {
+                        NavigationLink(value: item) {
                             RestaurantCardView(restaurant: item)
                                 .padding(.horizontal, 24)
                                 .shadow(radius: 4, x: 8, y: 8)
                                 .padding(.bottom, 16)
+                        }
+                        .navigationDestination(for: Restaurant.self) { item in
+                            MenuView(restaurant: item)
                         }
                     }
                 }
@@ -47,6 +49,9 @@ struct RestaurantView: View {
                 )
                 AddButton(sheet: .restaurant)
             }
+        }
+        .onDisappear {
+            navPath = NavigationPath()
         }
     }
 }
