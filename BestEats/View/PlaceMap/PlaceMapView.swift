@@ -31,9 +31,6 @@ struct PlaceMapView: View {
             .padding(.vertical, 24)
         }
     }
-        .onDisappear {
-            navPath = .init()
-        }
         .onAppear {
             vm.getCurrentLocation()
             self.isPresentedSheet = true
@@ -45,8 +42,7 @@ struct PlaceMapView: View {
             Task { await vm.fetchNearRestaurant(foodType: newFoodType) }
         }
         .onDisappear {
-            print("disappear")
-            
+            navPath = .init()
         }
         .sheet(isPresented: $isPresentedSheet) {
             FoodTypeSheetView(foodType: $foodType)
