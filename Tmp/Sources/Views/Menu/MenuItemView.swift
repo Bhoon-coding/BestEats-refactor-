@@ -17,47 +17,52 @@ struct MenuItemView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             HStack {
-                Text(menu.wrappedName)
-                    .font(BestEatsFontFamily.Pretendard.bold.swiftUIFont(size: 22))
-                    .foregroundStyle(BestEatsAsset.commonOrange.swiftUIColor)
-                    .lineLimit(1)
-                
+                menuNameText
                 Spacer()
-                
                 if rateType == .like {
-                    
-                    Button {
-                        DispatchQueue.main.async {
-                            menu.isFavorite.toggle()
-                            coreDataManager.updateMenu(
-                                with: restaurant,
-                                id: menu.wrappedId,
-                                name: menu.wrappedName,
-                                oneLiner: menu.wrappedOneLiner,
-                                rate: menu.wrappedRate,
-                                isFavorite: menu.isFavorite
-                            )
-                        }
-                    } label: {
-                        Image(menu.isFavorite ? Img.starFill : Img.star)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                    }
-                    .frame(width: 24, height: 24)
+                    favoriteButton
                 }
             }
-            
             Spacer()
-            
-            VStack {
-                Text(menu.wrappedOneLiner)
-                    .font(BestEatsFontFamily.Pretendard.semiBold.swiftUIFont(size: 16))
-                    .foregroundStyle(BestEatsAsset.commonBlack.swiftUIColor)
-                    .lineLimit(2)
-            }
+            oneLinerText
         }
         .padding(.top)
         .background(.background)
+    }
+}
+
+extension MenuItemView {
+    private var menuNameText: some View {
+        Text(menu.wrappedName)
+            .font(BestEatsFontFamily.Pretendard.bold.swiftUIFont(size: 22))
+            .foregroundStyle(BestEatsAsset.commonOrange.swiftUIColor)
+            .lineLimit(1)
+    }
+    
+    private var favoriteButton: some View {
+        Button {
+            menu.isFavorite.toggle()
+            coreDataManager.updateMenu(
+                with: restaurant,
+                id: menu.wrappedId,
+                name: menu.wrappedName,
+                oneLiner: menu.wrappedOneLiner,
+                rate: menu.wrappedRate,
+                isFavorite: menu.isFavorite
+            )
+        } label: {
+            Image(menu.isFavorite ? Img.starFill : Img.star)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+        }
+        .frame(width: 24, height: 24)
+    }
+    
+    private var oneLinerText: some View {
+        Text(menu.wrappedOneLiner)
+            .font(BestEatsFontFamily.Pretendard.semiBold.swiftUIFont(size: 16))
+            .foregroundStyle(BestEatsAsset.commonBlack.swiftUIColor)
+            .lineLimit(2)
     }
 }
 
