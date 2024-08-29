@@ -14,7 +14,7 @@ struct PlaceMapView: View {
     @StateObject private var vm = PlaceMapViewModel()
     @State private var navPath = NavigationPath()
     @State private var isPresentedSheet: Bool = false
-    @State var foodType: FoodType = .cafe
+    @State var foodType: FoodType = .none
     
     var body: some View {
         Self._printChanges()
@@ -38,7 +38,7 @@ struct PlaceMapView: View {
         .onChange(of: vm.place) { newPlace in
             zoomToLocation(location: newPlace!.coordinate)
         }
-        .onChange(of: foodType) { newFoodType in
+        .onChange(of: foodType ) { newFoodType in
             Task { await vm.fetchNearRestaurant(foodType: newFoodType) }
         }
         .onDisappear {

@@ -6,6 +6,7 @@
 //
 
 enum FoodType: String, CaseIterable {
+    case none
     case korean = "한식"
     case japanese = "일식"
     case chinese = "중식"
@@ -45,6 +46,9 @@ enum FoodType: String, CaseIterable {
             return Img.FoodCategory.hamburger
         case .salad:
             return Img.FoodCategory.salad
+            
+        default:
+            return ""
         }
     }
 }

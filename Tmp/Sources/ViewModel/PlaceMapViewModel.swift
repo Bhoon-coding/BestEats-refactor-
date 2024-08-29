@@ -47,6 +47,7 @@ final class PlaceMapViewModel: ObservableObject {
             guard let self = self else { return }
             // span: 카메라 줌
             let span: MKCoordinateSpan = .init(latitudeDelta: 0.006, longitudeDelta: 0.006)
+            
             self.region = .init(center: coordinate, span: span)
         }
     }

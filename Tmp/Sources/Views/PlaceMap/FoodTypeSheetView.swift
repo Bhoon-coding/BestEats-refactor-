@@ -22,20 +22,23 @@ struct FoodTypeSheetView: View {
         VStack {
             LazyHGrid(rows: rows, alignment: .top, spacing: 32) {
                 ForEach(FoodType.allCases, id: \.self) { item in
-                    Button(action: {
-                        foodType = item
-                        dismiss()
-                    }, label: {
-                        VStack(spacing: 8) {
-                            Image(item.imageName)
-                                .resizable()
-                                .frame(width: 60, height: 60)
-                            Text(item.rawValue)
-                                .font(.pretendardBold16)
-                                .foregroundStyle(.black)
-                        }
-                    })
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    
+                    if item != .none {
+                        Button(action: {
+                            foodType = item
+                            dismiss()
+                        }, label: {
+                            VStack(spacing: 8) {
+                                Image(item.imageName)
+                                    .resizable()
+                                    .frame(width: 60, height: 60)
+                                Text(item.rawValue)
+                                    .font(.pretendardBold16)
+                                    .foregroundStyle(.black)
+                            }
+                        })
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                    }
                 }
             }
         }
