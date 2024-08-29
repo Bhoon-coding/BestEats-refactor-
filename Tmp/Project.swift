@@ -13,7 +13,24 @@ private let infoPlist: [String: Plist.Value] = [
     "CFBundleVersion": "\(bundleVersion)",
     "UIUserInterfaceStyle": "Light",
     "KAKAO_API_KEY": "7072eb0a506b5f651bf1ad06d6f4db81",
-    "KAKAO_SERVER_HOST": "${KAKAO_SERVER_HOST}"
+    "KAKAO_SERVER_HOST": "${KAKAO_SERVER_HOST}",
+    "NSLocationWhenInUseUsageDescription": "근처 맛집 정보를 제공하기 위해 \n위치 권한이 필요합니다",
+    "UISupportedInterfaceOrientations": [
+        "Item0": "UIInterfaceOrientationPortrait"
+    ],
+    "UIAppFonts": [
+        "Item0": "Pretendard-Black.otf",
+        "Item1": "Pretendard-Bold.otf",
+        "Item2": "Pretendard-ExtraBold.otf",
+        "Item3": "Pretendard-ExtraLight.otf",
+        "Item4": "Pretendard-Light.otf",
+        "Item5": "Pretendard-Medium.otf",
+        "Item6": "Pretendard-Regular.otf",
+        "Item7": "Pretendard-SemiBold.otf",
+        "Item8": "Pretendard-Thin.otf"
+    ],
+    "CFBundleIdentifier": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    
 ]
 
 let project = Project(
