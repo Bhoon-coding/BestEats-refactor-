@@ -4,6 +4,9 @@ private let appName: String = "BestEats"
 private let bundleId: String = "com.bhooncoding.Besteats"
 private let appVersion: String = "2.0.0"
 private let bundleVersion: String = "2"
+
+// MARK: - Info.plist
+
 private let infoPlist: [String: Plist.Value] = [
     "UILaunchScreen": [
         "UIColorName": "",
@@ -33,6 +36,7 @@ private let infoPlist: [String: Plist.Value] = [
     
 ]
 
+
 let project = Project(
     name: appName,
     targets: [
@@ -52,9 +56,9 @@ let project = Project(
             settings: configureSettings()
             // MARK: - CoreData 아래처럼 하면 Default template 에러가 남
             /// 경로 다음과 같이 변경 Resources/CoreData/{모델명.xcdatamodeld}
-//            coreDataModels: [
-//                .coreDataModel("CoreData/RestaurantList.xcdatamodeld")
-//            ]
+            //            coreDataModels: [
+            //                .coreDataModel("CoreData/RestaurantList.xcdatamodeld")
+            //            ]
         ),
         .target(
             name: "BestEatsTests",
@@ -66,11 +70,11 @@ let project = Project(
             resources: [],
             dependencies: [.target(name: "BestEats")]
         ),
-    ],
+    ], 
+    additionalFiles: ["README.md"],
     resourceSynthesizers: [
         .assets(),
         .fonts(),
-//        .coreData()
     ]
 )
 
@@ -92,21 +96,4 @@ private func makeConfigurations() -> [Configuration] {
     return [debug, release]
 }
 
-//private func configureInfoPlist(merging other: [String: Plist.Value] = [:]) -> InfoPlist {
-//    var extendedPlist: [String: Plist.Value] = [
-//                "UILaunchScreen": [
-//                    "UIColorName": "",
-//                    "UIImageName": "",
-//                ],
-//                "CFBundleShorVersionString": "\(appVersion)",
-//                "CFBundleVersion": "\(bundleVersion)",
-//                "Appearance": "Light",
-//                "KAKAO_API_KEY": "7072eb0a506b5f651bf1ad06d6f4db81",
-//                "KAKAO_SERVER_HOST": "${KAKAO_SERVER_HOST}"
-//            ]
-//    
-//    other.forEach { (key: String, value: Plist.Value) in
-//        extendedPlist[key] = value
-//    }
-//    return InfoPlist.extendingDefault(with: extendedPlist)
-//}
+
