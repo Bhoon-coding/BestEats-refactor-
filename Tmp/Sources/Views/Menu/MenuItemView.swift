@@ -18,8 +18,8 @@ struct MenuItemView: View {
         VStack(alignment: .leading, spacing: 16) {
             HStack {
                 Text(menu.wrappedName)
-                    .font(.pretendardBold20)
-                    .foregroundStyle(.orange)
+                    .font(BestEatsFontFamily.Pretendard.bold.swiftUIFont(size: 22))
+                    .foregroundStyle(BestEatsAsset.commonOrange.swiftUIColor)
                     .lineLimit(1)
                 
                 Spacer()
@@ -28,6 +28,7 @@ struct MenuItemView: View {
                     
                     Button {
                         DispatchQueue.main.async {
+                            menu.isFavorite.toggle()
                             coreDataManager.updateMenu(
                                 with: restaurant,
                                 id: menu.wrappedId,
@@ -50,8 +51,8 @@ struct MenuItemView: View {
             
             VStack {
                 Text(menu.wrappedOneLiner)
-                    .font(.pretendardSemiBold16)
-                    .foregroundStyle(.black)
+                    .font(BestEatsFontFamily.Pretendard.semiBold.swiftUIFont(size: 16))
+                    .foregroundStyle(BestEatsAsset.commonBlack.swiftUIColor)
                     .lineLimit(2)
             }
         }

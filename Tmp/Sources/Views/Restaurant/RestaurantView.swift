@@ -34,14 +34,14 @@ struct RestaurantView: View {
                                 .shadow(radius: 4, x: 8, y: 8)
                                 .padding(.bottom, 16)
                         }
-                        .navigationDestination(for: Restaurant.self) { item in
-                            MenuView(restaurant: item)
-                        }
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(.gray.opacity(0.1))
                 .navigationTitle(Navigation.Title.appName)
+                .navigationDestination(for: Restaurant.self) { item in
+                    MenuView(restaurant: item)
+                }
                 .searchable(
                     text: $searchText,
                     placement: .navigationBarDrawer(displayMode: .always),
