@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0089D2EC48F557DC484D1FD8 /* ColorEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901B834A173B13D7A692848B /* ColorEx.swift */; };
 		01ADBAC2429C221F92627EB1 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7B6C0EAE09E3A96878A3C4B7 /* Pretendard-Medium.otf */; };
-		02A330CA058B0A1BFA69FB16 /* FoodType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BE4540B76C88A819FA148A /* FoodType.swift */; };
+		02A330CA058B0A1BFA69FB16 /* FoㅋodType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BE4540B76C88A819FA148A /* FoodType.swift */; };
 		03300162AA70FB1D48C015E2 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67440A75D1404E031468D184 /* Double.swift */; };
 		06A4520B1D4DBABE982D334D /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A2748652B9D393BC332564 /* TabItem.swift */; };
 		0B08F449DDBA554049413601 /* RestaurantCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A089C590C963B6969C25DC12 /* RestaurantCardView.swift */; };
@@ -659,6 +659,9 @@
 			dependencies = (
 			);
 			name = BestEats;
+			packageProductDependencies = (
+				E1067C362C58E25F005FE587 /* PopupView */,
+			);
 			productName = BestEats;
 			productReference = 40A3DFBC9D1884D432AC0D55 /* BestEats.app */;
 			productType = "com.apple.product-type.application";
@@ -1082,6 +1085,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E1067C352C58E25F005FE587 /* XCRemoteSwiftPackageReference "PopupView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/PopupView";
+			requirement = {
+				kind = exactVersion;
+				version = 3.0.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E1067C362C58E25F005FE587 /* PopupView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1067C352C58E25F005FE587 /* XCRemoteSwiftPackageReference "PopupView" */;
+			productName = PopupView;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		56F7DB0369B065979079AD33 /* RestaurantList.xcdatamodeld */ = {
