@@ -3,13 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0089D2EC48F557DC484D1FD8 /* ColorEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901B834A173B13D7A692848B /* ColorEx.swift */; };
 		01ADBAC2429C221F92627EB1 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7B6C0EAE09E3A96878A3C4B7 /* Pretendard-Medium.otf */; };
-		02A330CA058B0A1BFA69FB16 /* FoㅋodType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BE4540B76C88A819FA148A /* FoodType.swift */; };
+		02A330CA058B0A1BFA69FB16 /* FoodType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BE4540B76C88A819FA148A /* FoodType.swift */; };
 		03300162AA70FB1D48C015E2 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67440A75D1404E031468D184 /* Double.swift */; };
 		06A4520B1D4DBABE982D334D /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A2748652B9D393BC332564 /* TabItem.swift */; };
 		0B08F449DDBA554049413601 /* RestaurantCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A089C590C963B6969C25DC12 /* RestaurantCardView.swift */; };
@@ -68,6 +68,7 @@
 		D08ED2F2DA73D6B6B0E257C8 /* MenuDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7168C7AE72FD5C80E4A270 /* MenuDetailView.swift */; };
 		D4136B56D5272BED6177E095 /* PlaceMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EF3155E3AABAB770D536CA /* PlaceMapView.swift */; };
 		DD9A29C56BC25ECAD9FBA44E /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = ED15A7D56F3B94F7CDD7E92A /* Pretendard-Regular.otf */; };
+		E17F765B2C815CAC00336B51 /* PopupView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E17F765A2C815CAB00336B51 /* PopupView.framework */; };
 		E64D97CB43E0970EFA31E4FD /* TuistAssets+BestEats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593D21C178025BAE7C1FCB1 /* TuistAssets+BestEats.swift */; };
 		EB1F42A2019594C0FF734431 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE75EA31D2FE7342DEE7146C /* CoreDataManager.swift */; };
 		ED446AFCC59669276F52AD38 /* Pretendard-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = CD40F16650AEB1AD84B5F1FE /* Pretendard-ExtraLight.otf */; };
@@ -90,16 +91,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		6888E6A7F35201F68F016404 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B017B3AD46BA8F95DE3E4222 /* Dependencies */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 8;
@@ -189,6 +180,7 @@
 		D9D3750BA8AA484E8E06423F /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 		DE75EA31D2FE7342DEE7146C /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		E0826761EFA55037D887B179 /* BestEatsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "BestEatsTests-Info.plist"; sourceTree = "<group>"; };
+		E17F765A2C815CAB00336B51 /* PopupView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PopupView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E586EB36229111AD56002DB3 /* MenuItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemView.swift; sourceTree = "<group>"; };
 		E9F9D0BCA4D006DDD02F97F8 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		EA557712EC52D387ED42ACEF /* RestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantView.swift; sourceTree = "<group>"; };
@@ -209,6 +201,7 @@
 				C8ECF99C9C8D2805175535B0 /* CFNetwork.framework in Frameworks */,
 				701EA4F65D38E734EB2075D9 /* Alamofire.framework in Frameworks */,
 				9F4D4973A05B63DB50E22100 /* PopupView.framework in Frameworks */,
+				E17F765B2C815CAC00336B51 /* PopupView.framework in Frameworks */,
 				B4EC6E40366CDCBC55C6BE25 /* SwiftUIIntrospect.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -565,6 +558,7 @@
 		CA657DB44B2E372AA29F16E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E17F765A2C815CAB00336B51 /* PopupView.framework */,
 				986C3BC45644567F1143AF3C /* CFNetwork.framework */,
 			);
 			name = Frameworks;
@@ -650,7 +644,6 @@
 			buildPhases = (
 				89D7B13E68E3CD9BE7541EB3 /* Sources */,
 				74045553019056E79C4A61DE /* Resources */,
-				6888E6A7F35201F68F016404 /* Embed Frameworks */,
 				6F0EAA5A477717B1B278A65B /* Frameworks */,
 				B017B3AD46BA8F95DE3E4222 /* Dependencies */,
 			);
@@ -660,7 +653,6 @@
 			);
 			name = BestEats;
 			packageProductDependencies = (
-				E1067C362C58E25F005FE587 /* PopupView */,
 			);
 			productName = BestEats;
 			productReference = 40A3DFBC9D1884D432AC0D55 /* BestEats.app */;
@@ -955,10 +947,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -1017,10 +1006,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -1085,25 +1071,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		E1067C352C58E25F005FE587 /* XCRemoteSwiftPackageReference "PopupView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/exyte/PopupView";
-			requirement = {
-				kind = exactVersion;
-				version = 3.0.5;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		E1067C362C58E25F005FE587 /* PopupView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E1067C352C58E25F005FE587 /* XCRemoteSwiftPackageReference "PopupView" */;
-			productName = PopupView;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		56F7DB0369B065979079AD33 /* RestaurantList.xcdatamodeld */ = {
