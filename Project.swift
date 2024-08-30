@@ -36,7 +36,6 @@ private let infoPlist: [String: Plist.Value] = [
     
 ]
 
-
 let project = Project(
     name: appName,
     targets: [
@@ -70,7 +69,8 @@ let project = Project(
             resources: [],
             dependencies: [.target(name: "BestEats")]
         ),
-    ], 
+    ],
+    
     additionalFiles: ["README.md"],
     resourceSynthesizers: [
         .assets(),
@@ -82,7 +82,9 @@ private func configureSettings() -> Settings {
     .settings(
         base: [
             "DEVELOPMENT_TEAM": "R4G74AF442",
-            "KAKAO_SERVER_HOST": "https://dapi.kakao.com"
+            "KAKAO_SERVER_HOST": "https://dapi.kakao.com",
+            "MARKETING_VERSION": "\(appVersion)",
+            "CURRENT_PROJECT_VERSION": "\(bundleVersion)"
         ],
         configurations: makeConfigurations(),
         defaultSettings: .recommended
