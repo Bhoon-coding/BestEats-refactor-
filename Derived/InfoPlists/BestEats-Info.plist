@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShorVersionString</key>
+	<string>2.0.0</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleVersion</key>
+	<string>2</string>
+	<key>KAKAO_API_KEY</key>
+	<string>7072eb0a506b5f651bf1ad06d6f4db81</string>
+	<key>KAKAO_SERVER_HOST</key>
+	<string>${KAKAO_SERVER_HOST}</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>근처 맛집 정보를 제공하기 위해 
+위치 권한이 필요합니다</string>
+	<key>UIAppFonts</key>
+	<dict>
+		<key>Item0</key>
+		<string>Pretendard-Black.otf</string>
+		<key>Item1</key>
+		<string>Pretendard-Bold.otf</string>
+		<key>Item2</key>
+		<string>Pretendard-ExtraBold.otf</string>
+		<key>Item3</key>
+		<string>Pretendard-ExtraLight.otf</string>
+		<key>Item4</key>
+		<string>Pretendard-Light.otf</string>
+		<key>Item5</key>
+		<string>Pretendard-Medium.otf</string>
+		<key>Item6</key>
+		<string>Pretendard-Regular.otf</string>
+		<key>Item7</key>
+		<string>Pretendard-SemiBold.otf</string>
+		<key>Item8</key>
+		<string>Pretendard-Thin.otf</string>
+	</dict>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+		<key>UISceneConfigurations</key>
+		<dict/>
+	</dict>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key>
+		<string></string>
+		<key>UIImageName</key>
+		<string></string>
+	</dict>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<dict>
+		<key>Item0</key>
+		<string>UIInterfaceOrientationPortrait</string>
+	</dict>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
+</dict>
+</plist>
