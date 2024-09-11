@@ -1,18 +1,14 @@
-# Besteats
+# Ijjeuminga(이쯤인가) 🚌 👀
 
-> 배만 채우면 되던 시대는 이제 옛날 얘기!!
+> 탑승중인 버스의 현재 경로를 실시간으로 알려주고 목적지 근처부터 사용자에게 알림을 주는 버스도착 알림앱 (공공API 사용)
 
-어떻게 먹어야 맛있게 먹을수 있을까를 고민하는 시대. <br>
-
-기록하고 나만의 레시피로 맛있게 먹자🍗
-
-  
 
 <br>
 
-## 목차
+# 목차
 1. [프로젝트 소개](#프로젝트-소개)
-    - [기능 소개](#기능소개)
+    - [미리보기](#미리보기)
+    - [작업요약](#작업요약)
 2. 객체 역할 소개
       - 앱 설계
       - View
@@ -21,357 +17,105 @@
 
 <br><br>
 
-  
+# 프로젝트 소개
 
+> 아래 공공API (서울버스)를 이용해 현재위치 기반의 가까운 정류장을 기준으로 목적지 선택시 목적지 부근부터 미리안내를 해주는 앱
 
-## 프로젝트 소개
-
-### 👨‍💻 Developer
-|이병훈 (1인 개발)|
-|:--:|
-
-<br>
-
-### 작업 요약
-- UIKit → `SwiftUI` 컨버팅 작업
-- 로컬데이터 관리 컨버팅 작업 (UserDefaults → `CoreData`)
-- 앱의 비동기 처리를 위해 `Swift Concurrency` 적용
-- `MapKit`을 이용한 각 지역좌표의 마커표시
-- 주요 비즈니스로직 테스트를 위한 `UnitTest` 적용
-    - View의 로직이 많아짐과 역할 분리에 따른 `MVVM 패턴` 적용
-
-<br>
-
-### 이런분들에게 추천합니다!
-
-  
-
-- 음식점 마다 나에게 맞는 간이나 매운맛의 강도가 다 다르지 않았나?
-
-- 오랜만에 방문한 맛집. 어떻게 먹어야 맛있었지? 다음엔 이걸 먹어봐야겠다고 했는데 그게 뭐였지?
-
-- 일식이나 중식이 땡기는데 근처 맛집이 어딨지?
-
-<br>
-  
-
-### Skills
-
-- SwiftUI
-- Swift Concurrency
-- MVVM
-- CoreData
-- CLLocation
-- MapKit
-- UnitTest
-
-  
-
-<br>
-
-
-### Tools
-
-- Xcode(v15.2)
-- SPM(Swift Package Manager)
+**API**
+- [서울_버스위치정보조회_서비스](https://www.data.go.kr/data/15000332/openapi.do)
+- [서울_버스운행정보_공유서비스](http://api.bus.go.kr/contents/sub02/getStaionByRoute.html)
 
 
 <br>
 
-### Version Target
-
-- iOS 16.0
-
-<br>
-
-  
-
-## 기능소개
+### 👨‍💻 Developers
+|조성빈🍎|이병훈🍎|이하연🍎|
+|:--:|:--:|:--:|
 
 <br>
 
-### Main page (개인 맛집 기록)
+## 미리보기
+<br>
 
-<img width = "30%" src = "https://github.com/user-attachments/assets/7d9d49d8-e219-4ba4-980d-0a81146e5a28">
-
-  
+### 조성빈
 
 <br>
 
-  
-
-### 맛집 티켓 (Grid)
-- LazyVGrid를 활용하여 사용자가 등록한 맛집들을 한눈에 볼 수 있도록 구현함
-
-  
+### 이병훈
+|목적지 선택|실시간 버스현황판(LiveActivity)|도착시|
+|:--:|:--:|:--:|
+|<img width="400" src="https://github.com/user-attachments/assets/f012d1ca-6201-4686-9414-9c52795bc49c"/>|<img width="400" src="https://github.com/user-attachments/assets/de286d08-22a7-45ca-acd7-57b018dabbae"/>|<img width="400" src="https://github.com/user-attachments/assets/5ae34c18-f138-410e-892b-33b83f72ec50"/>
 
 <br>
 
-  
-
-### CRUD
-
-- `CoreData`를 사용하여 맛집 추가, 불러오기, 변경, 삭제 기능을 구현하여 로컬 데이터를 관리함
-- CoreDataManager로 CoreData관련 로직만 담당하도록 구현하여 테스트를 용이하게 하였으며, 의존성을 분리 시킴
-
-|Create <br> 맛집, 메뉴 등록|Update, Delete <br>맛집변경 & 삭제
-|:--:|:--:|
-|<img width= "40%" src = "https://github.com/user-attachments/assets/f1818719-f310-47de-88d9-0ccfb1b25097">|<img width= "60%" src = "https://github.com/user-attachments/assets/d733033f-f119-41e9-9f9f-ab164d86d051">|
-
-
-
-<br><br>
-
-#### Create ([링크](https://github.com/Bhoon-coding/BestEats_refactor/blob/bcf96f7d84150aeff5cf34a91098eb708c7ce5d3/BestEats/Managers/CoreData/CoreDataManager.swift#L30C1-L72C6))
-
-
-<details> 
-<summary> 소스코드 </summary>
-    
-```swift 
-// MARK: - Add
-    
-    func addRestaurant(
-        _ restaurantName: String,
-        _ menuName: String,
-        _ oneLiner: String,
-        _ rateType: Rate,
-        _ isFavorite: Bool
-    ) {
-        let newRestaurant = Restaurant(context: context)
-        let newMenu = Menu(context: context)
-        
-        newRestaurant.id = UUID()
-        newRestaurant.name = restaurantName
-        
-        newMenu.id = UUID()
-        newMenu.name = menuName
-        newMenu.oneLiner = oneLiner
-        newMenu.rate = rateType.rawValue
-        newMenu.restaurant = newRestaurant
-        newMenu.isFavorite = isFavorite
-        
-        saveContext()
-    }
-    
-    func addMenu(
-        with restaurant: Restaurant,
-        _ name: String,
-        _ oneLiner: String,
-        _ rateType: Rate,
-        _ isFavorite: Bool
-    ) {
-        let newMenu = Menu(context: context)
-        
-        newMenu.id = UUID()
-        newMenu.name = name
-        newMenu.oneLiner = oneLiner
-        newMenu.rate = rateType.rawValue
-        newMenu.isFavorite = isFavorite
-        newMenu.restaurant = restaurant
-        
-        fetchMenu(with: restaurant, rateType)
-    }
-
-```
-    
-
-</details>
-
-
-
-
-
-#### Read ([링크](https://github.com/Bhoon-coding/BestEats_refactor/blob/bcf96f7d84150aeff5cf34a91098eb708c7ce5d3/BestEats/Managers/CoreData/CoreDataManager.swift#L126))
-
-<details>
-<summary>소스코드</summary>
-    
-```swift
-    
-init() {
-        self.container = NSPersistentContainer(name: "RestaurantList")
-        self.container.loadPersistentStores { _, error in
-            if let error = error as NSError? {
-                print("Unresolved error: \(error), \(error.localizedDescription)")
-            }
-        }
-        self.context = self.container.viewContext
-        fetchRestaurant() // 초기화시 데이터 fetch
-    }
-    
-private func fetchRestaurant() {
-        let request = NSFetchRequest<Restaurant>(entityName: "Restaurant")
-        do {
-            self.savedRestaurant = try context.fetch(request)
-        } catch {
-            print("Fetch Error: \(error.localizedDescription)")
-        }
-    }
-    
-    func fetchMenu(with restaurant: Restaurant, _ type: Rate) {
-        let sortedMenu: [Menu] = restaurant.MenuList.sorted(by: { $0.wrappedName < $1.wrappedName })
-        self.filteredMenu = sortedMenu.filter { $0.rate == type.rawValue }
-    }
-```
-</details>
-
-#### Update ([링크](https://github.com/Bhoon-coding/BestEats_refactor/blob/bcf96f7d84150aeff5cf34a91098eb708c7ce5d3/BestEats/Managers/CoreData/CoreDataManager.swift#L74-L103))
-<details>
-<summary>소스코드</summary>
-    
-```swift
-    
-    // MARK: - Update
-    
-    func updateRestaurant(with restaurant: Restaurant, newName: String? = nil) {
-        if let newName = newName {
-            restaurant.name = newName
-            saveContext()
-        }
-    }
-    
-    func updateMenu(
-        with restaurant: Restaurant,
-        id menuId: UUID,
-        name menuName: String,
-        oneLiner menuOneLiner: String,
-        rate menuRate: String,
-        isFavorite: Bool = false
-    ) {
-        guard let menuSet = restaurant.menu as? Set<Menu> else {
-            print("No menu in restaurant")
-            return
-        }
-        
-        if let menu = menuSet.first(where: { $0.id == menuId }) {
-            menu.name = menuName
-            menu.oneLiner = menuOneLiner
-            menu.rate = menuRate
-            menu.isFavorite = isFavorite
-            saveContext()
-        }
-    }
-```
-</details>
-
-#### Delete ([링크](https://github.com/Bhoon-coding/BestEats_refactor/blob/bcf96f7d84150aeff5cf34a91098eb708c7ce5d3/BestEats/Managers/CoreData/CoreDataManager.swift#L105-L110))
-    
-<details>
-<summary>소스코드</summary>
-    
-```swift
-    // MARK: - Delete
-    
-    func delete(with object: NSManagedObject) {
-        context.delete(object)
-        saveContext()
-    }
-    
-```
-</details>
-
-
-  
+### 이하연
 
 <br>
 
-  
+## 작업요약
 
-### 맛집 찾기
+<br>
 
- <img width= "30%" src = "https://github.com/user-attachments/assets/ad5525b5-9ee8-40aa-9b8e-e8503e65ea5a">
+### 공통
 
-  
+- View의 로직이 많아짐과 역할 분리에 따른 `MVVM 패턴` 적용 (input | output)
+- 네트워크 요청만을 담당하는 `NetworkLayer` 설계
+- 반응형 프로그래밍(Reactive Programming)을 위해 RxSwift 적용
 
-- 등록되어 있는 음식점을 `filter`, `contain` 메소드를 이용해서 사용자가 찾고자 하는 음식점을 직관적으로 추려내게 구현
-<br><br>
+### 조성빈
 
-  
-## 근처 맛집 ([PlaceMapView](https://github.com/Bhoon-coding/BestEats_refactor/blob/develop/BestEats/View/PlaceMap/PlaceMapView.swift))
-    
-- MapKit을 이용해 지도 및 각 맛집 마커 구현함
-- CLLocation으로 현위치 좌표, 목적지까지 남은거리를 구해오도록 구현함
-    
+<br>
 
+### 이병훈
+- `Tuist` 도입 및 프로젝트 구조 설계, 협업간 `pbxproj 충돌 개선`
+- `LiveActivity`를 활용한 실시간 버스위치 현황판 구현
+- `목적지 선택 페이지`
+    - `CLLocation`을 활용한 현재위치와 가까운 정류장 표기
+    - SkeletonView를 활용한 데이터 fetch하는동안 UX개선 
 
-- [카카오 로컬 API](https://developers.kakao.com/docs/latest/ko/local/dev-guide#search-by-keyword)를 이용해 선택한 맛집 카테고리에 따라 근처 맛집 검색결과를 나타내도록 구현함
+<br>
 
-    
-|근처 맛집 View|맛집 detailView(WebView) <br> 예약하기|
-|:--:|:--:|
-|<img width= "40%" src = "https://github.com/user-attachments/assets/fc29cacd-cfb7-44b8-bc7f-dc52048dea39">|<img width= "30%" src = "https://github.com/user-attachments/assets/fee3bc6b-90b7-4127-ad09-d8fe4eecd9db">|
-
-  
+### 이하연
 
 
 <br>
 
-## Git Branch
-
-  
-
-`<Prefix>/<구현내용>(<#이슈번호>)` 의 양식에 따라 브랜치 명을 작성합니다.
-
-  
-
-  
-
-### 1. prefix
-
-- `main`: 개발이 완료되어 최종 배포될 브랜치
-- `develop`: default branch - feat, fix등 구현된 기능들이 merge된 후 main에 merge 되기 전 관리될 브랜치
-- `feat`: 기능을 개발하는 브랜치
-- `fix`: 버그를 수정하는 브랜치
-
-  
-
-### ⚠️ 참고
-
-- 띄어쓰기 부분은 '_'(언더바)를 사용합니다.
-- branch 내용은 '소문자 영어'로만 작성합니다.
+---
 
 
-### 예시
+### TODO
 
-  
+1. 컨벤션
+    - Color Asset 
+    - self. 
+    - string처리 
+    - final class
 
-``` swift
+2. Splash 화면
 
-fix/restaurant_page(#10)
 
-feat/serach_restaurant(#8)
+---
 
-```
 
-  
+노션ID와 구간 정보로 차량들의 위치 정보 조회
+https://www.data.go.kr/data/15000332/openapi.do
 
-## Commit Message Convention
+노선별 경유정류소 목록 조회
+http://api.bus.go.kr/contents/sub02/getStaionByRoute.html
 
-  
+특정차량 위치 정보 조회 
+http://api.bus.go.kr/contents/sub02/getBusPosByVehId.html
 
-### 1. 기본 형식
 
-```swift
+## Convention
 
-// 아래 구분마다 띄워쓰기 해주며, [이슈내용] 부분에 띄어쓰기시 그대로 띄워줍니다.
+컨벤션은 아래와 같음
 
-[prefix]: [이슈내용]
+#### Extension
 
-```
+파일명 
+Extenion + 확장할 파일
 
-  
-
-### 2. 예시
-
-  
-
-```swift
-
-feat: 맛집 검색기능 구현
-
-```
-
-## Code Convention
-
-https://github.com/StyleShare/swift-style-guide 을 최대한 따르고 있습니다.
+ex)
+`Extension + UIImageView.swift`
+`Extention + UIAlert`
